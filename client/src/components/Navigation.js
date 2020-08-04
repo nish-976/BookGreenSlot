@@ -31,6 +31,7 @@ class Navigation extends Component {
                 <Link to ='/Home' className ="heading">Home</Link>
                 {/* <Link to='/AddTask'>+ New Task</Link>
                 <Link to='/ViewTask'>MyTasks</Link> */}
+                <Link to='/ClinicDetails'>Clinic Details</Link>
                 <div onClick={this.logout} className="logout">Logout</div>
                 {this.state.user ? <div className="username">Signed In as {this.state.user.name}</div> : ''}
                 {/* <Link to='/receive-transaction'>Receive</Link>

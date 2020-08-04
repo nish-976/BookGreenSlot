@@ -50117,7 +50117,9 @@ var Navigation = /*#__PURE__*/function (_Component) {
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/Home",
         className: "heading"
-      }, "Home"), _react.default.createElement("div", {
+      }, "Home"), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/ClinicDetails"
+      }, "Clinic Details"), _react.default.createElement("div", {
         onClick: this.logout,
         className: "logout"
       }, "Logout"), this.state.user ? _react.default.createElement("div", {
@@ -60789,7 +60791,226 @@ var updatePassword = /*#__PURE__*/function (_Component) {
 ;
 var _default = updatePassword;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-datetime-picker":"../../node_modules/react-datetime-picker/dist/entry.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-datetime-picker":"../../node_modules/react-datetime-picker/dist/entry.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js"}],"util/timeSlot.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var TimeSlot = function TimeSlot(slot) {
+  var timeArray = [];
+
+  for (var i = 0, j = 0, counter = 0;; j += slot) {
+    if (i == 12 && counter == 1) {
+      break;
+    }
+
+    if (j == 60) {
+      j = 0;
+      i++;
+    }
+
+    if (i == 13 && counter == 0) {
+      i -= 12;
+      counter++;
+    }
+
+    var str = void 0;
+
+    if (Math.floor(i / 10) == 0) {
+      str = "0" + i.toString();
+    } else {
+      str = i.toString();
+    }
+
+    if (j == 0) {
+      str += ":0" + j.toString();
+    } else {
+      str += ":" + j.toString();
+    }
+
+    if (counter == 0 && i != 12) {
+      str += " AM";
+    } else {
+      str += " PM";
+    }
+
+    if (str !== "12:00 PM") {
+      timeArray.push(str);
+    }
+  }
+
+  return timeArray;
+};
+
+var _default = TimeSlot;
+exports.default = _default;
+},{}],"components/ClinicDetails.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Navigation = _interopRequireDefault(require("./Navigation"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _timeSlot = _interopRequireDefault(require("../util/timeSlot"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var localStorage = require('localStorage');
+
+var axios = require('axios');
+
+var ClinicDetails = /*#__PURE__*/function (_Component) {
+  _inherits(ClinicDetails, _Component);
+
+  var _super = _createSuper(ClinicDetails);
+
+  function ClinicDetails() {
+    var _this;
+
+    var _temp;
+
+    _classCallCheck(this, ClinicDetails);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      user: null,
+      logout: false,
+      openTime: 'Patient',
+      closeTime: 'Patient'
+    }, _this.updateOpenTime = function (event) {
+      _this.setState({
+        openTime: event.target.value
+      });
+    }, _this.updateCloseTime = function (event) {
+      _this.setState({
+        closeTime: event.target.value
+      });
+    }, _temp));
+  }
+
+  _createClass(ClinicDetails, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var user;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                user = JSON.parse(localStorage.getItem('user'));
+
+                if (!user) {
+                  this.setState({
+                    logout: true
+                  });
+                } else {
+                  this.setState({
+                    user: user
+                  });
+                }
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      var timeArray30 = (0, _timeSlot.default)(30);
+      var timeArray15 = (0, _timeSlot.default)(15);
+      var time30;
+      time30 = timeArray30.map(function (timeItem) {
+        return _react.default.createElement("option", {
+          value: timeItem
+        }, timeItem);
+      });
+      var time15;
+      time15 = timeArray15.map(function (timeItem) {
+        return _react.default.createElement("span", null, _react.default.createElement(_reactBootstrap.Button, null, timeItem));
+      });
+      return _react.default.createElement("div", {
+        className: "App"
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("h1", null, "Clinic Details"), _react.default.createElement("div", null, _react.default.createElement("label", {
+        className: "label"
+      }, "Clinic opens at :  "), _react.default.createElement("select", {
+        onChange: this.updateOpenTime,
+        value: this.state.openTime,
+        className: "dropdown"
+      }, time30), _react.default.createElement("label", {
+        className: "label"
+      }, "Clinic closes at :  "), _react.default.createElement("select", {
+        onChange: this.updateCloseTime,
+        value: this.state.closeTime,
+        className: "dropdown"
+      }, time30)), _react.default.createElement("br", null), _react.default.createElement("label", {
+        className: "label"
+      }, "Select the slot in which doctor takes break -"), _react.default.createElement("div", null, time15), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/"
+      }) : '');
+    }
+  }]);
+
+  return ClinicDetails;
+}(_react.Component);
+
+var _default = ClinicDetails;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../util/timeSlot":"util/timeSlot.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -60819,6 +61040,8 @@ var _Home = _interopRequireDefault(require("./components/Home"));
 var _updateName = _interopRequireDefault(require("./components/updateName"));
 
 var _updatePassword = _interopRequireDefault(require("./components/updatePassword"));
+
+var _ClinicDetails = _interopRequireDefault(require("./components/ClinicDetails"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60853,8 +61076,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 }), _react.default.createElement(_reactRouterDom.Route, {
   path: "/updatePassword",
   component: _updatePassword.default
+}), _react.default.createElement(_reactRouterDom.Route, {
+  path: "/ClinicDetails",
+  component: _ClinicDetails.default
 }))), document.getElementById('root'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./index.css":"index.css","./components/App":"components/App.js","./components/Login":"components/Login.js","./components/SignIn":"components/SignIn.js","./components/AddTask":"components/AddTask.js","./components/ViewTask":"components/ViewTask.js","./components/Home":"components/Home.js","./components/updateName":"components/updateName.js","./components/updatePassword":"components/updatePassword.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./index.css":"index.css","./components/App":"components/App.js","./components/Login":"components/Login.js","./components/SignIn":"components/SignIn.js","./components/AddTask":"components/AddTask.js","./components/ViewTask":"components/ViewTask.js","./components/Home":"components/Home.js","./components/updateName":"components/updateName.js","./components/updatePassword":"components/updatePassword.js","./components/ClinicDetails":"components/ClinicDetails.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
