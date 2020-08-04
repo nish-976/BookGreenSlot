@@ -60316,7 +60316,7 @@ var Home = /*#__PURE__*/function (_Component) {
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
       user: null,
       logout: false
-    }, _temp));
+    }, _this.book = function () {}, _temp));
   }
 
   _createClass(Home, [{
@@ -60371,6 +60371,8 @@ var Home = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var doctors;
 
       if (this.state.doctors) {
@@ -60380,11 +60382,12 @@ var Home = /*#__PURE__*/function (_Component) {
             className: "card"
           }, _react.default.createElement("div", {
             className: "container"
-          }, _react.default.createElement("h4", null, _react.default.createElement("b", null, Doctor.name)), _react.default.createElement("p", null, "Rs. 400"), _react.default.createElement(_reactBootstrap.Button, {
-            className: "button-update"
-          }, _react.default.createElement(_reactRouterDom.Link, {
-            to: "/updateName"
-          }, "Book Now"))));
+          }, _react.default.createElement("h2", null, Doctor.name), _react.default.createElement("h4", null, "Address - ", Doctor.address), _react.default.createElement("p", null, "Charge - Rs. ", Doctor.cash), _react.default.createElement(_reactBootstrap.Button, {
+            className: "button-update",
+            onClick: function onClick() {
+              return _this3.props.navigation.navigate('/ClinicDetails');
+            }
+          }, "Book Now")));
         });
       }
 
@@ -60799,22 +60802,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var TimeSlot = function TimeSlot(slot) {
+var TimeSlot = function TimeSlot(startI, startJ, ind1, endI, endJ, ind2, slot) {
   var timeArray = [];
+  var i = startI,
+      j = startJ,
+      counter = ind1;
 
-  for (var i = 0, j = 0, counter = 0;; j += slot) {
-    if (i == 12 && counter == 1) {
-      break;
-    }
-
+  for (var _counter = 0;; j += slot) {
     if (j == 60) {
       j = 0;
       i++;
     }
 
-    if (i == 13 && counter == 0) {
+    if (i == 12 && _counter == 0) {
+      _counter++;
+    }
+
+    if (i == 13) {
       i -= 12;
-      counter++;
     }
 
     var str = void 0;
@@ -60831,14 +60836,16 @@ var TimeSlot = function TimeSlot(slot) {
       str += ":" + j.toString();
     }
 
-    if (counter == 0 && i != 12) {
+    if (_counter == 0) {
       str += " AM";
     } else {
       str += " PM";
     }
 
-    if (str !== "12:00 PM") {
-      timeArray.push(str);
+    timeArray.push(str);
+
+    if (endI == i && endJ == j && _counter == ind2) {
+      break;
     }
   }
 
@@ -60920,8 +60927,12 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
       user: null,
       logout: false,
-      openTime: 'Patient',
-      closeTime: 'Patient'
+      openTime: '00:00 AM',
+      closeTime: '11:30 PM',
+      breakSlot: [],
+      daySlot: [],
+      cash: '',
+      address: ''
     }, _this.updateOpenTime = function (event) {
       _this.setState({
         openTime: event.target.value
@@ -60930,17 +60941,104 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
       _this.setState({
         closeTime: event.target.value
       });
-    }, _temp));
+    }, _this.updateCash = function (event) {
+      _this.setState({
+        cash: event.target.value
+      });
+    }, _this.updateAddress = function (event) {
+      _this.setState({
+        address: event.target.value
+      });
+    }, _this.addToBreakSlot = function (timeSlot) {
+      var array = _this.state.breakSlot;
+      array.push(timeSlot);
+
+      _this.setState({
+        breakSlot: array
+      });
+    }, _this.removeFromBreakSlot = function (timeSlot) {
+      var array = _this.state.breakSlot;
+      var breakSlot = [];
+
+      for (var i in array) {
+        if (array[i] !== timeSlot) {
+          breakSlot.push(array[i]);
+        }
+      }
+
+      _this.setState({
+        breakSlot: breakSlot
+      });
+    }, _this.addToDaySlot = function (day) {
+      var array = _this.state.daySlot;
+      array.push(day);
+
+      _this.setState({
+        daySlot: array
+      });
+    }, _this.removeFromDaySlot = function (day) {
+      var array = _this.state.daySlot;
+      var daySlot = [];
+
+      for (var i in array) {
+        if (array[i] !== day) {
+          daySlot.push(array[i]);
+        }
+      }
+
+      _this.setState({
+        daySlot: daySlot
+      });
+    }, _this.Submit = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(timeArray) {
+        var array, i;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                array = [];
+
+                for (i in timeArray) {
+                  if (_this.state.breakSlot.indexOf(timeArray[i]) == -1) {
+                    array.push(timeArray[i]);
+                  }
+                }
+
+                _context.next = 4;
+                return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/doctor/clinicDetails', {
+                  address: _this.state.address,
+                  days: JSON.stringify(_this.state.daySlot),
+                  timeSlot: JSON.stringify(array),
+                  cash: _this.state.cash,
+                  openTime: _this.state.openTime,
+                  closeTime: _this.state.closeTime,
+                  name: JSON.parse(localStorage.getItem('user')).name
+                }).then(function (res) {}).catch(function (error) {
+                  console.log(error);
+                });
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }(), _temp));
   }
 
   _createClass(ClinicDetails, [{
     key: "componentDidMount",
     value: function () {
-      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
         var user;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
                 user = JSON.parse(localStorage.getItem('user'));
 
@@ -60956,10 +61054,10 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
 
               case 2:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function componentDidMount() {
@@ -60971,8 +61069,28 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var timeArray30 = (0, _timeSlot.default)(30);
-      var timeArray15 = (0, _timeSlot.default)(15);
+      var _this2 = this;
+
+      var timeArray30 = (0, _timeSlot.default)(0, 0, 0, 11, 30, 1, 30);
+      var index1 = parseInt(this.state.openTime[0] + this.state.openTime[1]);
+      var index2 = parseInt(this.state.openTime[3] + this.state.openTime[4]);
+      var index3 = parseInt(this.state.closeTime[0] + this.state.closeTime[1]);
+      var index4 = parseInt(this.state.closeTime[3] + this.state.closeTime[4]);
+      var ind1, ind2;
+
+      if (this.state.openTime[6] + this.state.openTime[7] === "AM") {
+        ind1 = 0;
+      } else {
+        ind1 = 1;
+      }
+
+      if (this.state.closeTime[6] + this.state.closeTime[7] === "AM") {
+        ind2 = 0;
+      } else {
+        ind2 = 1;
+      }
+
+      var timeArray15 = (0, _timeSlot.default)(index1, index2, ind1, index3, index4, ind2, 15);
       var time30;
       time30 = timeArray30.map(function (timeItem) {
         return _react.default.createElement("option", {
@@ -60981,11 +61099,46 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
       });
       var time15;
       time15 = timeArray15.map(function (timeItem) {
-        return _react.default.createElement("span", null, _react.default.createElement(_reactBootstrap.Button, null, timeItem));
+        return _react.default.createElement("span", null, _this2.state.breakSlot.indexOf(timeItem) == -1 ? _react.default.createElement(_reactBootstrap.Button, {
+          className: "admin-buttons-start-s",
+          onClick: function onClick() {
+            return _this2.addToBreakSlot(timeItem);
+          }
+        }, timeItem) : _react.default.createElement(_reactBootstrap.Button, {
+          className: "admin-buttons-start-e",
+          onClick: function onClick() {
+            return _this2.removeFromBreakSlot(timeItem);
+          }
+        }, timeItem));
+      });
+      var daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      var days;
+      days = daysOfWeek.map(function (day) {
+        return _react.default.createElement("span", null, _this2.state.daySlot.indexOf(day) == -1 ? _react.default.createElement(_reactBootstrap.Button, {
+          className: "admin-buttons-start-s",
+          onClick: function onClick() {
+            return _this2.addToDaySlot(day);
+          }
+        }, day) : _react.default.createElement(_reactBootstrap.Button, {
+          className: "admin-buttons-start-e",
+          onClick: function onClick() {
+            return _this2.removeFromDaySlot(day);
+          }
+        }, day));
       });
       return _react.default.createElement("div", {
         className: "App"
-      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("h1", null, "Clinic Details"), _react.default.createElement("div", null, _react.default.createElement("label", {
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("h1", null, "Clinic Details"), _react.default.createElement("label", {
+        className: "label"
+      }, "Complete Address of clinic -"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter complete address of clinic",
+        value: this.state.address,
+        onChange: this.updateAddress,
+        className: "inputBox"
+      })), _react.default.createElement("label", {
+        className: "label"
+      }, "Select the working days of clinic -"), _react.default.createElement("div", null, days), _react.default.createElement("div", null, _react.default.createElement("label", {
         className: "label"
       }, "Clinic opens at :  "), _react.default.createElement("select", {
         onChange: this.updateOpenTime,
@@ -60999,7 +61152,22 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
         className: "dropdown"
       }, time30)), _react.default.createElement("br", null), _react.default.createElement("label", {
         className: "label"
-      }, "Select the slot in which doctor takes break -"), _react.default.createElement("div", null, time15), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+      }, "Select the slot in which doctor takes break -"), _react.default.createElement("div", null, time15), _react.default.createElement("label", {
+        className: "label"
+      }, "Amount per patient -"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter amount in rupees (eg. 400)",
+        value: this.state.cash,
+        onChange: this.updateCash,
+        className: "inputBox"
+      })), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("div", {
+        align: "center"
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        className: "button",
+        onClick: function onClick() {
+          return _this2.Submit(timeArray15);
+        }
+      }, "Submit")), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("br", null), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/"
       }) : '');
     }

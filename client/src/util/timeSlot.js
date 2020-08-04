@@ -1,19 +1,20 @@
-const TimeSlot = (slot) => {
+const TimeSlot = (startI,startJ,ind1,endI,endJ,ind2,slot) => {
     let timeArray = [];
-    for(let i=0,j=0,counter=0;;j+=slot){
+    let i = startI, j = startJ,counter = ind1;
 
-        if(i == 12 && counter == 1){
-            break;
-        }
+    for(let counter=0;;j+=slot){
 
         if(j==60){
             j=0;
             i++;
         }
 
-        if(i==13 && counter == 0){
-            i-=12;
+        if(i==12 && counter == 0){
             counter ++;
+        }
+
+        if(i==13){
+            i-=12;
         }
 
         let str;
@@ -30,14 +31,16 @@ const TimeSlot = (slot) => {
             str += ":" + j.toString();
         }
 
-        if(counter == 0 && i != 12){
+        if(counter == 0){
             str += " AM";
         }else{
             str += " PM";
         }
-        
-        if(str !== "12:00 PM"){   
+
         timeArray.push(str);
+
+        if(endI == i && endJ == j && counter == ind2){
+            break;
         }
     }
 

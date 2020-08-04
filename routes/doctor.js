@@ -5,10 +5,27 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 // const verify = require('./verifyToken');
 
-router.get('/getAllDoctors', async (req,res) => {
+router.post('/clinicDetails', async (req,res) => {
 
-    const doctors = await Clinic.find({ category : 'Clinic' });
-    res.send({ Doctors : doctors });
+    const data = new Clinic({
+        address : req.body.address,
+        days : req.body.days,
+        timeSlot : req.body.timeSlot,
+        cash : req.body.cash,
+        openTime : req.body.openTime,
+        closeTime : req.body.closeTime,
+        category : 'Clinic',
+        name : req.body.name
+    })
+
+    console.log(data);
+
+    try{
+        const savedClinic = await data.save();
+        res.send({ data : data });
+    }catch(err){
+        res.status(400).send(err);
+    }
 })
 
 router.post('/addTask', async (req,res) => {

@@ -37,6 +37,9 @@ class Home extends Component {
         }
     }
 
+    book = () => {
+    }
+
     
     render() {
 
@@ -48,9 +51,10 @@ class Home extends Component {
                 <div className="card">
                     {/* <img src="img_avatar.png" alt="Avatar" style="width:100%" /> */}
                     <div className="container">
-                        <h4><b>{Doctor.name}</b></h4>
-                        <p>Rs. 400</p>
-                        <Button className="button-update"><Link to='/updateName'>Book Now</Link></Button>
+                        <h2>{Doctor.name}</h2>
+                        <h4>Address - {Doctor.address}</h4>
+                        <p>Charge - Rs. {Doctor.cash}</p>
+                        <Button className="button-update" onClick={() => this.props.navigation.navigate('/ClinicDetails')}>Book Now</Button>
                     </div>
                 </div>
             );
