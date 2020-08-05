@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const authRoute = require('./routes/auth');
 const taskRoute = require('./routes/tasks');
 const patientRoute = require('./routes/patient');
+const doctorRoute = require('./routes/doctor');
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use('/api/user', authRoute);
 app.use('/api/tasks', taskRoute);
 app.use('/api/patient', patientRoute);
+app.use('/api/doctor', doctorRoute);
 
 
 app.get('*',(req,res)=> {

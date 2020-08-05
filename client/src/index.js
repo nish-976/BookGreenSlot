@@ -20,6 +20,7 @@ import ViewTask from './components/ViewTask';
 import Home from './components/Home';
 import updateName from './components/updateName';
 import updatePassword from './components/updatePassword';
+import ClinicDetails from './components/ClinicDetails';
 
 render(
     <Router history={history}>
@@ -32,6 +33,7 @@ render(
             <Route path='/home' component={Home} />
             <Route path='/updateName' component={updateName} />
             <Route path='/updatePassword' component={updatePassword} />
+            <Route path='/ClinicDetails' component={ClinicDetails} />
         </Switch>
     </Router>,
     document.getElementById('root')
