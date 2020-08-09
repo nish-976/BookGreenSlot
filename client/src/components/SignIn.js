@@ -4,6 +4,8 @@ import {FormGroup, FormControl , Button , Form} from 'react-bootstrap';
 const axios = require('axios');
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Navigation1 from './Navigation1';
+import Footer from './Footer';
 
 class SignIn extends Component {
     state = {
@@ -80,13 +82,14 @@ class SignIn extends Component {
     render(){
         return(
             <div>
-                <div className='navbar'>
-                        <div className="title">Book Green Slot</div>
-                </div>
-
+            <Navigation1 />
+        <div className="signin">
+            <div className="signInRootLeft" >
+            </div>
+            <div className="signInRootRight">
                 <div className='AddTask'>
                     <br />
-                    <h3>Create Account -</h3>
+                    <p className="createAccountText">Create Account </p>
 
                     <FormGroup>
                         <FormControl
@@ -142,8 +145,12 @@ class SignIn extends Component {
                     <div className='already'>Already have an account</div>
                     <Link to='/Login' className="button-vote">LOGIN</Link>
                 </div>
+                </div>
+        </div>
+                <Footer />
 
             </div>
+        
         );
     }
 };

@@ -33071,6 +33071,994 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Navigation1.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var Navigation1 = /*#__PURE__*/function (_Component) {
+  _inherits(Navigation1, _Component);
+
+  var _super = _createSuper(Navigation1);
+
+  function Navigation1() {
+    var _this;
+
+    var _temp;
+
+    _classCallCheck(this, Navigation1);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      redirect: false
+    }, _temp));
+  }
+
+  _createClass(Navigation1, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {// let user = JSON.parse(localStorage.getItem('user'))
+      // if(user){
+      //     this.setState({ redirect : true });
+      // }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("nav", {
+        className: "navbar navbar-inverse"
+      }, _react.default.createElement("div", {
+        className: "container-fluid"
+      }, _react.default.createElement("div", {
+        className: "navbar-header"
+      }, _react.default.createElement("span", {
+        className: "navbar-brand"
+      }, "Book Green Slot")), _react.default.createElement("ul", {
+        className: "nav navbar-nav navbar-right"
+      }, _react.default.createElement("li", null, _react.default.createElement("a", {
+        href: "/SignIn"
+      }, _react.default.createElement("span", {
+        className: "glyphicon glyphicon-user"
+      }), " Sign Up")), _react.default.createElement("li", null, _react.default.createElement("a", {
+        href: "/Login"
+      }, _react.default.createElement("span", {
+        className: "glyphicon glyphicon-log-in"
+      }), " Login")))))
+      /*
+           <div className='navbar'>
+                   <span className="title">Book Green Slot</span>
+                 <Link to='/Login' className="button-vote"><span>LOGIN</span></Link>
+               <span>|</span>
+               <Link to='/SignIn' className="button-vote"><span>SIGN UP</span></Link>
+           </div>    */
+      ;
+    }
+  }]);
+
+  return Navigation1;
+}(_react.Component);
+
+;
+var _default = Navigation1;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"assets/topimg.png":[function(require,module,exports) {
+module.exports = "/topimg.53f74350.png";
+},{}],"assets/heart.png":[function(require,module,exports) {
+module.exports = "/heart.70222f36.png";
+},{}],"assets/doctor.png":[function(require,module,exports) {
+module.exports = "/doctor.3dfa6c9a.png";
+},{}],"assets/doc.png":[function(require,module,exports) {
+module.exports = "/doc.07045551.png";
+},{}],"assets/login.png":[function(require,module,exports) {
+module.exports = "/login.748995fe.png";
+},{}],"assets/pay.png":[function(require,module,exports) {
+module.exports = "/pay.7c98b1a3.png";
+},{}],"assets/time.png":[function(require,module,exports) {
+module.exports = "/time.498c72c6.png";
+},{}],"assets/appointment.png":[function(require,module,exports) {
+module.exports = "/appointment.e5222456.png";
+},{}],"assets/facebook.png":[function(require,module,exports) {
+module.exports = "/facebook.b07338d5.png";
+},{}],"assets/instagram.png":[function(require,module,exports) {
+module.exports = "/instagram.77044c70.png";
+},{}],"assets/twitter.png":[function(require,module,exports) {
+module.exports = "/twitter.86d5ceec.png";
+},{}],"assets/developer.png":[function(require,module,exports) {
+module.exports = "/developer.f0e69a1a.png";
+},{}],"assets/about.png":[function(require,module,exports) {
+module.exports = "/about.4f5013a0.png";
+},{}],"assets/contact.png":[function(require,module,exports) {
+module.exports = "/contact.9d444a97.png";
+},{}],"assets/faq.png":[function(require,module,exports) {
+module.exports = "/faq.d9c0dfeb.png";
+},{}],"components/Footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _facebook = _interopRequireDefault(require("../assets/facebook.png"));
+
+var _instagram = _interopRequireDefault(require("../assets/instagram.png"));
+
+var _twitter = _interopRequireDefault(require("../assets/twitter.png"));
+
+var _developer = _interopRequireDefault(require("../assets/developer.png"));
+
+var _about = _interopRequireDefault(require("../assets/about.png"));
+
+var _contact = _interopRequireDefault(require("../assets/contact.png"));
+
+var _faq = _interopRequireDefault(require("../assets/faq.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var Footer = /*#__PURE__*/function (_Component) {
+  _inherits(Footer, _Component);
+
+  var _super = _createSuper(Footer);
+
+  function Footer() {
+    var _this;
+
+    var _temp;
+
+    _classCallCheck(this, Footer);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      redirect: false
+    }, _temp));
+  }
+
+  _createClass(Footer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var user = JSON.parse(localStorage.getItem('user'));
+
+      if (user) {
+        this.setState({
+          redirect: true
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        className: "footer"
+      }, _react.default.createElement("div", {
+        className: "footercontentSocial"
+      }, _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("img", {
+        src: _facebook.default
+      })), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("img", {
+        src: _instagram.default
+      })), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("img", {
+        src: _twitter.default
+      }))), _react.default.createElement("div", {
+        className: "footercontent"
+      }, _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("p", {
+        className: "footerLinks"
+      }, "Home")), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("p", {
+        className: "footerLinks"
+      }, "Contact Us")), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("p", {
+        className: "footerLinks"
+      }, "About Us")), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("p", {
+        className: "footerLinks"
+      }, "Developer Info")), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("p", {
+        className: "footerLinks"
+      }, "FAQ"))));
+    }
+  }]);
+
+  return Footer;
+}(_react.Component);
+
+;
+var _default = Footer;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../assets/facebook.png":"assets/facebook.png","../assets/instagram.png":"assets/instagram.png","../assets/twitter.png":"assets/twitter.png","../assets/developer.png":"assets/developer.png","../assets/about.png":"assets/about.png","../assets/contact.png":"assets/contact.png","../assets/faq.png":"assets/faq.png"}],"../../node_modules/classnames/index.js":[function(require,module,exports) {
+var define;
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', [], function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+}());
+
+},{}],"../../node_modules/react-vertical-timeline-component/dist-es6/VerticalTimeline.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+const VerticalTimeline = ({
+  animate,
+  className,
+  layout,
+  children
+}) => /*#__PURE__*/_react.default.createElement("div", {
+  className: (0, _classnames.default)(className, 'vertical-timeline', {
+    'vertical-timeline--animate': animate,
+    'vertical-timeline--two-columns': layout === '2-columns',
+    'vertical-timeline--one-column': layout === '1-column'
+  })
+}, children);
+
+VerticalTimeline.propTypes = {
+  children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.node), _propTypes.default.node]).isRequired,
+  className: _propTypes.default.string,
+  animate: _propTypes.default.bool,
+  layout: _propTypes.default.oneOf(['1-column', '2-columns'])
+};
+VerticalTimeline.defaultProps = {
+  animate: true,
+  className: '',
+  layout: '2-columns'
+};
+var _default = VerticalTimeline;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js","classnames":"../../node_modules/classnames/index.js"}],"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useInView = useInView;
+exports.InView = exports.default = void 0;
+
+var _react = require("react");
+
+var _tinyInvariant = _interopRequireDefault(require("tiny-invariant"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+var INSTANCE_MAP = new Map();
+var OBSERVER_MAP = new Map();
+var ROOT_IDS = new Map();
+var consecutiveRootId = 0;
+/**
+ * Generate a unique ID for the root element
+ * @param root
+ */
+
+function getRootId(root) {
+  if (!root) return '';
+  if (ROOT_IDS.has(root)) return ROOT_IDS.get(root);
+  consecutiveRootId += 1;
+  ROOT_IDS.set(root, consecutiveRootId.toString());
+  return ROOT_IDS.get(root) + '_';
+}
+/**
+ * Monitor element, and trigger callback when element becomes inView
+ * @param element {HTMLElement}
+ * @param callback {Function} Called with inView
+ * @param options {Object} InterSection observer options
+ * @param options.threshold {Number} Number between 0 and 1, indicating how much of the element should be inView before triggering
+ * @param options.root {HTMLElement}
+ * @param options.rootMargin {String} The CSS margin to apply to the root element.
+ */
+
+
+function observe(element, callback, options) {
+  if (options === void 0) {
+    options = {};
+  } // IntersectionObserver needs a threshold to trigger, so set it to 0 if it's not defined.
+  // Modify the options object, since it's used in the onChange handler.
+
+
+  if (!options.threshold) options.threshold = 0;
+  var _options = options,
+      root = _options.root,
+      rootMargin = _options.rootMargin,
+      threshold = _options.threshold; // Validate that the element is not being used in another <Observer />
+
+  !!INSTANCE_MAP.has(element) ? "development" !== "production" ? (0, _tinyInvariant.default)(false, "react-intersection-observer: Trying to observe %s, but it's already being observed by another instance.\nMake sure the `ref` is only used by a single <Observer /> instance.\n\n%s") : (0, _tinyInvariant.default)(false) : void 0;
+  /* istanbul ignore if */
+
+  if (!element) return; // Create a unique ID for this observer instance, based on the root, root margin and threshold.
+  // An observer with the same options can be reused, so lets use this fact
+
+  var observerId = getRootId(root) + (rootMargin ? threshold.toString() + "_" + rootMargin : threshold.toString());
+  var observerInstance = OBSERVER_MAP.get(observerId);
+
+  if (!observerInstance) {
+    observerInstance = new IntersectionObserver(onChange, options);
+    /* istanbul ignore else  */
+
+    if (observerId) OBSERVER_MAP.set(observerId, observerInstance);
+  }
+
+  var instance = {
+    callback: callback,
+    element: element,
+    inView: false,
+    observerId: observerId,
+    observer: observerInstance,
+    // Make sure we have the thresholds value. It's undefined on a browser like Chrome 51.
+    thresholds: observerInstance.thresholds || (Array.isArray(threshold) ? threshold : [threshold])
+  };
+  INSTANCE_MAP.set(element, instance);
+  observerInstance.observe(element);
+  return instance;
+}
+/**
+ * Stop observing an element. If an element is removed from the DOM or otherwise destroyed,
+ * make sure to call this method.
+ * @param element {Element}
+ */
+
+
+function unobserve(element) {
+  if (!element) return;
+  var instance = INSTANCE_MAP.get(element);
+
+  if (instance) {
+    var observerId = instance.observerId,
+        observer = instance.observer;
+    var root = observer.root;
+    observer.unobserve(element); // Check if we are still observing any elements with the same threshold.
+
+    var itemsLeft = false; // Check if we still have observers configured with the same root.
+
+    var rootObserved = false;
+    /* istanbul ignore else  */
+
+    if (observerId) {
+      INSTANCE_MAP.forEach(function (item, key) {
+        if (key !== element) {
+          if (item.observerId === observerId) {
+            itemsLeft = true;
+            rootObserved = true;
+          }
+
+          if (item.observer.root === root) {
+            rootObserved = true;
+          }
+        }
+      });
+    }
+
+    if (!rootObserved && root) ROOT_IDS["delete"](root);
+
+    if (observer && !itemsLeft) {
+      // No more elements to observe for threshold, disconnect observer
+      observer.disconnect();
+    } // Remove reference to element
+
+
+    INSTANCE_MAP["delete"](element);
+  }
+}
+
+function onChange(changes) {
+  changes.forEach(function (intersection) {
+    var isIntersecting = intersection.isIntersecting,
+        intersectionRatio = intersection.intersectionRatio,
+        target = intersection.target;
+    var instance = INSTANCE_MAP.get(target); // Firefox can report a negative intersectionRatio when scrolling.
+
+    /* istanbul ignore else */
+
+    if (instance && intersectionRatio >= 0) {
+      // If threshold is an array, check if any of them intersects. This just triggers the onChange event multiple times.
+      var inView = instance.thresholds.some(function (threshold) {
+        return instance.inView ? intersectionRatio > threshold : intersectionRatio >= threshold;
+      });
+
+      if (isIntersecting !== undefined) {
+        // If isIntersecting is defined, ensure that the element is actually intersecting.
+        // Otherwise it reports a threshold of 0
+        inView = inView && isIntersecting;
+      }
+
+      instance.inView = inView;
+      instance.callback(inView, intersection);
+    }
+  });
+}
+
+function isPlainChildren(props) {
+  return typeof props.children !== 'function';
+}
+/**
+ * Monitors scroll, and triggers the children function with updated props
+ *
+ <InView>
+ {({inView, ref}) => (
+   <h1 ref={ref}>{`${inView}`}</h1>
+ )}
+ </InView>
+ */
+
+
+var InView = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(InView, _React$Component);
+
+  function InView() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      inView: false,
+      entry: undefined
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "node", null);
+
+    _defineProperty(_assertThisInitialized(_this), "handleNode", function (node) {
+      if (_this.node) {
+        unobserve(_this.node);
+
+        if (!node && !_this.props.triggerOnce) {
+          _this.setState({
+            inView: false,
+            entry: undefined
+          });
+        }
+      }
+
+      _this.node = node ? node : null;
+
+      _this.observeNode();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (inView, entry) {
+      // Only trigger a state update if inView has changed.
+      // This prevents an unnecessary extra state update during mount, when the element stats outside the viewport
+      if (inView !== _this.state.inView || inView) {
+        _this.setState({
+          inView: inView,
+          entry: entry
+        });
+      }
+
+      if (_this.props.onChange) {
+        // If the user is actively listening for onChange, always trigger it
+        _this.props.onChange(inView, entry);
+      }
+    });
+
+    return _this;
+  }
+
+  var _proto = InView.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    !this.node ? "development" !== "production" ? (0, _tinyInvariant.default)(false, "react-intersection-observer: No DOM node found. Make sure you forward \"ref\" to the root DOM element you want to observe.") : (0, _tinyInvariant.default)(false) : void 0;
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    // If a IntersectionObserver option changed, reinit the observer
+    if (prevProps.rootMargin !== this.props.rootMargin || prevProps.root !== this.props.root || prevProps.threshold !== this.props.threshold) {
+      unobserve(this.node);
+      this.observeNode();
+    }
+
+    if (prevState.inView !== this.state.inView) {
+      if (this.state.inView && this.props.triggerOnce) {
+        unobserve(this.node);
+        this.node = null;
+      }
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.node) {
+      unobserve(this.node);
+      this.node = null;
+    }
+  };
+
+  _proto.observeNode = function observeNode() {
+    if (!this.node) return;
+    var _this$props = this.props,
+        threshold = _this$props.threshold,
+        root = _this$props.root,
+        rootMargin = _this$props.rootMargin;
+    observe(this.node, this.handleChange, {
+      threshold: threshold,
+      root: root,
+      rootMargin: rootMargin
+    });
+  };
+
+  _proto.render = function render() {
+    var _this$state = this.state,
+        inView = _this$state.inView,
+        entry = _this$state.entry;
+
+    if (!isPlainChildren(this.props)) {
+      return this.props.children({
+        inView: inView,
+        entry: entry,
+        ref: this.handleNode
+      });
+    }
+
+    var _this$props2 = this.props,
+        children = _this$props2.children,
+        as = _this$props2.as,
+        tag = _this$props2.tag,
+        triggerOnce = _this$props2.triggerOnce,
+        threshold = _this$props2.threshold,
+        root = _this$props2.root,
+        rootMargin = _this$props2.rootMargin,
+        onChange = _this$props2.onChange,
+        props = _objectWithoutPropertiesLoose(_this$props2, ["children", "as", "tag", "triggerOnce", "threshold", "root", "rootMargin", "onChange"]);
+
+    return (0, _react.createElement)(as || tag || 'div', _extends({
+      ref: this.handleNode
+    }, props), children);
+  };
+
+  return InView;
+}(_react.Component);
+
+exports.InView = InView;
+
+_defineProperty(InView, "displayName", 'InView');
+
+_defineProperty(InView, "defaultProps", {
+  threshold: 0,
+  triggerOnce: false
+});
+/* eslint-disable react-hooks/exhaustive-deps */
+
+
+var initialState = {
+  inView: false,
+  entry: undefined
+};
+
+function useInView(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  var ref = (0, _react.useRef)();
+
+  var _React$useState = (0, _react.useState)(initialState),
+      state = _React$useState[0],
+      setState = _React$useState[1];
+
+  var setRef = (0, _react.useCallback)(function (node) {
+    if (ref.current) {
+      unobserve(ref.current);
+    }
+
+    if (node) {
+      observe(node, function (inView, intersection) {
+        setState({
+          inView: inView,
+          entry: intersection
+        });
+
+        if (inView && options.triggerOnce) {
+          // If it should only trigger once, unobserve the element after it's inView
+          unobserve(node);
+        }
+      }, options);
+    } // Store a reference to the node, so we can unobserve it later
+
+
+    ref.current = node;
+  }, [options.threshold, options.root, options.rootMargin, options.triggerOnce]);
+  (0, _react.useEffect)(function () {
+    if (!ref.current && state !== initialState && !options.triggerOnce) {
+      // If we don't have a ref, then reset the state (unless the hook is set to only `triggerOnce`)
+      // This ensures we correctly reflect the current state - If you aren't observing anything, then nothing is inView
+      setState(initialState);
+    }
+  });
+  return [setRef, state.inView, state.entry];
+}
+
+var _default = InView;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","tiny-invariant":"../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../../node_modules/react-vertical-timeline-component/dist-es6/VerticalTimelineElement.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _reactIntersectionObserver = require("react-intersection-observer");
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function _getRequireWildcardCache() {
+  if (typeof WeakMap !== "function") return null;
+  var cache = new WeakMap();
+
+  _getRequireWildcardCache = function () {
+    return cache;
+  };
+
+  return cache;
+}
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  }
+
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+
+  var cache = _getRequireWildcardCache();
+
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+
+  newObj.default = obj;
+
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+
+  return newObj;
+}
+
+const VerticalTimelineElement = ({
+  children,
+  className,
+  contentArrowStyle,
+  contentStyle,
+  date,
+  dateClassName,
+  icon,
+  iconClassName,
+  iconOnClick,
+  onTimelineElementClick,
+  iconStyle,
+  id,
+  position,
+  style,
+  textClassName,
+  intersectionObserverProps
+}) => {
+  const [visible, setVisible] = (0, _react.useState)(false);
+  const [ref, inView] = (0, _reactIntersectionObserver.useInView)(intersectionObserverProps);
+
+  if (!visible && inView) {
+    setVisible(true);
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    ref: ref,
+    id: id,
+    className: (0, _classnames.default)(className, 'vertical-timeline-element', {
+      'vertical-timeline-element--left': position === 'left',
+      'vertical-timeline-element--right': position === 'right',
+      'vertical-timeline-element--no-children': children === ''
+    }),
+    style: style
+  }, /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("span", {
+    // eslint-disable-line jsx-a11y/no-static-element-interactions
+    style: iconStyle,
+    onClick: iconOnClick,
+    className: (0, _classnames.default)(iconClassName, 'vertical-timeline-element-icon', {
+      'bounce-in': visible,
+      'is-hidden': !visible
+    })
+  }, icon), /*#__PURE__*/_react.default.createElement("div", {
+    style: contentStyle,
+    onClick: onTimelineElementClick,
+    className: (0, _classnames.default)(textClassName, 'vertical-timeline-element-content', {
+      'bounce-in': visible,
+      'is-hidden': !visible
+    })
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    style: contentArrowStyle,
+    className: "vertical-timeline-element-content-arrow"
+  }), children, /*#__PURE__*/_react.default.createElement("span", {
+    className: (0, _classnames.default)(dateClassName, 'vertical-timeline-element-date')
+  }, date))));
+};
+
+VerticalTimelineElement.propTypes = {
+  children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.node), _propTypes.default.node]),
+  className: _propTypes.default.string,
+  contentArrowStyle: _propTypes.default.shape({}),
+  contentStyle: _propTypes.default.shape({}),
+  date: _propTypes.default.node,
+  dateClassName: _propTypes.default.string,
+  icon: _propTypes.default.element,
+  iconClassName: _propTypes.default.string,
+  iconStyle: _propTypes.default.shape({}),
+  iconOnClick: _propTypes.default.func,
+  onTimelineElementClick: _propTypes.default.func,
+  id: _propTypes.default.string,
+  position: _propTypes.default.string,
+  style: _propTypes.default.shape({}),
+  textClassName: _propTypes.default.string,
+  intersectionObserverProps: _propTypes.default.shape({
+    root: _propTypes.default.object,
+    rootMargin: _propTypes.default.string,
+    threshold: _propTypes.default.number,
+    triggerOnce: _propTypes.default.bool
+  })
+};
+VerticalTimelineElement.defaultProps = {
+  children: '',
+  className: '',
+  contentArrowStyle: null,
+  contentStyle: null,
+  icon: null,
+  iconClassName: '',
+  iconOnClick: null,
+  onTimelineElementClick: null,
+  iconStyle: null,
+  id: '',
+  style: null,
+  date: '',
+  dateClassName: '',
+  position: '',
+  textClassName: '',
+  intersectionObserverProps: {
+    rootMargin: '0px 0px -40px 0px'
+  }
+};
+var _default = VerticalTimelineElement;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js","classnames":"../../node_modules/classnames/index.js","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js"}],"../../node_modules/react-vertical-timeline-component/dist-es6/index.js":[function(require,module,exports) {
+"use strict"; // this should be the entry point to your library
+
+module.exports = {
+  VerticalTimeline: require('./VerticalTimeline').default,
+  // eslint-disable-line global-require
+  VerticalTimelineElement: require('./VerticalTimelineElement').default // eslint-disable-line global-require
+
+};
+},{"./VerticalTimeline":"../../node_modules/react-vertical-timeline-component/dist-es6/VerticalTimeline.js","./VerticalTimelineElement":"../../node_modules/react-vertical-timeline-component/dist-es6/VerticalTimelineElement.js"}],"../../node_modules/react-vertical-timeline-component/style.min.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
 },{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
@@ -33082,6 +34070,34 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
+
+var _Navigation = _interopRequireDefault(require("./Navigation1"));
+
+var _topimg = _interopRequireDefault(require("../assets/topimg.png"));
+
+var _heart = _interopRequireDefault(require("../assets/heart.png"));
+
+var _doctor = _interopRequireDefault(require("../assets/doctor.png"));
+
+var _doc = _interopRequireDefault(require("../assets/doc.png"));
+
+var _login = _interopRequireDefault(require("../assets/login.png"));
+
+var _pay = _interopRequireDefault(require("../assets/pay.png"));
+
+var _time = _interopRequireDefault(require("../assets/time.png"));
+
+var _appointment = _interopRequireDefault(require("../assets/appointment.png"));
+
+var _Footer = _interopRequireDefault(require("./Footer"));
+
+var _facebook = _interopRequireDefault(require("../assets/facebook.png"));
+
+var _reactVerticalTimelineComponent = require("react-vertical-timeline-component");
+
+require("react-vertical-timeline-component/style.min.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -33144,19 +34160,87 @@ var App = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("div", {
-        className: "navbar"
+      return _react.default.createElement("div", null, _react.default.createElement(_Navigation.default, null), _react.default.createElement("div", {
+        className: "containerBox"
       }, _react.default.createElement("div", {
-        className: "title"
-      }, "Book Green Slot")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/Login",
-        className: "button-vote"
-      }, "LOGIN"), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/SignIn",
-        className: "button-vote"
-      }, "SIGN UP"), _react.default.createElement("div", {
-        className: "home"
-      }, "Welcome to bookgreenslot. From experimental passion projects to native doctors booking for patients, We've had the opportunity to heal and recover a a number of patient's. We thrive on creative challenges and enjoy building strong relationships along the way. Explore Our work below, and contact me directly to learn more."), this.state.redirect ? _react.default.createElement(_reactRouterDom.Redirect, {
+        className: "topImage"
+      }, _react.default.createElement("img", {
+        src: _topimg.default,
+        width: "100%",
+        height: "100%"
+      })), _react.default.createElement("div", {
+        className: "text-box"
+      }, _react.default.createElement("div", {
+        className: "text1"
+      }, "Welcome to"), _react.default.createElement("div", {
+        className: "text2"
+      }, " Book Green Slot !"), _react.default.createElement("div", {
+        className: "text3"
+      }, "From experimental passion projects to native doctors booking for patients, ", _react.default.createElement("div", null, "we've had the opportunity to heal and recover a number of patients."), " We thrive on creative challenges and enjoy building strong relationships", _react.default.createElement("div", null, " along the way.")))), _react.default.createElement("img", {
+        className: "yellowicon",
+        src: _heart.default
+      }), _react.default.createElement("div", {
+        className: "text5"
+      }, "Explore what our doctors have to say about us !"), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "column"
+      }, _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("p", {
+        className: "review"
+      }, "\"This is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea\""), _react.default.createElement("div", {
+        className: "docname"
+      }, _react.default.createElement("footer", null, "-Mr. ABCD(Surgeon, XYZ hospital)")))), _react.default.createElement("div", {
+        className: "column"
+      }, _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("p", {
+        className: "review"
+      }, "\"Book Green Slot has made getting appointments so hassle-freeThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea\""), _react.default.createElement("div", {
+        className: "docname"
+      }, _react.default.createElement("footer", null, "-Mr. ABCD(Surgeon, XYZ hospital)")))), _react.default.createElement("div", {
+        className: "column"
+      }, _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("p", {
+        className: "review"
+      }, "\"I appreciate this wonderful initiativeThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea\""), _react.default.createElement("div", {
+        className: "docname"
+      }, _react.default.createElement("footer", null, "-Mr. ABCD(Surgeon, XYZ hospital)"))))), _react.default.createElement("div", {
+        className: "sequenceBook"
+      }, _react.default.createElement(_reactVerticalTimelineComponent.VerticalTimeline, null, _react.default.createElement(_reactVerticalTimelineComponent.VerticalTimelineElement, {
+        className: "vertical-timeline-element--work",
+        icon: _react.default.createElement("img", {
+          className: "vertical-timeline-icon",
+          src: _login.default
+        })
+      }, _react.default.createElement("h1", null, "Login/SignUp")), _react.default.createElement(_reactVerticalTimelineComponent.VerticalTimelineElement, {
+        className: "vertical-timeline-element--work",
+        icon: _react.default.createElement("img", {
+          className: "vertical-timeline-icon",
+          src: _doc.default
+        })
+      }, _react.default.createElement("p", {
+        className: "sequenceBookText"
+      }), _react.default.createElement("h1", null, "Choose your doctor/Clinic")), _react.default.createElement(_reactVerticalTimelineComponent.VerticalTimelineElement, {
+        className: "vertical-timeline-element--work",
+        icon: _react.default.createElement("img", {
+          className: "vertical-timeline-icon",
+          src: _time.default
+        })
+      }, _react.default.createElement("h1", null, "Select your time-slot")), _react.default.createElement(_reactVerticalTimelineComponent.VerticalTimelineElement, {
+        className: "vertical-timeline-element--work",
+        icon: _react.default.createElement("img", {
+          className: "vertical-timeline-icon",
+          src: _pay.default
+        })
+      }, _react.default.createElement("h1", null, "Pay for your appointments"))), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("img", {
+        className: "yellowicon",
+        src: _appointment.default
+      }), _react.default.createElement("div", {
+        className: "text4"
+      }, "Get your appointments right now!")), _react.default.createElement("div", null), _react.default.createElement(_Footer.default, null), this.state.redirect ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/home"
       }) : '');
     }
@@ -33168,62 +34252,7 @@ var App = /*#__PURE__*/function (_Component) {
 ;
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"../../node_modules/classnames/index.js":[function(require,module,exports) {
-var define;
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
-				}
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (typeof module !== 'undefined' && module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-		// register as 'classnames', consistent with npm package name
-		define('classnames', [], function () {
-			return classNames;
-		});
-	} else {
-		window.classNames = classNames;
-	}
-}());
-
-},{}],"../../node_modules/invariant/browser.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation1":"components/Navigation1.js","../assets/topimg.png":"assets/topimg.png","../assets/heart.png":"assets/heart.png","../assets/doctor.png":"assets/doctor.png","../assets/doc.png":"assets/doc.png","../assets/login.png":"assets/login.png","../assets/pay.png":"assets/pay.png","../assets/time.png":"assets/time.png","../assets/appointment.png":"assets/appointment.png","./Footer":"components/Footer.js","../assets/facebook.png":"assets/facebook.png","react-vertical-timeline-component":"../../node_modules/react-vertical-timeline-component/dist-es6/index.js","react-vertical-timeline-component/style.min.css":"../../node_modules/react-vertical-timeline-component/style.min.css"}],"../../node_modules/invariant/browser.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -49634,11 +50663,19 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _reactRouterDom = require("react-router-dom");
 
+var _Navigation = _interopRequireDefault(require("./Navigation1"));
+
+var _Footer = _interopRequireDefault(require("./Footer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -49752,12 +50789,14 @@ var Login = /*#__PURE__*/function (_Component) {
     value: function render() {
       // console.log('this.state', this.state);
       return _react.default.createElement("div", null, _react.default.createElement("div", {
-        className: "navbar"
-      }, _react.default.createElement("div", {
-        className: "title"
-      }, "Book Green Slot")), _react.default.createElement("div", {
+        className: "login"
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("div", _defineProperty({
         className: "AddTask"
-      }, _react.default.createElement("br", null), _react.default.createElement("h3", null, "Login Form -"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+      }, "className", "text-center"), _react.default.createElement("br", null), _react.default.createElement("h3", {
+        align: "center"
+      }, "Login Form -"), _react.default.createElement("div", {
+        className: "formlogin"
+      }, _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
         type: "email",
         placeholder: "Email Address",
         value: this.state.email,
@@ -49769,7 +50808,7 @@ var Login = /*#__PURE__*/function (_Component) {
         value: this.state.password,
         onChange: this.updatePassword,
         className: "inputBox"
-      })), _react.default.createElement("div", {
+      }))), _react.default.createElement("div", {
         align: "center"
       }, _react.default.createElement(_reactBootstrap.Button, {
         className: "button",
@@ -49785,7 +50824,7 @@ var Login = /*#__PURE__*/function (_Component) {
       }, "Create new account"), _react.default.createElement(_reactRouterDom.Link, {
         to: "/SignIn",
         className: "button-vote"
-      }, "SIGN UP")));
+      }, "SIGN UP"))), _react.default.createElement(_Footer.default, null));
     }
   }]);
 
@@ -49795,7 +50834,7 @@ var Login = /*#__PURE__*/function (_Component) {
 ;
 var _default = Login;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/SignIn.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation1":"components/Navigation1.js","./Footer":"components/Footer.js"}],"components/SignIn.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49808,6 +50847,12 @@ var _react = _interopRequireWildcard(require("react"));
 var _reactBootstrap = require("react-bootstrap");
 
 var _reactRouterDom = require("react-router-dom");
+
+var _Navigation = _interopRequireDefault(require("./Navigation1"));
+
+var _Footer = _interopRequireDefault(require("./Footer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -49957,13 +51002,17 @@ var SignIn = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("div", {
-        className: "navbar"
+      return _react.default.createElement("div", null, _react.default.createElement(_Navigation.default, null), _react.default.createElement("div", {
+        className: "signin"
       }, _react.default.createElement("div", {
-        className: "title"
-      }, "Book Green Slot")), _react.default.createElement("div", {
+        className: "signInRootLeft"
+      }), _react.default.createElement("div", {
+        className: "signInRootRight"
+      }, _react.default.createElement("div", {
         className: "AddTask"
-      }, _react.default.createElement("br", null), _react.default.createElement("h3", null, "Create Account -"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+      }, _react.default.createElement("br", null), _react.default.createElement("p", {
+        className: "createAccountText"
+      }, "Create Account "), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
         placeholder: "Name",
         value: this.state.name,
         onChange: this.updateName,
@@ -50013,7 +51062,7 @@ var SignIn = /*#__PURE__*/function (_Component) {
       }, "Already have an account"), _react.default.createElement(_reactRouterDom.Link, {
         to: "/Login",
         className: "button-vote"
-      }, "LOGIN")));
+      }, "LOGIN")))), _react.default.createElement(_Footer.default, null));
     }
   }]);
 
@@ -50023,7 +51072,7 @@ var SignIn = /*#__PURE__*/function (_Component) {
 ;
 var _default = SignIn;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/Navigation.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation1":"components/Navigation1.js","./Footer":"components/Footer.js"}],"components/Navigation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -61276,7 +62325,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50398" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60281" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

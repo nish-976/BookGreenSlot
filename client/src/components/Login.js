@@ -4,6 +4,8 @@ const axios = require('axios');
 const localStorage = require('localStorage');
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Navigation1 from './Navigation1';
+import Footer from './Footer';
 
 class Login extends Component {
     state = {
@@ -55,15 +57,14 @@ class Login extends Component {
         // console.log('this.state', this.state);
         return(
             <div>
-
-                <div className='navbar'>
-                        <div className="title">Book Green Slot</div>
-                </div>
-
-                <div className='AddTask'>
+                
+                <div className="login">
+                
+                <Navigation1 />
+                <div className='AddTask' className="text-center">
                     <br />
-                    <h3>Login Form -</h3>
-                    
+                    <h3 align="center">Login Form -</h3>
+                    <div className="formlogin" >
                     <FormGroup>
                         <FormControl 
                             type="email"
@@ -82,6 +83,7 @@ class Login extends Component {
                             className="inputBox"
                         /> 
                     </FormGroup>
+                    </div>
                     <div align='center'>
                         <Button className = 'button' onClick={this.loginRequest}>Login</Button>
                     </div>
@@ -95,6 +97,8 @@ class Login extends Component {
                     <div className='already'>Create new account</div>
                     <Link to='/SignIn' className="button-vote">SIGN UP</Link>
                 </div>
+                </div>
+                <Footer />
             </div>
         );
     }
