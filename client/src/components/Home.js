@@ -37,9 +37,6 @@ class Home extends Component {
         }
     }
 
-    book = () => {
-    }
-
     
     render() {
 
@@ -54,7 +51,12 @@ class Home extends Component {
                         <h2>{Doctor.name}</h2>
                         <h4>Address - {Doctor.address}</h4>
                         <p>Charge - Rs. {Doctor.cash}</p>
-                        <Button className="button-update" onClick={() => this.props.navigation.navigate('/ClinicDetails')}>Book Now</Button>
+                        <Link to={{
+                            pathname: '/Booking',
+                            details: Doctor
+                        }}>
+                            <Button className="button-update">Book Now</Button>
+                        </Link>
                     </div>
                 </div>
             );
