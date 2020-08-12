@@ -14,6 +14,10 @@ import './index.css';
 // COMPONENTS
 import App from './components/App';
 import Login from './components/Login';
+import ContactUs from './components/ContactUs';
+import Terms from './components/Terms';
+import AboutUs from './components/AboutUs';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import SignIn from './components/SignIn';
 import AddTask from './components/AddTask';
 import ViewTask from './components/ViewTask';
@@ -28,6 +32,10 @@ render(
         <Switch>
             <Route exact path='/' component={App} />
             <Route path='/Login' component={Login} />
+            <Route path='/ContactUs' component={ContactUs} />
+            <Route exact path='/PrivacyPolicy' component={PrivacyPolicy} />
+            <Route exact path='/AboutUs' component={AboutUs} />
+            <Route path='/Terms' component={Terms} />
             <Route path='/SignIn' component={SignIn} />
             <Route path='/AddTask' component={AddTask} />
             <Route path='/ViewTask' component={ViewTask} />

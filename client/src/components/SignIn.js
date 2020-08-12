@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Navigation1 from './Navigation1';
 import Footer from './Footer';
+import girlphone from '../assets/girlphone.jpg';
+import user from '../assets/user.png';
 
 class SignIn extends Component {
     state = {
@@ -85,10 +87,13 @@ class SignIn extends Component {
             <Navigation1 />
         <div className="signin">
             <div className="signInRootLeft" >
+                <img className="leftImage" src={girlphone} />
             </div>
             <div className="signInRootRight">
+            
                 <div className='AddTask'>
                     <br />
+                    <img className="aboveLogin" src={user} />
                     <p className="createAccountText">Create Account </p>
 
                     <FormGroup>
@@ -117,7 +122,7 @@ class SignIn extends Component {
                             className="inputBox"
                         /> 
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="lastInputBox">
                         <FormControl 
                             type="password"
                             placeholder='Confirm Password'
@@ -141,10 +146,6 @@ class SignIn extends Component {
                     {this.state.redirect ? <Redirect to='/home'></Redirect> : '' }
                 </div>
 
-                <div>
-                    <div className='already'>Already have an account</div>
-                    <Link to='/Login' className="button-vote">LOGIN</Link>
-                </div>
                 </div>
         </div>
                 <Footer />

@@ -6,6 +6,9 @@ import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Navigation1 from './Navigation1';
 import Footer from './Footer';
+import girlphone from '../assets/girlphone.jpg';
+import user from '../assets/user.png';
+import doc2 from '../assets/doc2.jpg';
 
 class Login extends Component {
     state = {
@@ -58,13 +61,17 @@ class Login extends Component {
         return(
             <div>
                 
-                <div className="login">
-                
                 <Navigation1 />
-                <div className='AddTask' className="text-center">
+                <div className="login">
+                <div className="signInRootLeft" >
+                <img className="leftImage" src={doc2} />
+            </div>
+            <div className="signInRootRight">
+                <div className='AddTask'>
                     <br />
-                    <h3 align="center">Login Form -</h3>
-                    <div className="formlogin" >
+                    <img className="aboveLogin" src={user} />
+                    <p className="createAccountText">Login Form </p>
+                    
                     <FormGroup>
                         <FormControl 
                             type="email"
@@ -73,6 +80,7 @@ class Login extends Component {
                             onChange={this.updateEmail}
                             className="inputBox"
                         /> 
+                        
                     </FormGroup>
                     <FormGroup>
                         <FormControl 
@@ -83,7 +91,7 @@ class Login extends Component {
                             className="inputBox"
                         /> 
                     </FormGroup>
-                    </div>
+                
                     <div align='center'>
                         <Button className = 'button' onClick={this.loginRequest}>Login</Button>
                     </div>
@@ -93,11 +101,9 @@ class Login extends Component {
                     {this.state.redirect ? <Redirect to='/home'></Redirect> : '' }
                 </div>
 
-                <div>
-                    <div className='already'>Create new account</div>
-                    <Link to='/SignIn' className="button-vote">SIGN UP</Link>
+               
                 </div>
-                </div>
+            </div>
                 <Footer />
             </div>
         );
