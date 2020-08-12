@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import Navigation1 from './Navigation1';
+import AboutUs from './AboutUs';
 import topimg from '../assets/topimg.png';
 import heart from '../assets/heart.png';
-import doctor from '../assets/doctor.png';
+import doctor4 from '../assets/doctor4.png';
 import doc from '../assets/doc.png';
 import login from '../assets/login.png';
 import pay from '../assets/pay.png';
@@ -33,35 +34,37 @@ class App extends Component {
                 <Navigation1 />
                 <div className="containerBox">
                    <div className="topImage">
-                      <img src={topimg} width="100%" height="100%"/>
+                      <img src={doctor4} width="100%" height="100%"/>
                    </div>
                    <div className="text-box">
                      <div className="text1">Welcome to</div>
                      <div className="text2"> Book Green Slot !</div> 
-                     <div className="text3">From experimental passion projects to native doctors booking for patients, <div>we've had the opportunity to heal and recover a number of patients.</div> We thrive on creative challenges and enjoy building strong relationships<div> along the way.</div></div>
+                     {/* <div className="text3">From experimental passion projects to native doctors booking for patients, <div>we've had the opportunity to heal and recover a number of patients.</div> We thrive on creative challenges and enjoy building strong relationships<div> along the way.</div></div> */}
                    </div>
                 </div>
+                <AboutUs />
                 <img className ="yellowicon" src={heart}/>
                 <div className="text5">Explore what our doctors have to say about us !</div>
 
                 <div className="row">
                     <div className="column">
                     
-                        <div className="card"><p className="review">"This is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea"</p><div className="docname"><footer>-Mr. ABCD(Surgeon, XYZ hospital)</footer></div>
+                        <div className="card"><p className="review">"This is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea"</p><span className="docname">-Mr. ABCD(Surgeon, XYZ hospital)</span>
                         </div>
                         </div>
                     <div className="column">
                         
-                        <div className="card"><p className="review">"Book Green Slot has made getting appointments so hassle-freeThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea"</p><div className="docname"><footer>-Mr. ABCD(Surgeon, XYZ hospital)</footer></div>
+                        <div className="card"><p className="review">"Book Green Slot has made getting appointments so hassle-freeThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea"</p><span className="docname">-Mr. ABCD(Surgeon, XYZ hospital)</span>
                         </div>
                     </div>
                     <div className="column">
                     
-                        <div className="card"><p className="review">"I appreciate this wonderful initiativeThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea"</p><div className="docname"><footer>-Mr. ABCD(Surgeon, XYZ hospital)</footer></div>
+                        <div className="card"><p className="review">"I appreciate this wonderful initiativeThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative ideaThis is a very innovative idea"</p><span className="docname">-Mr. ABCD(Surgeon, XYZ hospital)</span>
                         </div>
                     </div>
                     
                 </div>
+                
 
 
                 <div className='sequenceBook'>

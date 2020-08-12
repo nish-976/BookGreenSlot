@@ -5,8 +5,9 @@ const axios = require('axios');
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Navigation1 from './Navigation1';
-import doctor1 from '../assets/doctor1.jpg';
 import Footer from './Footer';
+import girlphone from '../assets/girlphone.jpg';
+import user from '../assets/user.png';
 
 class SignIn extends Component {
     state = {
@@ -85,12 +86,14 @@ class SignIn extends Component {
             <div>
             <Navigation1 />
         <div className="signin">
-            <div className="signInRootLeft fill" >
-                <img src={doctor1} />
+            <div className="signInRootLeft" >
+                <img className="leftImage" src={girlphone} />
             </div>
-            <div className="signInRootRight fill1">
+            <div className="signInRootRight">
+
                 <div className='AddTask'>
                     <br />
+                    <img className="aboveLogin" src={user} />
                     <p className="createAccountText">Create Account </p>
 
                     <FormGroup>
@@ -119,7 +122,7 @@ class SignIn extends Component {
                             className="inputBox"
                         />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="lastInputBox">
                         <FormControl
                             type="password"
                             placeholder='Confirm Password'
@@ -135,7 +138,7 @@ class SignIn extends Component {
                         <option value="Doctor">Doctor</option>
                     </select>
                     <div align='center'>
-                        <Button className = 'button1' onClick={this.signupRequest}>Sign Up</Button>
+                        <Button className = 'button' onClick={this.signupRequest}>Sign Up</Button>
                     </div>
 
                     {this.state.loading ? <div className="flashMessage">Wait .... We are processing ..</div> : ''}
@@ -143,10 +146,6 @@ class SignIn extends Component {
                     {this.state.redirect ? <Redirect to='/home'></Redirect> : '' }
                 </div>
 
-                <div>
-                    <div className='already'>Already have an account</div>
-                    <Link to='/Login' className="button-vote">LOGIN</Link>
-                </div>
                 </div>
         </div>
                 <Footer />
