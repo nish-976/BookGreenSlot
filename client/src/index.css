@@ -92,9 +92,10 @@
 }
 
 .yellowicon {
-  position: relative;
-  left: 50%;
-  right: 50%;
+ position: relative;
+ left: 47%;
+ height: 8%;
+ width: 8%;
   margin-top: 3%;
 }
 
@@ -547,8 +548,8 @@ body {
 }
 
 .aboutUsImg {
-  position: relative;
-  left: 50%;
+justify-content: center;
+align-items: center;
   height: 8%;
   width: 8%;
 }
