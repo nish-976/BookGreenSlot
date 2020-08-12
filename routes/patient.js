@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Task = require('../models/Task');
 const Clinic = require('../models/Clinic');
 const User = require('../models/User');
+const Booking = require('../models/Booking');
 const jwt = require('jsonwebtoken');
 // const verify = require('./verifyToken');
 
@@ -11,117 +12,41 @@ router.get('/getAllDoctors', async (req,res) => {
     res.send({ Doctors : doctors });
 })
 
-router.post('/addTask', async (req,res) => {
+router.post('/book', async (req,res) => {
 
-    // Set userId to _id of user
-    let userId;
-    try{
-        userId = jwt.verify(req.body.userId , process.env.TOKEN_SECRET)._id;
-    }catch(err){
-        res.status(400).send("Invalid Token");
+    const bookingOfDay = await Booking.find({ appointmentDate : req.body.date , doctorId : req.body.doctorId });
+
+    let tokenExt, tokenCount = bookingOfDay.length + 1;
+    if(tokenCount.toString().length == 1){
+        tokenExt = '00' + tokenCount;
+    }else if(tokenCount.toString().length == 2){
+        tokenExt = '0' + tokenCount;
+    }else if(tokenCount.toString().length == 3){
+        tokenExt = '' + tokenCount;
     }
+    const token = req.body.token + tokenExt;
 
-    // Create a new task object
-    const task = new Task({
-        description : req.body.description,
-        comments : req.body.comments,
-        startTime : req.body.startTime,
-        endTime : req.body.endTime,
-        typeTask : req.body.typeTask,
-        userId : userId,
-        status : req.body.status
+    const receipt = new Booking({
+        name : req.body.name,
+        age : req.body.age,
+        doctorId : req.body.doctorId,
+        appointmentDate : req.body.date,
+        timeSlot : req.body.timeSlot,
+        token : token,
+        email : req.body.email,
+        visited : false
     });
 
-    console.log(task);
+    console.log(receipt);
 
-    // Save the task object to DB
     try{
-        const savedTask = await task.save();
-        res.send({ task : savedTask});
+        const saveReceipt = await receipt.save();
+        res.send({ receipt : receipt });
     }catch(err){
         res.status(400).send(err);
     }
 });
 
-router.post('/viewTask', async (req,res) => {
 
-    console.log(req.body);
-
-    // Derive _id of user from token
-    let userId;
-    try{
-        userId = jwt.verify(req.body.userId , process.env.TOKEN_SECRET)._id;
-    }catch(err){
-        res.status(400).send("Invalid Token");
-    }
-
-    console.log(userId);
-
-    let task = [];
-    if(!req.body.typeTask && !req.body.status){
-        task = await Task.find({ userId : userId });
-        console.log(task);
-        res.send({ tasks : task});
-    }else if(req.body.typeTask && !req.body.status){
-        task = await Task.find({ userId : userId , typeTask : req.body.typeTask });
-        console.log(task);
-        res.send({ tasks : task});
-    }else if(!req.body.typeTask && req.body.status){
-        task = await Task.find({ userId : userId , status : req.body.status });
-        console.log(task);
-        res.send({ tasks : task});
-    }else{
-        task = await Task.find({ userId : userId , typeTask : req.body.typeTask , status : req.body.status });
-        console.log(task);
-        res.send({ tasks : task});
-    }
-});
-
-router.post('/update', async (req,res) => {
-
-    console.log(req.body);
-
-    // Derive _id of user from token
-    let userId;
-    try{
-        userId = jwt.verify(req.body.userId , process.env.TOKEN_SECRET)._id;
-    }catch(err){
-        res.status(400).send("Invalid Token");
-    }
-
-    const { _id , status } = req.body;
-    console.log( "id - " + _id );
-    const task = await Task.findOne({ _id : _id });
-
-    try{
-        await task.updateOne({ status : status});
-        res.send({ task : task });
-    }catch(err){
-        res.status(400).send(err);
-    }
-});
-
-router.post('/delete', async (req,res) => {
-
-    console.log(req.body);
-
-    // Derive _id of user from token
-    let userId;
-    try{
-        userId = jwt.verify(req.body.userId , process.env.TOKEN_SECRET)._id;
-    }catch(err){
-        res.status(400).send("Invalid Token");
-    }
-
-    const { _id } = req.body;
-    console.log( "id - " + _id );
-
-    try{
-        await Task.findOneAndDelete({ _id : _id });
-        res.send({ deleted : true });
-    }catch(err){
-        res.status(400).send(err);
-    }
-});
 
 module.exports = router;

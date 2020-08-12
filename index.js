@@ -9,6 +9,7 @@ const authRoute = require('./routes/auth');
 const taskRoute = require('./routes/tasks');
 const patientRoute = require('./routes/patient');
 const doctorRoute = require('./routes/doctor');
+const adminRoute = require('./routes/admin');
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use('/api/user', authRoute);
 app.use('/api/tasks', taskRoute);
 app.use('/api/patient', patientRoute);
 app.use('/api/doctor', doctorRoute);
+app.use('/api/admin', adminRoute);
 
 
 app.get('*',(req,res)=> {

@@ -22,6 +22,7 @@ import updateName from './components/updateName';
 import updatePassword from './components/updatePassword';
 import ClinicDetails from './components/ClinicDetails';
 import Booking from './components/Booking';
+import HomeDoctor from './components/HomeDoctor';
 
 render(
     <Router history={history}>
@@ -36,6 +37,7 @@ render(
             <Route path='/updatePassword' component={updatePassword} />
             <Route path='/ClinicDetails' component={ClinicDetails} />
             <Route path='/Booking' component={Booking} />
+            <Route path='/HomeDoctor' component={HomeDoctor} />
         </Switch>
     </Router>,
     document.getElementById('root')

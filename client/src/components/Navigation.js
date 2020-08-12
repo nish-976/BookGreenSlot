@@ -27,21 +27,23 @@ class Navigation extends Component {
 
     render() {
         return (
-            <div className='navbar'>
-                <Link to ='/Home' className ="heading">Home</Link>
-                {/* <Link to='/AddTask'>+ New Task</Link>
-                <Link to='/ViewTask'>MyTasks</Link> */}
-                <Link to='/ClinicDetails'>Clinic Details</Link>
-                <div onClick={this.logout} className="logout">Logout</div>
-                {this.state.user ? <div className="username">Signed In as {this.state.user.name}</div> : ''}
-                {/* <Link to='/receive-transaction'>Receive</Link>
-                <Link to='/transaction-pool-map'>Transaction Pool Map</Link>
-                <Link to='/trace'>Trace</Link>
-                <Link to='/Log-out'>Logout</Link> */}
+            <nav className="navbar navbar-inverse">
+                <div className="container-fluid">
+
+                    <div className="navbar-header">
+                        <span className="navbar-brand">Book Green Slot</span>
+                    </div>
+
+                    <ul className="nav navbar-nav navbar-right">
+                        <li><a href="/Home"><span className="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="/HomeDoctor"><span className="glyphicon glyphicon-home"></span> HomeD</a></li>
+                        <li><a href="/ClinicDetails"><span className="glyphicon glyphicon-tasks"></span> Clinic Details</a></li>
+                        <li><a onClick={this.logout} ><span className="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                </div>
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
-
-            </div>
+            </nav>
         );
     }
 }

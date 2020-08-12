@@ -17,7 +17,9 @@ class ClinicDetails extends Component {
         breakSlot : [],
         daySlot: [],
         cash : '',
-        address : ''
+        address : '',
+        validity : '',
+        typeDoctor: 'General physician'
     };
 
     async componentDidMount() {
@@ -82,6 +84,11 @@ class ClinicDetails extends Component {
 
     Submit = async (timeArray) => {
 
+        if(!this.state.validity){
+            alert("Please enter validity days of appointment !")
+            return;
+        }
+
         let array = [];
         for (let i in timeArray){
             if(this.state.breakSlot.indexOf(timeArray[i]) == -1){
@@ -101,7 +108,10 @@ class ClinicDetails extends Component {
                 cash : this.state.cash,
                 openTime : this.state.openTime,
                 closeTime : this.state.closeTime,
-                name : JSON.parse(localStorage.getItem('user')).name
+                name : JSON.parse(localStorage.getItem('user')).name,
+                doctorType: this.state.typeDoctor,
+                validity: this.state.validity,
+                email : this.state.user.email
             })
             .then(res => {
             })
@@ -109,7 +119,7 @@ class ClinicDetails extends Component {
                 console.log(error);
             });
     }
-    
+
     render() {
 
         let timeArray30 = TimeSlot(0,0,0,11,30,1,30);
@@ -142,13 +152,14 @@ class ClinicDetails extends Component {
         let time15;
         time15 = timeArray15.map((timeItem) => {
             return (
-                <span>
-                {
                 this.state.breakSlot.indexOf(timeItem) == -1 ?
-                    <Button className="admin-buttons-start-s" onClick={() => this.addToBreakSlot(timeItem)}>{timeItem}</Button>
-                :   <Button className="admin-buttons-start-e" onClick={() => this.removeFromBreakSlot(timeItem)}>{timeItem}</Button>
-                }
-                </span>
+                <div className="grid-time-slot green-slot" onClick={() => this.addToBreakSlot(timeItem)}>
+                    {timeItem}
+                </div>
+                :
+                <div className="grid-time-slot red-slot" onClick={() => this.removeFromBreakSlot(timeItem)}>
+                    {timeItem}
+                </div>
             );
         })
 
@@ -156,69 +167,100 @@ class ClinicDetails extends Component {
         let days;
         days = daysOfWeek.map((day) => {
             return (
-                <span>
-                {
                 this.state.daySlot.indexOf(day) == -1 ?
-                    <Button className="admin-buttons-start-s" onClick={() => this.addToDaySlot(day)}>{day}</Button>
-                :   <Button className="admin-buttons-start-e" onClick={() => this.removeFromDaySlot(day)}>{day}</Button>
-                }
-                </span>
+                <div className="grid-time-slot red-slot" onClick={() => this.addToDaySlot(day)}>
+                    {day}
+                </div>
+                :
+                <div className="grid-time-slot green-slot" onClick={() => this.removeFromDaySlot(day)}>
+                    {day}
+                </div>
             );
         })
 
+        let doctorType = ["General physician","Gynaecologist","General surgeon","Radiologist","ENT specialist","Endocrinologist","Pulmonologist","Hematologist","Ophthalmologist","Psychiatrist","Other"]
+        let doctorTypeDropDown = doctorType.map((typeDoctor) => {
+            return (
+                <option value={typeDoctor}>{typeDoctor}</option>
+            );
+        })
+
+            console.log(this.state.typeDoctor);
         return (
             <div className='App'>
                 <Navigation />
 
-                <h1>Clinic Details</h1>
+                <p className="home-header-text">Clinic Details !</p>
 
-                <label className="label">Complete Address of clinic -</label>
+                {/* <p className="text-16-300 text-center">Complete Address of clinic !</p> */}
                 <FormGroup>
-                    <FormControl 
+                    <FormControl
                         type = 'text'
                         placeholder='Enter complete address of clinic'
-                        value={this.state.address} 
+                        value={this.state.address}
                         onChange={this.updateAddress}
-                        className="inputBox"
+                        className="clinicDetails"
                     />
                 </FormGroup>
 
-                <label className="label">Select the working days of clinic -</label>
-                <div>
+                <p className="text-16-300 text-center">Select the working days of clinic !</p>
+                <div className="day-slot">
                     {days}
                 </div>
 
+                <br />
+
                 <div>
-                <label className="label">Clinic opens at :  </label>
-                <select onChange={this.updateOpenTime} value={this.state.openTime} className="dropdown">
-                    {time30}
-                </select>
-                <label className="label">Clinic closes at :  </label>
-                <select onChange={this.updateCloseTime} value={this.state.closeTime} className="dropdown">
-                    {time30}
-                </select>
+                    <span className="text-16-300 margin-left-5">Clinic opens at :  </span>
+                    <select onChange={this.updateOpenTime} value={this.state.openTime} className="dropdown-time">
+                        {time30}
+                    </select>
+
+                    <span className="text-16-300 margin-left-5">Clinic closes at :  </span>
+                    <select onChange={this.updateCloseTime} value={this.state.closeTime} className="dropdown-time">
+                        {time30}
+                    </select>
+
+                    <span className="text-16-300 margin-left-5">You are a :  </span>
+                    <select onChange={(event) => this.setState({ typeDoctor : event.target.value})} value={this.state.typeDoctor} className="dropdown-doctorType">
+                        {doctorTypeDropDown}
+                    </select>
                 </div>
-                    <br />
-                <label className="label">Select the slot in which doctor takes break -</label>
-                <div>
+
+                <br />
+
+                <p className="text-16-300 text-center">Select the slot in which doctor takes break !</p>
+                <div className="grid-booking">
                     {time15}
                 </div>
 
-                <label className="label">Amount per patient -</label>
+                <br />
+
+                {/* <p className="text-16-300 text-center">Amount per patient !</p> */}
                 <FormGroup>
-                    <FormControl 
+                    <FormControl
                         type = 'text'
                         placeholder='Enter amount in rupees (eg. 400)'
-                        value={this.state.cash} 
+                        value={this.state.cash}
                         onChange={this.updateCash}
-                        className="inputBox"
+                        className="clinicDetails"
+                    />
+                </FormGroup>
+
+                <FormGroup>
+                    <FormControl
+                        type = 'text'
+                        placeholder='Number of days of validity of an appointment'
+                        value={this.state.validity}
+                        onChange={(event) => this.setState({ validity : event.target.value }) }
+                        className="clinicDetails"
                     />
                 </FormGroup>
 
                 <br /><br />
 
                 <div align='center'>
-                    <Button className = 'button' onClick={() => this.Submit(timeArray15)}>Submit</Button>
+                    <Button className = 'button-submit' onClick={() => this.Submit(timeArray15)}>Submit</Button>
                 </div>
 
                 <br /><br /><br />

@@ -5,6 +5,7 @@ const axios = require('axios');
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Navigation1 from './Navigation1';
+import doctor1 from '../assets/doctor1.jpg';
 import Footer from './Footer';
 
 class SignIn extends Component {
@@ -84,9 +85,10 @@ class SignIn extends Component {
             <div>
             <Navigation1 />
         <div className="signin">
-            <div className="signInRootLeft" >
+            <div className="signInRootLeft fill" >
+                <img src={doctor1} />
             </div>
-            <div className="signInRootRight">
+            <div className="signInRootRight fill1">
                 <div className='AddTask'>
                     <br />
                     <p className="createAccountText">Create Account </p>
@@ -94,37 +96,37 @@ class SignIn extends Component {
                     <FormGroup>
                         <FormControl
                             placeholder='Name'
-                            value={this.state.name} 
+                            value={this.state.name}
                             onChange={this.updateName}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
                     <FormGroup>
-                        <FormControl 
+                        <FormControl
                             type="email"
                             placeholder='Email Address'
-                            value={this.state.email} 
+                            value={this.state.email}
                             onChange={this.updateEmail}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
                     <FormGroup>
-                        <FormControl 
+                        <FormControl
                             type="password"
                             placeholder='Password'
-                            value={this.state.password} 
+                            value={this.state.password}
                             onChange={this.updatePassword}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
                     <FormGroup>
-                        <FormControl 
+                        <FormControl
                             type="password"
                             placeholder='Confirm Password'
-                            value={this.state.cpassword} 
+                            value={this.state.cpassword}
                             onChange={this.updateCPassword}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
 
                     <label className="label">You are a :  </label>
@@ -133,7 +135,7 @@ class SignIn extends Component {
                         <option value="Doctor">Doctor</option>
                     </select>
                     <div align='center'>
-                        <Button className = 'button' onClick={this.signupRequest}>Sign Up</Button>
+                        <Button className = 'button1' onClick={this.signupRequest}>Sign Up</Button>
                     </div>
 
                     {this.state.loading ? <div className="flashMessage">Wait .... We are processing ..</div> : ''}
@@ -150,7 +152,7 @@ class SignIn extends Component {
                 <Footer />
 
             </div>
-        
+
         );
     }
 };

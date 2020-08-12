@@ -33148,7 +33148,9 @@ var Navigation1 = /*#__PURE__*/function (_Component) {
         className: "navbar-header"
       }, _react.default.createElement("span", {
         className: "navbar-brand"
-      }, "Book Green Slot")), _react.default.createElement("ul", {
+      }, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, "Book Green Slot"))), _react.default.createElement("ul", {
         className: "nav navbar-nav navbar-right"
       }, _react.default.createElement("li", null, _react.default.createElement("a", {
         href: "/SignIn"
@@ -33298,21 +33300,9 @@ var Footer = /*#__PURE__*/function (_Component) {
       return _react.default.createElement("div", {
         className: "footer"
       }, _react.default.createElement("div", {
+        className: "floatRight"
+      }, _react.default.createElement("div", {
         className: "footercontentSocial"
-      }, _react.default.createElement("span", {
-        className: "letsSee"
-      }, _react.default.createElement("img", {
-        src: _facebook.default
-      })), _react.default.createElement("span", {
-        className: "letsSee"
-      }, _react.default.createElement("img", {
-        src: _instagram.default
-      })), _react.default.createElement("span", {
-        className: "letsSee"
-      }, _react.default.createElement("img", {
-        src: _twitter.default
-      }))), _react.default.createElement("div", {
-        className: "footercontent"
       }, _react.default.createElement("span", {
         className: "letsSee"
       }, _react.default.createElement("p", {
@@ -33333,7 +33323,7 @@ var Footer = /*#__PURE__*/function (_Component) {
         className: "letsSee"
       }, _react.default.createElement("p", {
         className: "footerLinks"
-      }, "FAQ"))));
+      }, "FAQ")))));
     }
   }]);
 
@@ -50834,7 +50824,9 @@ var Login = /*#__PURE__*/function (_Component) {
 ;
 var _default = Login;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation1":"components/Navigation1.js","./Footer":"components/Footer.js"}],"components/SignIn.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation1":"components/Navigation1.js","./Footer":"components/Footer.js"}],"assets/doctor1.jpg":[function(require,module,exports) {
+module.exports = "/doctor1.611f4021.jpg";
+},{}],"components/SignIn.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50849,6 +50841,8 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 
 var _Navigation = _interopRequireDefault(require("./Navigation1"));
+
+var _doctor = _interopRequireDefault(require("../assets/doctor1.jpg"));
 
 var _Footer = _interopRequireDefault(require("./Footer"));
 
@@ -51005,9 +50999,11 @@ var SignIn = /*#__PURE__*/function (_Component) {
       return _react.default.createElement("div", null, _react.default.createElement(_Navigation.default, null), _react.default.createElement("div", {
         className: "signin"
       }, _react.default.createElement("div", {
-        className: "signInRootLeft"
-      }), _react.default.createElement("div", {
-        className: "signInRootRight"
+        className: "signInRootLeft fill"
+      }, _react.default.createElement("img", {
+        src: _doctor.default
+      })), _react.default.createElement("div", {
+        className: "signInRootRight fill1"
       }, _react.default.createElement("div", {
         className: "AddTask"
       }, _react.default.createElement("br", null), _react.default.createElement("p", {
@@ -51049,7 +51045,7 @@ var SignIn = /*#__PURE__*/function (_Component) {
       }, "Doctor")), _react.default.createElement("div", {
         align: "center"
       }, _react.default.createElement(_reactBootstrap.Button, {
-        className: "button",
+        className: "button1",
         onClick: this.signupRequest
       }, "Sign Up")), this.state.loading ? _react.default.createElement("div", {
         className: "flashMessage"
@@ -51072,7 +51068,7 @@ var SignIn = /*#__PURE__*/function (_Component) {
 ;
 var _default = SignIn;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation1":"components/Navigation1.js","./Footer":"components/Footer.js"}],"components/Navigation.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation1":"components/Navigation1.js","../assets/doctor1.jpg":"assets/doctor1.jpg","./Footer":"components/Footer.js"}],"components/Navigation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51161,19 +51157,33 @@ var Navigation = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", {
-        className: "navbar"
-      }, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/Home",
-        className: "heading"
-      }, "Home"), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/ClinicDetails"
-      }, "Clinic Details"), _react.default.createElement("div", {
-        onClick: this.logout,
-        className: "logout"
-      }, "Logout"), this.state.user ? _react.default.createElement("div", {
-        className: "username"
-      }, "Signed In as ", this.state.user.name) : '', this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+      return _react.default.createElement("nav", {
+        className: "navbar navbar-inverse"
+      }, _react.default.createElement("div", {
+        className: "container-fluid"
+      }, _react.default.createElement("div", {
+        className: "navbar-header"
+      }, _react.default.createElement("span", {
+        className: "navbar-brand"
+      }, "Book Green Slot")), _react.default.createElement("ul", {
+        className: "nav navbar-nav navbar-right"
+      }, _react.default.createElement("li", null, _react.default.createElement("a", {
+        href: "/Home"
+      }, _react.default.createElement("span", {
+        className: "glyphicon glyphicon-home"
+      }), " Home")), _react.default.createElement("li", null, _react.default.createElement("a", {
+        href: "/HomeDoctor"
+      }, _react.default.createElement("span", {
+        className: "glyphicon glyphicon-home"
+      }), " HomeD")), _react.default.createElement("li", null, _react.default.createElement("a", {
+        href: "/ClinicDetails"
+      }, _react.default.createElement("span", {
+        className: "glyphicon glyphicon-tasks"
+      }), " Clinic Details")), _react.default.createElement("li", null, _react.default.createElement("a", {
+        onClick: this.logout
+      }, _react.default.createElement("span", {
+        className: "glyphicon glyphicon-log-out"
+      }), " Logout")))), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/"
       }) : '');
     }
@@ -61310,6 +61320,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _reactBootstrap = require("react-bootstrap");
 
+var _doctor = _interopRequireDefault(require("../assets/doctor.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -61379,18 +61391,6 @@ var Home = /*#__PURE__*/function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return axios.get(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/getAllDoctors').then(function (res) {
-                  console.log(res.data.Doctors);
-
-                  _this2.setState({
-                    doctors: res.data.Doctors
-                  });
-                }).catch(function (error) {
-                  console.log(error);
-                });
-
-              case 2:
                 user = JSON.parse(localStorage.getItem('user'));
 
                 if (!user) {
@@ -61402,6 +61402,17 @@ var Home = /*#__PURE__*/function (_Component) {
                     user: user
                   });
                 }
+
+                _context.next = 4;
+                return axios.get(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/getAllDoctors').then(function (res) {
+                  console.log(res.data.Doctors);
+
+                  _this2.setState({
+                    doctors: res.data.Doctors
+                  });
+                }).catch(function (error) {
+                  console.log(error);
+                });
 
               case 4:
               case "end":
@@ -61426,38 +61437,46 @@ var Home = /*#__PURE__*/function (_Component) {
         doctors = this.state.doctors.map(function (Doctor) {
           // console.log(Task.endTime);
           return _react.default.createElement("div", {
-            className: "card"
+            className: "card-doctorList"
+          }, _react.default.createElement("img", {
+            src: _doctor.default,
+            width: "100%",
+            height: "55%"
+          }), _react.default.createElement("div", {
+            className: "card-doctorList-div"
           }, _react.default.createElement("div", {
-            className: "container"
-          }, _react.default.createElement("h2", null, Doctor.name), _react.default.createElement("h4", null, "Address - ", Doctor.address), _react.default.createElement("p", null, "Charge - Rs. ", Doctor.cash), _react.default.createElement(_reactRouterDom.Link, {
+            className: "div-flex-center"
+          }, _react.default.createElement("p", {
+            className: "doctor-name"
+          }, Doctor.name), _react.default.createElement("p", {
+            className: "hr"
+          })), _react.default.createElement("div", null, _react.default.createElement("p", {
+            className: "doctor-address"
+          }, _react.default.createElement("b", null, "Address :"), " ", Doctor.address.substring(0, 40), " ", Doctor.address.length > 40 && '...')), _react.default.createElement("div", null, _react.default.createElement("p", {
+            className: "doctor-address"
+          }, _react.default.createElement("b", null, "Charge :"), " Rs. ", Doctor.cash)), _react.default.createElement(_reactRouterDom.Link, {
             to: {
               pathname: '/Booking',
               details: Doctor
+            },
+            style: {
+              textDecoration: 'none'
             }
-          }, _react.default.createElement(_reactBootstrap.Button, {
-            className: "button-update"
-          }, "Book Now"))));
+          }, _react.default.createElement("div", {
+            className: "bookNow-button"
+          }, _react.default.createElement("p", {
+            className: "bookNow-button-text"
+          }, "Book Now")))));
         });
       }
 
       return _react.default.createElement("div", {
         className: "App"
-      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("div", {
-        className: "home"
-      }, "Welcome to BookGreenSlot, ", this.state.user ? _react.default.createElement("div", {
-        className: "home-line"
-      }, " ", this.state.user.name) : '', _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("div", null, "Email - ", this.state.user ? _react.default.createElement("div", {
-        className: "home-line"
-      }, " ", this.state.user.email) : '', _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Button, {
-        className: "button-update"
-      }, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/updateName"
-      }, "Update Username")), _react.default.createElement(_reactBootstrap.Button, {
-        className: "button-update",
-        onClick: this.viewTask
-      }, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/updatePassword"
-      }, "Update Password")))), _react.default.createElement("br", null), _react.default.createElement("h1", null, "Doctors List"), doctors, this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Make an Appointment !"), _react.default.createElement("div", {
+        className: "grid-doctorList"
+      }, doctors), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/"
       }) : '');
     }
@@ -61468,7 +61487,7 @@ var Home = /*#__PURE__*/function (_Component) {
 
 var _default = Home;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js"}],"components/updateName.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../assets/doctor.png":"assets/doctor.png"}],"components/updateName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -61981,7 +62000,9 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
       breakSlot: [],
       daySlot: [],
       cash: '',
-      address: ''
+      address: '',
+      validity: '',
+      typeDoctor: 'General physician'
     }, _this.updateOpenTime = function (event) {
       _this.setState({
         openTime: event.target.value
@@ -62045,6 +62066,15 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                if (_this.state.validity) {
+                  _context.next = 3;
+                  break;
+                }
+
+                alert("Please enter validity days of appointment !");
+                return _context.abrupt("return");
+
+              case 3:
                 array = [];
 
                 for (i in timeArray) {
@@ -62053,7 +62083,7 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
                   }
                 }
 
-                _context.next = 4;
+                _context.next = 7;
                 return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/doctor/clinicDetails', {
                   address: _this.state.address,
                   days: JSON.stringify(_this.state.daySlot),
@@ -62061,12 +62091,15 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
                   cash: _this.state.cash,
                   openTime: _this.state.openTime,
                   closeTime: _this.state.closeTime,
-                  name: JSON.parse(localStorage.getItem('user')).name
+                  name: JSON.parse(localStorage.getItem('user')).name,
+                  doctorType: _this.state.typeDoctor,
+                  validity: _this.state.validity,
+                  email: _this.state.user.email
                 }).then(function (res) {}).catch(function (error) {
                   console.log(error);
                 });
 
-              case 4:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -62148,71 +62181,100 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
       });
       var time15;
       time15 = timeArray15.map(function (timeItem) {
-        return _react.default.createElement("span", null, _this2.state.breakSlot.indexOf(timeItem) == -1 ? _react.default.createElement(_reactBootstrap.Button, {
-          className: "admin-buttons-start-s",
+        return _this2.state.breakSlot.indexOf(timeItem) == -1 ? _react.default.createElement("div", {
+          className: "grid-time-slot green-slot",
           onClick: function onClick() {
             return _this2.addToBreakSlot(timeItem);
           }
-        }, timeItem) : _react.default.createElement(_reactBootstrap.Button, {
-          className: "admin-buttons-start-e",
+        }, timeItem) : _react.default.createElement("div", {
+          className: "grid-time-slot red-slot",
           onClick: function onClick() {
             return _this2.removeFromBreakSlot(timeItem);
           }
-        }, timeItem));
+        }, timeItem);
       });
       var daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
       var days;
       days = daysOfWeek.map(function (day) {
-        return _react.default.createElement("span", null, _this2.state.daySlot.indexOf(day) == -1 ? _react.default.createElement(_reactBootstrap.Button, {
-          className: "admin-buttons-start-s",
+        return _this2.state.daySlot.indexOf(day) == -1 ? _react.default.createElement("div", {
+          className: "grid-time-slot red-slot",
           onClick: function onClick() {
             return _this2.addToDaySlot(day);
           }
-        }, day) : _react.default.createElement(_reactBootstrap.Button, {
-          className: "admin-buttons-start-e",
+        }, day) : _react.default.createElement("div", {
+          className: "grid-time-slot green-slot",
           onClick: function onClick() {
             return _this2.removeFromDaySlot(day);
           }
-        }, day));
+        }, day);
       });
+      var doctorType = ["General physician", "Gynaecologist", "General surgeon", "Radiologist", "ENT specialist", "Endocrinologist", "Pulmonologist", "Hematologist", "Ophthalmologist", "Psychiatrist", "Other"];
+      var doctorTypeDropDown = doctorType.map(function (typeDoctor) {
+        return _react.default.createElement("option", {
+          value: typeDoctor
+        }, typeDoctor);
+      });
+      console.log(this.state.typeDoctor);
       return _react.default.createElement("div", {
         className: "App"
-      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("h1", null, "Clinic Details"), _react.default.createElement("label", {
-        className: "label"
-      }, "Complete Address of clinic -"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Clinic Details !"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
         type: "text",
         placeholder: "Enter complete address of clinic",
         value: this.state.address,
         onChange: this.updateAddress,
-        className: "inputBox"
-      })), _react.default.createElement("label", {
-        className: "label"
-      }, "Select the working days of clinic -"), _react.default.createElement("div", null, days), _react.default.createElement("div", null, _react.default.createElement("label", {
-        className: "label"
+        className: "clinicDetails"
+      })), _react.default.createElement("p", {
+        className: "text-16-300 text-center"
+      }, "Select the working days of clinic !"), _react.default.createElement("div", {
+        className: "day-slot"
+      }, days), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("span", {
+        className: "text-16-300 margin-left-5"
       }, "Clinic opens at :  "), _react.default.createElement("select", {
         onChange: this.updateOpenTime,
         value: this.state.openTime,
-        className: "dropdown"
-      }, time30), _react.default.createElement("label", {
-        className: "label"
+        className: "dropdown-time"
+      }, time30), _react.default.createElement("span", {
+        className: "text-16-300 margin-left-5"
       }, "Clinic closes at :  "), _react.default.createElement("select", {
         onChange: this.updateCloseTime,
         value: this.state.closeTime,
-        className: "dropdown"
-      }, time30)), _react.default.createElement("br", null), _react.default.createElement("label", {
-        className: "label"
-      }, "Select the slot in which doctor takes break -"), _react.default.createElement("div", null, time15), _react.default.createElement("label", {
-        className: "label"
-      }, "Amount per patient -"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        className: "dropdown-time"
+      }, time30), _react.default.createElement("span", {
+        className: "text-16-300 margin-left-5"
+      }, "You are a :  "), _react.default.createElement("select", {
+        onChange: function onChange(event) {
+          return _this2.setState({
+            typeDoctor: event.target.value
+          });
+        },
+        value: this.state.typeDoctor,
+        className: "dropdown-doctorType"
+      }, doctorTypeDropDown)), _react.default.createElement("br", null), _react.default.createElement("p", {
+        className: "text-16-300 text-center"
+      }, "Select the slot in which doctor takes break !"), _react.default.createElement("div", {
+        className: "grid-booking"
+      }, time15), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
         type: "text",
         placeholder: "Enter amount in rupees (eg. 400)",
         value: this.state.cash,
         onChange: this.updateCash,
-        className: "inputBox"
+        className: "clinicDetails"
+      })), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Number of days of validity of an appointment",
+        value: this.state.validity,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            validity: event.target.value
+          });
+        },
+        className: "clinicDetails"
       })), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("div", {
         align: "center"
       }, _react.default.createElement(_reactBootstrap.Button, {
-        className: "button",
+        className: "button-submit",
         onClick: function onClick() {
           return _this2.Submit(timeArray15);
         }
@@ -62227,7 +62289,1366 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
 
 var _default = ClinicDetails;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../util/timeSlot":"util/timeSlot.js"}],"components/Booking.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../util/timeSlot":"util/timeSlot.js"}],"../../node_modules/react-date-picker/dist/Divider.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = Divider;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function Divider(_ref) {
+  var children = _ref.children;
+  return _react["default"].createElement("span", {
+    className: "react-date-picker__inputGroup__divider"
+  }, children);
+}
+
+Divider.propTypes = {
+  children: _propTypes["default"].node
+};
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js"}],"../../node_modules/react-date-picker/dist/DateInput/NativeInput.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = NativeInput;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _dateUtils = require("@wojtekmaj/date-utils");
+
+var _propTypes2 = require("../shared/propTypes");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function NativeInput(_ref) {
+  var ariaLabel = _ref.ariaLabel,
+      disabled = _ref.disabled,
+      maxDate = _ref.maxDate,
+      minDate = _ref.minDate,
+      name = _ref.name,
+      onChange = _ref.onChange,
+      required = _ref.required,
+      value = _ref.value,
+      valueType = _ref.valueType;
+
+  var nativeInputType = function () {
+    switch (valueType) {
+      case 'decade':
+      case 'year':
+        return 'number';
+
+      case 'month':
+        return 'month';
+
+      case 'day':
+        return 'date';
+
+      default:
+        throw new Error('Invalid valueType.');
+    }
+  }();
+
+  var nativeValueParser = function () {
+    switch (valueType) {
+      case 'century':
+      case 'decade':
+      case 'year':
+        return _dateUtils.getYear;
+
+      case 'month':
+        return _dateUtils.getISOLocalMonth;
+
+      case 'day':
+        return _dateUtils.getISOLocalDate;
+
+      default:
+        throw new Error('Invalid valueType.');
+    }
+  }();
+
+  function stopPropagation(event) {
+    event.stopPropagation();
+  }
+
+  return _react["default"].createElement("input", {
+    "aria-label": ariaLabel,
+    disabled: disabled,
+    max: maxDate ? nativeValueParser(maxDate) : null,
+    min: minDate ? nativeValueParser(minDate) : null,
+    name: name,
+    onChange: onChange,
+    onFocus: stopPropagation,
+    required: required,
+    style: {
+      visibility: 'hidden',
+      position: 'absolute',
+      top: '-9999px',
+      left: '-9999px'
+    },
+    type: nativeInputType,
+    value: value ? nativeValueParser(value) : ''
+  });
+}
+
+NativeInput.propTypes = {
+  ariaLabel: _propTypes["default"].string,
+  disabled: _propTypes["default"].bool,
+  maxDate: _propTypes2.isMaxDate,
+  minDate: _propTypes2.isMinDate,
+  name: _propTypes["default"].string,
+  onChange: _propTypes["default"].func,
+  required: _propTypes["default"].bool,
+  value: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]),
+  valueType: _propTypes2.isValueType
+};
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js","@wojtekmaj/date-utils":"../../node_modules/@wojtekmaj/date-utils/dist/esm/index.js","../shared/propTypes":"../../node_modules/react-date-picker/dist/shared/propTypes.js"}],"../../node_modules/react-date-picker/dist/shared/dates.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getBegin = getBegin;
+exports.getEnd = getEnd;
+
+var _dateUtils = require("@wojtekmaj/date-utils");
+
+/**
+ * Returns the beginning of a given range.
+ *
+ * @param {String} rangeType Range type (e.g. 'day')
+ * @param {Date} date Date.
+ */
+function getBegin(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return (0, _dateUtils.getCenturyStart)(date);
+
+    case 'decade':
+      return (0, _dateUtils.getDecadeStart)(date);
+
+    case 'year':
+      return (0, _dateUtils.getYearStart)(date);
+
+    case 'month':
+      return (0, _dateUtils.getMonthStart)(date);
+
+    case 'day':
+      return (0, _dateUtils.getDayStart)(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+/**
+ * Returns the end of a given range.
+ *
+ * @param {String} rangeType Range type (e.g. 'day')
+ * @param {Date} date Date.
+ */
+
+
+function getEnd(rangeType, date) {
+  switch (rangeType) {
+    case 'century':
+      return (0, _dateUtils.getCenturyEnd)(date);
+
+    case 'decade':
+      return (0, _dateUtils.getDecadeEnd)(date);
+
+    case 'year':
+      return (0, _dateUtils.getYearEnd)(date);
+
+    case 'month':
+      return (0, _dateUtils.getMonthEnd)(date);
+
+    case 'day':
+      return (0, _dateUtils.getDayEnd)(date);
+
+    default:
+      throw new Error("Invalid rangeType: ".concat(rangeType));
+  }
+}
+},{"@wojtekmaj/date-utils":"../../node_modules/@wojtekmaj/date-utils/dist/esm/index.js"}],"../../node_modules/react-date-picker/dist/DateInput.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _dateUtils = require("@wojtekmaj/date-utils");
+
+var _Divider = _interopRequireDefault(require("./Divider"));
+
+var _DayInput = _interopRequireDefault(require("./DateInput/DayInput"));
+
+var _MonthInput = _interopRequireDefault(require("./DateInput/MonthInput"));
+
+var _MonthSelect = _interopRequireDefault(require("./DateInput/MonthSelect"));
+
+var _YearInput = _interopRequireDefault(require("./DateInput/YearInput"));
+
+var _NativeInput = _interopRequireDefault(require("./DateInput/NativeInput"));
+
+var _dateFormatter = require("./shared/dateFormatter");
+
+var _dates = require("./shared/dates");
+
+var _propTypes2 = require("./shared/propTypes");
+
+var _utils = require("./shared/utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var defaultMinDate = new Date(-8.64e15);
+var defaultMaxDate = new Date(8.64e15);
+var allViews = ['century', 'decade', 'year', 'month'];
+var allValueTypes = [].concat(_toConsumableArray(allViews.slice(1)), ['day']);
+
+function datesAreDifferent(date1, date2) {
+  return date1 && !date2 || !date1 && date2 || date1 && date2 && date1.getTime() !== date2.getTime();
+}
+/**
+ * Returns value type that can be returned with currently applied settings.
+ */
+
+
+function getValueType(maxDetail) {
+  return allValueTypes[allViews.indexOf(maxDetail)];
+}
+
+function getValue(value, index) {
+  if (!value) {
+    return null;
+  }
+
+  var rawValue = value instanceof Array && value.length === 2 ? value[index] : value;
+
+  if (!rawValue) {
+    return null;
+  }
+
+  var valueDate = new Date(rawValue);
+
+  if (isNaN(valueDate.getTime())) {
+    throw new Error("Invalid date: ".concat(value));
+  }
+
+  return valueDate;
+}
+
+function getDetailValue(_ref, index) {
+  var value = _ref.value,
+      minDate = _ref.minDate,
+      maxDate = _ref.maxDate,
+      maxDetail = _ref.maxDetail;
+  var valuePiece = getValue(value, index);
+
+  if (!valuePiece) {
+    return null;
+  }
+
+  var valueType = getValueType(maxDetail);
+  var detailValueFrom = [_dates.getBegin, _dates.getEnd][index](valueType, valuePiece);
+  return (0, _utils.between)(detailValueFrom, minDate, maxDate);
+}
+
+var getDetailValueFrom = function getDetailValueFrom(args) {
+  return getDetailValue(args, 0);
+};
+
+var getDetailValueTo = function getDetailValueTo(args) {
+  return getDetailValue(args, 1);
+};
+
+var getDetailValueArray = function getDetailValueArray(args) {
+  var value = args.value;
+
+  if (value instanceof Array) {
+    return value;
+  }
+
+  return [getDetailValueFrom, getDetailValueTo].map(function (fn) {
+    return fn(args);
+  });
+};
+
+function isValidInput(element) {
+  return element.tagName === 'INPUT' && element.type === 'number';
+}
+
+function findInput(element, property) {
+  var nextElement = element;
+
+  do {
+    nextElement = nextElement[property];
+  } while (nextElement && !isValidInput(nextElement));
+
+  return nextElement;
+}
+
+function focus(element) {
+  if (element) {
+    element.focus();
+  }
+}
+
+function _renderCustomInputs(placeholder, elementFunctions, allowMultipleInstances) {
+  var usedFunctions = [];
+  var pattern = new RegExp(Object.keys(elementFunctions).map(function (el) {
+    return "".concat(el, "+");
+  }).join('|'), 'g');
+  var matches = placeholder.match(pattern);
+  return placeholder.split(pattern).reduce(function (arr, element, index) {
+    var divider = element && // eslint-disable-next-line react/no-array-index-key
+    _react["default"].createElement(_Divider["default"], {
+      key: "separator_".concat(index)
+    }, element);
+
+    var res = [].concat(_toConsumableArray(arr), [divider]);
+    var currentMatch = matches && matches[index];
+
+    if (currentMatch) {
+      var renderFunction = elementFunctions[currentMatch] || elementFunctions[Object.keys(elementFunctions).find(function (elementFunction) {
+        return currentMatch.match(elementFunction);
+      })];
+
+      if (!allowMultipleInstances && usedFunctions.includes(renderFunction)) {
+        res.push(currentMatch);
+      } else {
+        res.push(renderFunction(currentMatch, index));
+        usedFunctions.push(renderFunction);
+      }
+    }
+
+    return res;
+  }, []);
+}
+
+var DateInput = /*#__PURE__*/function (_PureComponent) {
+  _inherits(DateInput, _PureComponent);
+
+  function DateInput() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, DateInput);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DateInput)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      year: null,
+      month: null,
+      day: null
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onClick", function (event) {
+      if (event.target === event.currentTarget) {
+        // Wrapper was directly clicked
+        var firstInput = event.target.children[1];
+        focus(firstInput);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onKeyDown", function (event) {
+      switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+        case _this.divider:
+          {
+            event.preventDefault();
+            var input = event.target;
+            var property = event.key === 'ArrowLeft' ? 'previousElementSibling' : 'nextElementSibling';
+            var nextInput = findInput(input, property);
+            focus(nextInput);
+            break;
+          }
+
+        default:
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onKeyUp", function (event) {
+      var key = event.key,
+          input = event.target;
+      var isNumberKey = !isNaN(parseInt(key, 10));
+
+      if (!isNumberKey) {
+        return;
+      }
+
+      var value = input.value;
+      var max = input.getAttribute('max');
+      /**
+       * Given 1, the smallest possible number the user could type by adding another digit is 10.
+       * 10 would be a valid value given max = 12, so we won't jump to the next input.
+       * However, given 2, smallers possible number would be 20, and thus keeping the focus in
+       * this field doesn't make sense.
+       */
+
+      if (value * 10 > max || value.length >= max.length) {
+        var property = 'nextElementSibling';
+        var nextInput = findInput(input, property);
+        focus(nextInput);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+
+      _this.setState(_defineProperty({}, name, value ? parseInt(value, 10) : null), _this.onChangeExternal);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeNative", function (event) {
+      var onChange = _this.props.onChange;
+      var value = event.target.value;
+
+      if (!onChange) {
+        return;
+      }
+
+      var processedValue = function () {
+        if (!value) {
+          return null;
+        }
+
+        var _value$split = value.split('-'),
+            _value$split2 = _slicedToArray(_value$split, 3),
+            yearString = _value$split2[0],
+            monthString = _value$split2[1],
+            dayString = _value$split2[2];
+
+        var year = parseInt(yearString, 10);
+        var monthIndex = parseInt(monthString, 10) - 1 || 0;
+        var day = parseInt(dayString, 10) || 1;
+        var proposedValue = new Date();
+        proposedValue.setFullYear(year, monthIndex, day);
+        proposedValue.setHours(0, 0, 0, 0);
+        return proposedValue;
+      }();
+
+      onChange(processedValue, false);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeExternal", function () {
+      var onChange = _this.props.onChange;
+
+      if (!onChange) {
+        return;
+      }
+
+      var formElements = [_this.dayInput, _this.monthInput, _this.yearInput].filter(Boolean);
+      var values = {};
+      formElements.forEach(function (formElement) {
+        values[formElement.name] = formElement.value;
+      });
+
+      if (formElements.every(function (formElement) {
+        return !formElement.value;
+      })) {
+        onChange(null, false);
+      } else if (formElements.every(function (formElement) {
+        return formElement.value && formElement.validity.valid;
+      })) {
+        var year = parseInt(values.year, 10);
+        var monthIndex = parseInt(values.month, 10) - 1 || 0;
+        var day = parseInt(values.day || 1, 10);
+        var proposedValue = new Date();
+        proposedValue.setFullYear(year, monthIndex, day);
+        proposedValue.setHours(0, 0, 0, 0);
+
+        var processedValue = _this.getProcessedValue(proposedValue);
+
+        onChange(processedValue, false);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderDay", function (currentMatch, index) {
+      var _this$props = _this.props,
+          autoFocus = _this$props.autoFocus,
+          dayAriaLabel = _this$props.dayAriaLabel,
+          dayPlaceholder = _this$props.dayPlaceholder,
+          showLeadingZeros = _this$props.showLeadingZeros;
+      var _this$state = _this.state,
+          day = _this$state.day,
+          month = _this$state.month,
+          year = _this$state.year;
+
+      if (currentMatch && currentMatch.length > 2) {
+        throw new Error("Unsupported token: ".concat(currentMatch));
+      }
+
+      var showLeadingZerosFromFormat = currentMatch && currentMatch.length === 2;
+      return _react["default"].createElement(_DayInput["default"], _extends({
+        key: "day"
+      }, _this.commonInputProps, {
+        ariaLabel: dayAriaLabel,
+        autoFocus: index === 0 && autoFocus,
+        month: month,
+        placeholder: dayPlaceholder,
+        showLeadingZeros: showLeadingZerosFromFormat || showLeadingZeros,
+        value: day,
+        year: year
+      }));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderMonth", function (currentMatch, index) {
+      var _this$props2 = _this.props,
+          autoFocus = _this$props2.autoFocus,
+          locale = _this$props2.locale,
+          monthAriaLabel = _this$props2.monthAriaLabel,
+          monthPlaceholder = _this$props2.monthPlaceholder,
+          showLeadingZeros = _this$props2.showLeadingZeros;
+      var _this$state2 = _this.state,
+          month = _this$state2.month,
+          year = _this$state2.year;
+
+      if (currentMatch && currentMatch.length > 4) {
+        throw new Error("Unsupported token: ".concat(currentMatch));
+      }
+
+      if (currentMatch.length > 2) {
+        return _react["default"].createElement(_MonthSelect["default"], _extends({
+          key: "month"
+        }, _this.commonInputProps, {
+          ariaLabel: monthAriaLabel,
+          autoFocus: index === 0 && autoFocus,
+          locale: locale,
+          placeholder: monthPlaceholder,
+          "short": currentMatch.length === 3,
+          value: month,
+          year: year
+        }));
+      }
+
+      var showLeadingZerosFromFormat = currentMatch && currentMatch.length === 2;
+      return _react["default"].createElement(_MonthInput["default"], _extends({
+        key: "month"
+      }, _this.commonInputProps, {
+        ariaLabel: monthAriaLabel,
+        autoFocus: index === 0 && autoFocus,
+        placeholder: monthPlaceholder,
+        showLeadingZeros: showLeadingZerosFromFormat || showLeadingZeros,
+        value: month,
+        year: year
+      }));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "renderYear", function (currentMatch, index) {
+      var _this$props3 = _this.props,
+          autoFocus = _this$props3.autoFocus,
+          yearAriaLabel = _this$props3.yearAriaLabel,
+          yearPlaceholder = _this$props3.yearPlaceholder;
+      var year = _this.state.year;
+      return _react["default"].createElement(_YearInput["default"], _extends({
+        key: "year"
+      }, _this.commonInputProps, {
+        ariaLabel: yearAriaLabel,
+        autoFocus: index === 0 && autoFocus,
+        placeholder: yearPlaceholder,
+        value: year,
+        valueType: _this.valueType
+      }));
+    });
+
+    return _this;
+  }
+
+  _createClass(DateInput, [{
+    key: "getProcessedValue",
+
+    /**
+     * Gets current value in a desired format.
+     */
+    value: function getProcessedValue(value) {
+      var _this$props4 = this.props,
+          minDate = _this$props4.minDate,
+          maxDate = _this$props4.maxDate,
+          maxDetail = _this$props4.maxDetail,
+          returnValue = _this$props4.returnValue;
+
+      var processFunction = function () {
+        switch (returnValue) {
+          case 'start':
+            return getDetailValueFrom;
+
+          case 'end':
+            return getDetailValueTo;
+
+          case 'range':
+            return getDetailValueArray;
+
+          default:
+            throw new Error('Invalid returnValue.');
+        }
+      }();
+
+      return processFunction({
+        value: value,
+        minDate: minDate,
+        maxDate: maxDate,
+        maxDetail: maxDetail
+      });
+    }
+  }, {
+    key: "renderCustomInputs",
+    value: function renderCustomInputs() {
+      var placeholder = this.placeholder;
+      var format = this.props.format;
+      var elementFunctions = {
+        d: this.renderDay,
+        M: this.renderMonth,
+        y: this.renderYear
+      };
+      var allowMultipleInstances = typeof format !== 'undefined';
+      return _renderCustomInputs(placeholder, elementFunctions, allowMultipleInstances);
+    }
+  }, {
+    key: "renderNativeInput",
+    value: function renderNativeInput() {
+      var _this$props5 = this.props,
+          disabled = _this$props5.disabled,
+          maxDate = _this$props5.maxDate,
+          minDate = _this$props5.minDate,
+          name = _this$props5.name,
+          nativeInputAriaLabel = _this$props5.nativeInputAriaLabel,
+          required = _this$props5.required;
+      var value = this.state.value;
+      return _react["default"].createElement(_NativeInput["default"], {
+        key: "date",
+        ariaLabel: nativeInputAriaLabel,
+        disabled: disabled,
+        maxDate: maxDate || defaultMaxDate,
+        minDate: minDate || defaultMinDate,
+        name: name,
+        onChange: this.onChangeNative,
+        required: required,
+        value: value,
+        valueType: this.valueType
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var className = this.props.className;
+      /* eslint-disable jsx-a11y/click-events-have-key-events */
+
+      /* eslint-disable jsx-a11y/no-static-element-interactions */
+
+      return _react["default"].createElement("div", {
+        className: className,
+        onClick: this.onClick
+      }, this.renderNativeInput(), this.renderCustomInputs());
+    }
+  }, {
+    key: "formatDate",
+    get: function get() {
+      var maxDetail = this.props.maxDetail;
+      var options = {
+        year: 'numeric'
+      };
+      var level = allViews.indexOf(maxDetail);
+
+      if (level >= 2) {
+        options.month = 'numeric';
+      }
+
+      if (level >= 3) {
+        options.day = 'numeric';
+      }
+
+      return (0, _dateFormatter.getFormatter)(options);
+    } // eslint-disable-next-line class-methods-use-this
+
+  }, {
+    key: "formatNumber",
+    get: function get() {
+      var options = {
+        useGrouping: false
+      };
+      return (0, _dateFormatter.getFormatter)(options);
+    }
+  }, {
+    key: "divider",
+    get: function get() {
+      return this.placeholder.match(/[^0-9a-z]/i)[0];
+    }
+  }, {
+    key: "placeholder",
+    get: function get() {
+      var _this$props6 = this.props,
+          format = _this$props6.format,
+          locale = _this$props6.locale;
+
+      if (format) {
+        return format;
+      }
+
+      var year = 2017;
+      var monthIndex = 11;
+      var day = 11;
+      var date = new Date(year, monthIndex, day);
+      return this.formatDate(locale, date).replace(this.formatNumber(locale, year), 'y').replace(this.formatNumber(locale, monthIndex + 1), 'M').replace(this.formatNumber(locale, day), 'd');
+    }
+  }, {
+    key: "commonInputProps",
+    get: function get() {
+      var _this2 = this;
+
+      var _this$props7 = this.props,
+          className = _this$props7.className,
+          disabled = _this$props7.disabled,
+          isCalendarOpen = _this$props7.isCalendarOpen,
+          maxDate = _this$props7.maxDate,
+          minDate = _this$props7.minDate,
+          required = _this$props7.required;
+      return {
+        className: className,
+        disabled: disabled,
+        maxDate: maxDate || defaultMaxDate,
+        minDate: minDate || defaultMinDate,
+        onChange: this.onChange,
+        onKeyDown: this.onKeyDown,
+        onKeyUp: this.onKeyUp,
+        // This is only for showing validity when editing
+        required: required || isCalendarOpen,
+        itemRef: function itemRef(ref, name) {
+          // Save a reference to each input field
+          _this2["".concat(name, "Input")] = ref;
+        }
+      };
+    }
+  }, {
+    key: "valueType",
+    get: function get() {
+      var maxDetail = this.props.maxDetail;
+      return getValueType(maxDetail);
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      var minDate = nextProps.minDate,
+          maxDate = nextProps.maxDate,
+          maxDetail = nextProps.maxDetail;
+      var nextState = {};
+      /**
+       * If isCalendarOpen flag has changed, we have to update it.
+       * It's saved in state purely for use in getDerivedStateFromProps.
+       */
+
+      if (nextProps.isCalendarOpen !== prevState.isCalendarOpen) {
+        nextState.isCalendarOpen = nextProps.isCalendarOpen;
+      }
+      /**
+       * If the next value is different from the current one  (with an exception of situation in
+       * which values provided are limited by minDate and maxDate so that the dates are the same),
+       * get a new one.
+       */
+
+
+      var nextValue = getDetailValueFrom({
+        value: nextProps.value,
+        minDate: minDate,
+        maxDate: maxDate,
+        maxDetail: maxDetail
+      });
+      var values = [nextValue, prevState.value];
+
+      if ( // Toggling calendar visibility resets values
+      nextState.isCalendarOpen // Flag was toggled
+      || datesAreDifferent.apply(void 0, _toConsumableArray(values.map(function (value) {
+        return getDetailValueFrom({
+          value: value,
+          minDate: minDate,
+          maxDate: maxDate,
+          maxDetail: maxDetail
+        });
+      }))) || datesAreDifferent.apply(void 0, _toConsumableArray(values.map(function (value) {
+        return getDetailValueTo({
+          value: value,
+          minDate: minDate,
+          maxDate: maxDate,
+          maxDetail: maxDetail
+        });
+      })))) {
+        if (nextValue) {
+          nextState.year = (0, _dateUtils.getYear)(nextValue);
+          nextState.month = (0, _dateUtils.getMonthHuman)(nextValue);
+          nextState.day = (0, _dateUtils.getDate)(nextValue);
+        } else {
+          nextState.year = null;
+          nextState.month = null;
+          nextState.day = null;
+        }
+
+        nextState.value = nextValue;
+      }
+
+      return nextState;
+    }
+  }]);
+
+  return DateInput;
+}(_react.PureComponent);
+
+exports["default"] = DateInput;
+DateInput.defaultProps = {
+  maxDetail: 'month',
+  name: 'date',
+  returnValue: 'start'
+};
+
+var isValue = _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]);
+
+DateInput.propTypes = {
+  autoFocus: _propTypes["default"].bool,
+  className: _propTypes["default"].string.isRequired,
+  dayAriaLabel: _propTypes["default"].string,
+  dayPlaceholder: _propTypes["default"].string,
+  disabled: _propTypes["default"].bool,
+  format: _propTypes["default"].string,
+  isCalendarOpen: _propTypes["default"].bool,
+  locale: _propTypes["default"].string,
+  maxDate: _propTypes2.isMaxDate,
+  maxDetail: _propTypes["default"].oneOf(allViews),
+  minDate: _propTypes2.isMinDate,
+  monthAriaLabel: _propTypes["default"].string,
+  monthPlaceholder: _propTypes["default"].string,
+  name: _propTypes["default"].string,
+  nativeInputAriaLabel: _propTypes["default"].string,
+  onChange: _propTypes["default"].func,
+  required: _propTypes["default"].bool,
+  returnValue: _propTypes["default"].oneOf(['start', 'end', 'range']),
+  showLeadingZeros: _propTypes["default"].bool,
+  value: _propTypes["default"].oneOfType([isValue, _propTypes["default"].arrayOf(isValue)]),
+  yearAriaLabel: _propTypes["default"].string,
+  yearPlaceholder: _propTypes["default"].string
+};
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js","@wojtekmaj/date-utils":"../../node_modules/@wojtekmaj/date-utils/dist/esm/index.js","./Divider":"../../node_modules/react-date-picker/dist/Divider.js","./DateInput/DayInput":"../../node_modules/react-date-picker/dist/DateInput/DayInput.js","./DateInput/MonthInput":"../../node_modules/react-date-picker/dist/DateInput/MonthInput.js","./DateInput/MonthSelect":"../../node_modules/react-date-picker/dist/DateInput/MonthSelect.js","./DateInput/YearInput":"../../node_modules/react-date-picker/dist/DateInput/YearInput.js","./DateInput/NativeInput":"../../node_modules/react-date-picker/dist/DateInput/NativeInput.js","./shared/dateFormatter":"../../node_modules/react-date-picker/dist/shared/dateFormatter.js","./shared/dates":"../../node_modules/react-date-picker/dist/shared/dates.js","./shared/propTypes":"../../node_modules/react-date-picker/dist/shared/propTypes.js","./shared/utils":"../../node_modules/react-date-picker/dist/shared/utils.js"}],"../../node_modules/react-date-picker/dist/DatePicker.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _makeEventProps = _interopRequireDefault(require("make-event-props"));
+
+var _mergeClassNames = _interopRequireDefault(require("merge-class-names"));
+
+var _reactCalendar = _interopRequireDefault(require("react-calendar"));
+
+var _reactFit = _interopRequireDefault(require("react-fit"));
+
+var _DateInput = _interopRequireDefault(require("./DateInput"));
+
+var _propTypes2 = require("./shared/propTypes");
+
+var _utils = require("./shared/utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var baseClassName = 'react-date-picker';
+var outsideActionEvents = ['mousedown', 'focusin', 'touchstart'];
+var allViews = ['century', 'decade', 'year', 'month'];
+
+var DatePicker = /*#__PURE__*/function (_PureComponent) {
+  _inherits(DatePicker, _PureComponent);
+
+  function DatePicker() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, DatePicker);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DatePicker)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {});
+
+    _defineProperty(_assertThisInitialized(_this), "onOutsideAction", function (event) {
+      if (_this.wrapper && !_this.wrapper.contains(event.target)) {
+        _this.closeCalendar();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChange", function (value) {
+      var closeCalendar = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this.props.closeCalendar;
+      var onChange = _this.props.onChange;
+
+      if (closeCalendar) {
+        _this.closeCalendar();
+      }
+
+      if (onChange) {
+        onChange(value);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onFocus", function (event) {
+      var _this$props = _this.props,
+          disabled = _this$props.disabled,
+          onFocus = _this$props.onFocus;
+
+      if (onFocus) {
+        onFocus(event);
+      } // Internet Explorer still fires onFocus on disabled elements
+
+
+      if (disabled) {
+        return;
+      }
+
+      _this.openCalendar();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "openCalendar", function () {
+      _this.setState({
+        isOpen: true
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "closeCalendar", function () {
+      _this.setState(function (prevState) {
+        if (!prevState.isOpen) {
+          return null;
+        }
+
+        return {
+          isOpen: false
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggleCalendar", function () {
+      _this.setState(function (prevState) {
+        return {
+          isOpen: !prevState.isOpen
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "stopPropagation", function (event) {
+      return event.stopPropagation();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "clear", function () {
+      return _this.onChange(null);
+    });
+
+    return _this;
+  }
+
+  _createClass(DatePicker, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.handleOutsideActionListeners();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var isOpen = this.state.isOpen;
+      var _this$props2 = this.props,
+          onCalendarClose = _this$props2.onCalendarClose,
+          onCalendarOpen = _this$props2.onCalendarOpen;
+
+      if (isOpen !== prevState.isOpen) {
+        this.handleOutsideActionListeners();
+        (0, _utils.callIfDefined)(isOpen ? onCalendarOpen : onCalendarClose);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.handleOutsideActionListeners(false);
+    }
+  }, {
+    key: "handleOutsideActionListeners",
+    value: function handleOutsideActionListeners(shouldListen) {
+      var _this2 = this;
+
+      var isOpen = this.state.isOpen;
+      var shouldListenWithFallback = typeof shouldListen !== 'undefined' ? shouldListen : isOpen;
+      var fnName = shouldListenWithFallback ? 'addEventListener' : 'removeEventListener';
+      outsideActionEvents.forEach(function (eventName) {
+        return document[fnName](eventName, _this2.onOutsideAction);
+      });
+    }
+  }, {
+    key: "renderInputs",
+    value: function renderInputs() {
+      var _this$props3 = this.props,
+          autoFocus = _this$props3.autoFocus,
+          calendarAriaLabel = _this$props3.calendarAriaLabel,
+          calendarIcon = _this$props3.calendarIcon,
+          clearAriaLabel = _this$props3.clearAriaLabel,
+          clearIcon = _this$props3.clearIcon,
+          dayAriaLabel = _this$props3.dayAriaLabel,
+          dayPlaceholder = _this$props3.dayPlaceholder,
+          disableCalendar = _this$props3.disableCalendar,
+          disabled = _this$props3.disabled,
+          format = _this$props3.format,
+          locale = _this$props3.locale,
+          maxDate = _this$props3.maxDate,
+          maxDetail = _this$props3.maxDetail,
+          minDate = _this$props3.minDate,
+          monthAriaLabel = _this$props3.monthAriaLabel,
+          monthPlaceholder = _this$props3.monthPlaceholder,
+          name = _this$props3.name,
+          nativeInputAriaLabel = _this$props3.nativeInputAriaLabel,
+          required = _this$props3.required,
+          returnValue = _this$props3.returnValue,
+          showLeadingZeros = _this$props3.showLeadingZeros,
+          value = _this$props3.value,
+          yearAriaLabel = _this$props3.yearAriaLabel,
+          yearPlaceholder = _this$props3.yearPlaceholder;
+      var isOpen = this.state.isOpen;
+
+      var _concat = [].concat(value),
+          _concat2 = _slicedToArray(_concat, 1),
+          valueFrom = _concat2[0];
+
+      var ariaLabelProps = {
+        dayAriaLabel: dayAriaLabel,
+        monthAriaLabel: monthAriaLabel,
+        nativeInputAriaLabel: nativeInputAriaLabel,
+        yearAriaLabel: yearAriaLabel
+      };
+      var placeholderProps = {
+        dayPlaceholder: dayPlaceholder,
+        monthPlaceholder: monthPlaceholder,
+        yearPlaceholder: yearPlaceholder
+      };
+      return _react["default"].createElement("div", {
+        className: "".concat(baseClassName, "__wrapper")
+      }, _react["default"].createElement(_DateInput["default"], _extends({}, ariaLabelProps, placeholderProps, {
+        autoFocus: autoFocus,
+        className: "".concat(baseClassName, "__inputGroup"),
+        disabled: disabled,
+        format: format,
+        isCalendarOpen: isOpen,
+        locale: locale,
+        maxDate: maxDate,
+        maxDetail: maxDetail,
+        minDate: minDate,
+        name: name,
+        onChange: this.onChange,
+        required: required,
+        returnValue: returnValue,
+        showLeadingZeros: showLeadingZeros,
+        value: valueFrom
+      })), clearIcon !== null && _react["default"].createElement("button", {
+        "aria-label": clearAriaLabel,
+        className: "".concat(baseClassName, "__clear-button ").concat(baseClassName, "__button"),
+        disabled: disabled,
+        onClick: this.clear,
+        onFocus: this.stopPropagation,
+        type: "button"
+      }, clearIcon), calendarIcon !== null && !disableCalendar && _react["default"].createElement("button", {
+        "aria-label": calendarAriaLabel,
+        className: "".concat(baseClassName, "__calendar-button ").concat(baseClassName, "__button"),
+        disabled: disabled,
+        onBlur: this.resetValue,
+        onClick: this.toggleCalendar,
+        onFocus: this.stopPropagation,
+        type: "button"
+      }, calendarIcon));
+    }
+  }, {
+    key: "renderCalendar",
+    value: function renderCalendar() {
+      var disableCalendar = this.props.disableCalendar;
+      var isOpen = this.state.isOpen;
+
+      if (isOpen === null || disableCalendar) {
+        return null;
+      }
+
+      var _this$props4 = this.props,
+          calendarClassName = _this$props4.calendarClassName,
+          datePickerClassName = _this$props4.className,
+          onChange = _this$props4.onChange,
+          value = _this$props4.value,
+          calendarProps = _objectWithoutProperties(_this$props4, ["calendarClassName", "className", "onChange", "value"]);
+
+      var className = "".concat(baseClassName, "__calendar");
+      return _react["default"].createElement(_reactFit["default"], null, _react["default"].createElement("div", {
+        className: (0, _mergeClassNames["default"])(className, "".concat(className, "--").concat(isOpen ? 'open' : 'closed'))
+      }, _react["default"].createElement(_reactCalendar["default"], _extends({
+        className: calendarClassName,
+        onChange: this.onChange,
+        value: value || null
+      }, calendarProps))));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var _this$props5 = this.props,
+          className = _this$props5.className,
+          disabled = _this$props5.disabled;
+      var isOpen = this.state.isOpen;
+      return _react["default"].createElement("div", _extends({
+        className: (0, _mergeClassNames["default"])(baseClassName, "".concat(baseClassName, "--").concat(isOpen ? 'open' : 'closed'), "".concat(baseClassName, "--").concat(disabled ? 'disabled' : 'enabled'), className)
+      }, this.eventProps, {
+        onFocus: this.onFocus,
+        ref: function ref(_ref) {
+          if (!_ref) {
+            return;
+          }
+
+          _this3.wrapper = _ref;
+        }
+      }), this.renderInputs(), this.renderCalendar());
+    }
+  }, {
+    key: "eventProps",
+    get: function get() {
+      return (0, _makeEventProps["default"])(this.props);
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      if (nextProps.isOpen !== prevState.isOpenProps) {
+        return {
+          isOpen: nextProps.isOpen,
+          isOpenProps: nextProps.isOpen
+        };
+      }
+
+      return null;
+    }
+  }]);
+
+  return DatePicker;
+}(_react.PureComponent);
+
+exports["default"] = DatePicker;
+var iconProps = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  width: 19,
+  height: 19,
+  viewBox: '0 0 19 19',
+  stroke: 'black',
+  strokeWidth: 2
+};
+
+var CalendarIcon = _react["default"].createElement("svg", _extends({}, iconProps, {
+  className: "".concat(baseClassName, "__calendar-button__icon ").concat(baseClassName, "__button__icon")
+}), _react["default"].createElement("rect", {
+  fill: "none",
+  height: "15",
+  width: "15",
+  x: "2",
+  y: "2"
+}), _react["default"].createElement("line", {
+  x1: "6",
+  x2: "6",
+  y1: "0",
+  y2: "4"
+}), _react["default"].createElement("line", {
+  x1: "13",
+  x2: "13",
+  y1: "0",
+  y2: "4"
+}));
+
+var ClearIcon = _react["default"].createElement("svg", _extends({}, iconProps, {
+  className: "".concat(baseClassName, "__clear-button__icon ").concat(baseClassName, "__button__icon")
+}), _react["default"].createElement("line", {
+  x1: "4",
+  x2: "15",
+  y1: "4",
+  y2: "15"
+}), _react["default"].createElement("line", {
+  x1: "15",
+  x2: "4",
+  y1: "4",
+  y2: "15"
+}));
+
+DatePicker.defaultProps = {
+  calendarIcon: CalendarIcon,
+  clearIcon: ClearIcon,
+  closeCalendar: true,
+  isOpen: null,
+  returnValue: 'start'
+};
+
+var isValue = _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].instanceOf(Date)]);
+
+DatePicker.propTypes = {
+  autoFocus: _propTypes["default"].bool,
+  calendarAriaLabel: _propTypes["default"].string,
+  calendarClassName: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
+  calendarIcon: _propTypes["default"].node,
+  className: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].arrayOf(_propTypes["default"].string)]),
+  clearAriaLabel: _propTypes["default"].string,
+  clearIcon: _propTypes["default"].node,
+  closeCalendar: _propTypes["default"].bool,
+  dayAriaLabel: _propTypes["default"].string,
+  dayPlaceholder: _propTypes["default"].string,
+  disableCalendar: _propTypes["default"].bool,
+  disabled: _propTypes["default"].bool,
+  format: _propTypes["default"].string,
+  isOpen: _propTypes["default"].bool,
+  locale: _propTypes["default"].string,
+  maxDate: _propTypes2.isMaxDate,
+  maxDetail: _propTypes["default"].oneOf(allViews),
+  minDate: _propTypes2.isMinDate,
+  monthAriaLabel: _propTypes["default"].string,
+  monthPlaceholder: _propTypes["default"].string,
+  name: _propTypes["default"].string,
+  nativeInputAriaLabel: _propTypes["default"].string,
+  onCalendarClose: _propTypes["default"].func,
+  onCalendarOpen: _propTypes["default"].func,
+  onChange: _propTypes["default"].func,
+  onFocus: _propTypes["default"].func,
+  required: _propTypes["default"].bool,
+  returnValue: _propTypes["default"].oneOf(['start', 'end', 'range']),
+  showLeadingZeros: _propTypes["default"].bool,
+  value: _propTypes["default"].oneOfType([isValue, _propTypes["default"].arrayOf(isValue)]),
+  yearAriaLabel: _propTypes["default"].string,
+  yearPlaceholder: _propTypes["default"].string
+};
+},{"react":"../../node_modules/react/index.js","prop-types":"../../node_modules/prop-types/index.js","make-event-props":"../../node_modules/make-event-props/dist/entry.js","merge-class-names":"../../node_modules/merge-class-names/dist/esm/index.js","react-calendar":"../../node_modules/react-calendar/dist/esm/index.js","react-fit":"../../node_modules/react-fit/dist/esm/Fit.js","./DateInput":"../../node_modules/react-date-picker/dist/DateInput.js","./shared/propTypes":"../../node_modules/react-date-picker/dist/shared/propTypes.js","./shared/utils":"../../node_modules/react-date-picker/dist/shared/utils.js"}],"../../node_modules/react-date-picker/dist/DatePicker.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/react-date-picker/dist/entry.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+require("react-calendar/dist/Calendar.css");
+
+var _DatePicker = _interopRequireDefault(require("./DatePicker"));
+
+require("./DatePicker.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+// File is created during build phase and placed in dist directory
+// eslint-disable-next-line import/no-unresolved
+var _default = _DatePicker["default"];
+exports["default"] = _default;
+},{"react-calendar/dist/Calendar.css":"../../node_modules/react-calendar/dist/Calendar.css","./DatePicker":"../../node_modules/react-date-picker/dist/DatePicker.js","./DatePicker.css":"../../node_modules/react-date-picker/dist/DatePicker.css"}],"components/Booking.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -62242,6 +63663,322 @@ var _reactRouterDom = require("react-router-dom");
 var _Navigation = _interopRequireDefault(require("./Navigation"));
 
 var _reactBootstrap = require("react-bootstrap");
+
+var _reactDatePicker = _interopRequireDefault(require("react-date-picker"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var axios = require('axios');
+
+var Booking = /*#__PURE__*/function (_Component) {
+  _inherits(Booking, _Component);
+
+  var _super = _createSuper(Booking);
+
+  function Booking() {
+    var _this;
+
+    var _temp;
+
+    _classCallCheck(this, Booking);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      user: null,
+      logout: false,
+      details: {},
+      token: '',
+      name: '',
+      age: '',
+      date: new Date(),
+      timeSlot: '',
+      doctorId: ''
+    }, _this.updateDate = function (date) {
+      console.log(date);
+
+      _this.setState({
+        date: date
+      });
+    }, _this.Submit = function () {
+      if (_this.state.token) {
+        _this.oldBooking();
+      } else {
+        _this.newBooking();
+      }
+    }, _this.newBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var dd, mm, y, token;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (_this.state.name) {
+                _context.next = 3;
+                break;
+              }
+
+              alert("Please enter a Name !");
+              return _context.abrupt("return");
+
+            case 3:
+              if (_this.state.age) {
+                _context.next = 6;
+                break;
+              }
+
+              alert("Please enter an Age !");
+              return _context.abrupt("return");
+
+            case 6:
+              if (_this.state.timeSlot) {
+                _context.next = 9;
+                break;
+              }
+
+              alert("Please select a time slot !");
+              return _context.abrupt("return");
+
+            case 9:
+              dd = Math.floor(_this.state.date.getDate() / 10) == 0 ? '0' + _this.state.date.getDate() : _this.state.date.getDate();
+              mm = Math.floor(parseInt(_this.state.date.getMonth() + 1) / 10) == 0 ? '0' + parseInt(_this.state.date.getMonth() + 1) : parseInt(_this.state.date.getMonth() + 1);
+              y = _this.state.date.getFullYear() % 10;
+              token = "O" + dd + mm + y + _this.state.doctorId;
+              console.log("Token Number " + token);
+              _context.prev = 14;
+              _context.next = 17;
+              return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/book', {
+                name: _this.state.name,
+                age: _this.state.age,
+                doctorId: _this.state.doctorId,
+                timeSlot: _this.state.timeSlot,
+                token: token,
+                date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear(),
+                email: _this.state.user.email
+              }).then(function (res) {
+                alert("Sucess !");
+              });
+
+            case 17:
+              _context.next = 22;
+              break;
+
+            case 19:
+              _context.prev = 19;
+              _context.t0 = _context["catch"](14);
+              alert(_context.t0);
+
+            case 22:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[14, 19]]);
+    })), _temp));
+  }
+
+  _createClass(Booking, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var user = JSON.parse(localStorage.getItem('user'));
+
+      if (!user) {
+        this.setState({
+          logout: true
+        });
+      } else {
+        this.setState({
+          user: user
+        });
+      }
+
+      var details = this.props.location.details;
+
+      if (!details) {
+        this.setState({
+          logout: true
+        });
+      } else {
+        this.setState({
+          details: details,
+          doctorId: details.doctorId
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var slotArray, slots;
+
+      if (this.state.details.timeSlot) {
+        slotArray = JSON.parse(this.state.details.timeSlot);
+        slots = slotArray.map(function (timeItem) {
+          return _this2.state.timeSlot == timeItem ? _react.default.createElement("div", {
+            className: "grid-time-slot green-slot",
+            onClick: function onClick() {
+              return _this2.setState({
+                timeSlot: ''
+              });
+            }
+          }, timeItem) : _react.default.createElement("div", {
+            className: "grid-time-slot",
+            onClick: function onClick() {
+              return _this2.setState({
+                timeSlot: timeItem
+              });
+            }
+          }, timeItem);
+        });
+      }
+
+      var workingDays;
+
+      if (this.state.details.days) {
+        workingDays = JSON.parse(this.state.details.days).map(function (day, index) {
+          return index == JSON.parse(_this2.state.details.days).length - 1 ? _react.default.createElement("span", {
+            className: "text-20-500 margin-left-10px"
+          }, day) : _react.default.createElement("span", {
+            className: "text-20-500 margin-left-10px"
+          }, day, " |");
+        });
+      } // console.log(this.state.date.getDayName());
+
+
+      var date = this.state.date.getDate() + "-" + parseInt(this.state.date.getMonth() + 1) + "-" + this.state.date.getFullYear();
+      console.log(date);
+      return _react.default.createElement("div", {
+        className: "App"
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("br", null), _react.default.createElement("p", {
+        className: "text-22-700 margin-left-5"
+      }, this.state.details.name, " (", this.state.details.doctorType, ")"), _react.default.createElement("p", {
+        className: "text-20-500 margin-left-5"
+      }, "Address : ", this.state.details.address), _react.default.createElement("p", {
+        className: "text-20-500 margin-left-5"
+      }, "Working Days : ", workingDays), _react.default.createElement("p", {
+        className: "text-20-500 margin-left-5"
+      }, "Charge for an appointment : Rs. ", this.state.details.cash), _react.default.createElement("p", {
+        className: "text-20-500 margin-left-5"
+      }, "Token Validity : ", this.state.details.validity, " days"), _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Book your Time Slot !"), _react.default.createElement("div", {
+        className: "border-box-booking"
+      }, _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter valid token number of last appointment",
+        value: this.state.token,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            token: event.target.value,
+            name: '',
+            age: ''
+          });
+        },
+        className: "clinicDetails  booking-input"
+      })), _react.default.createElement("p", {
+        className: "text-16-300 text-center"
+      }, "Or"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter your Name",
+        value: this.state.name,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            token: '',
+            name: event.target.value
+          });
+        },
+        className: "clinicDetails booking-input"
+      })), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter your Age",
+        value: this.state.age,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            token: '',
+            age: event.target.value
+          });
+        },
+        className: "clinicDetails booking-input"
+      }))), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("span", {
+        className: "text-16-300 margin-left-5"
+      }, "Choose your appointment date -  "), _react.default.createElement(_reactDatePicker.default, {
+        onChange: function onChange(date) {
+          return _this2.setState({
+            date: date
+          });
+        },
+        value: this.state.date,
+        clearIcon: null
+      })), _react.default.createElement("p", {
+        className: "text-16-300 text-center"
+      }, "Select your time slot !"), _react.default.createElement("div", {
+        className: "grid-booking"
+      }, slots), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("div", {
+        align: "center"
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        className: "button-submit",
+        onClick: this.Submit
+      }, "Submit")), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("br", null), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/"
+      }) : '');
+    }
+  }]);
+
+  return Booking;
+}(_react.Component);
+
+;
+var _default = Booking;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-date-picker":"../../node_modules/react-date-picker/dist/entry.js"}],"components/OfflineBooking.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Navigation = _interopRequireDefault(require("./Navigation"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _reactDatePicker = _interopRequireDefault(require("react-date-picker"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62271,6 +64008,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+var axios = require('axios');
+
 var Booking = /*#__PURE__*/function (_Component) {
   _inherits(Booking, _Component);
 
@@ -62290,56 +64029,124 @@ var Booking = /*#__PURE__*/function (_Component) {
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
       user: null,
       logout: false,
-      details: {}
+      details: {},
+      token: '',
+      name: '',
+      age: '',
+      date: new Date(),
+      timeSlot: '',
+      doctorId: ''
     }, _temp));
   }
 
   _createClass(Booking, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var user = JSON.parse(localStorage.getItem('user'));
-
-      if (!user) {
-        this.setState({
-          logout: true
-        });
-      } else {
-        this.setState({
-          user: user
-        });
-      }
-
-      var details = this.props.location.details;
-
-      if (!details) {
-        this.setState({
-          logout: true
-        });
-      } else {
-        this.setState({
-          details: details
-        });
-      }
-    }
-  }, {
     key: "render",
+    // componentDidMount() {
+    //     let user = JSON.parse(localStorage.getItem('user'))
+    //     if(!user){
+    //         this.setState({ logout : true });
+    //     }else{
+    //         this.setState({ user : user });
+    //     }
+    //     let details = this.props.location.details;
+    //     if(!details){
+    //         this.setState({ logout : true });
+    //     }else{
+    //         this.setState({ details : details , doctorId : details.doctorId });
+    //     }
+    //     console.log(this.state.date.setDate(this.state.date.getDate() + 30));
+    // }
+    // Submit = () => {
+    //     if(this.state.token){
+    //         this.oldBooking();
+    //     }else{
+    //         this.newBooking();
+    //     }
+    // }
+    // newBooking = async () => {
+    //     if(!this.state.name){
+    //         alert("Please enter a Name !");
+    //         return;
+    //     }
+    //     if(!this.state.age) {
+    //         alert("Please enter an Age !");
+    //         return;
+    //     }
+    //     if(!this.state.timeSlot) {
+    //         alert("Please select a time slot !");
+    //         return;
+    //     }
+    //     let dd = ( Math.floor(this.state.date.getDate()/10) == 0 ? ('0' + this.state.date.getDate()) : this.state.date.getDate());
+    //     let mm = (Math.floor(parseInt(this.state.date.getMonth()+1)/10) == 0 ? ('0' + parseInt(this.state.date.getMonth()+1)) : parseInt(this.state.date.getMonth()+1));
+    //     let y = this.state.date.getFullYear()%10;
+    //     let token = "O" + dd + mm + y + this.state.doctorId;
+    //     console.log("Token Number " + token);
+    //     try {
+    //         await axios.post(window.location.protocol
+    //         + '//'
+    //         + window.location.hostname
+    //         + ":"
+    //         + window.location.port
+    //         + '/api/patient/book' , {
+    //             name : this.state.name,
+    //             age : this.state.age,
+    //             doctorId : this.state.doctorId,
+    //             timeSlot : this.state.timeSlot,
+    //             token : token,
+    //             date : this.state.date.getDate() + "-"+ parseInt(this.state.date.getMonth()+1) +"-"+this.state.date.getFullYear(),
+    //             email : this.state.user.email
+    //         })
+    //         .then(res => {
+    //             alert("Sucess !")
+    //         })
+    //     }catch(error){
+    //         alert(error);
+    //     }
+    // }
     value: function render() {
-      var slotArray;
+      var _this2 = this;
 
-      if (this.state.details.timeSlot) {
-        slotArray = JSON.parse(this.state.details.timeSlot);
-        console.log(slotArray);
-        var slots;
-        slots = slotArray.map(function (timeItem) {
-          return _react.default.createElement("span", null, _react.default.createElement(_reactBootstrap.Button, {
-            className: "admin-buttons-start-s"
-          }, timeItem));
-        });
-      }
-
-      return _react.default.createElement("div", null, _react.default.createElement(_Navigation.default, null), _react.default.createElement("div", null, _react.default.createElement("h1", null, "Select a time slot and Book !")), _react.default.createElement("div", null, slotArray), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
-        to: "/"
-      }) : '');
+      return _react.default.createElement("div", {
+        className: "border-box-booking"
+      }, _react.default.createElement("p", {
+        className: "text-20-500 text-center"
+      }, "Offline Booking"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter valid token number of last appointment",
+        value: this.state.token,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            token: event.target.value,
+            name: '',
+            age: ''
+          });
+        },
+        className: "clinicDetails  booking-input"
+      })), _react.default.createElement("p", {
+        className: "text-16-300 text-center"
+      }, "Or"), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter your Name",
+        value: this.state.name,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            token: '',
+            name: event.target.value
+          });
+        },
+        className: "clinicDetails booking-input"
+      })), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Enter your Age",
+        value: this.state.age,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            token: '',
+            age: event.target.value
+          });
+        },
+        className: "clinicDetails booking-input"
+      })));
     }
   }]);
 
@@ -62349,7 +64156,257 @@ var Booking = /*#__PURE__*/function (_Component) {
 ;
 var _default = Booking;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-date-picker":"../../node_modules/react-date-picker/dist/entry.js"}],"components/HomeDoctor.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Navigation = _interopRequireDefault(require("./Navigation"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _OfflineBooking = _interopRequireDefault(require("./OfflineBooking"));
+
+var _reactDatePicker = _interopRequireDefault(require("react-date-picker"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var localStorage = require('localStorage');
+
+var axios = require('axios');
+
+var HomeDoctor = /*#__PURE__*/function (_Component) {
+  _inherits(HomeDoctor, _Component);
+
+  var _super = _createSuper(HomeDoctor);
+
+  function HomeDoctor() {
+    var _this;
+
+    var _temp;
+
+    _classCallCheck(this, HomeDoctor);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      user: null,
+      logout: false,
+      date: new Date(),
+      myClinic: {},
+      registered: 0,
+      listLoaded: false,
+      booking: []
+    }, _this.getListByDate = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(myClinic) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/doctor/bookingByDate', {
+                  doctorId: myClinic.doctorId,
+                  date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear()
+                }).then(function (res) {
+                  console.log(res.data.booking);
+
+                  _this.setState({
+                    listLoaded: true,
+                    booking: res.data.booking
+                  });
+                }).catch(function (error) {
+                  console.log(error);
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }(), _this.bookingByTimeSlot = function (timeSlot) {
+      var list = _this.state.booking.filter(function (slot) {
+        return slot.timeSlot == timeSlot;
+      });
+
+      var booking = list.map(function (book) {
+        console.log(book.name + " " + book.timeSlot);
+        return _react.default.createElement("div", {
+          className: "hd-book-list"
+        }, book.visited ? _react.default.createElement("span", {
+          className: "hd-book-token hd-book-visited"
+        }, "Token - ", book.token) : _react.default.createElement("span", {
+          className: "hd-book-token hd-book-not-visited"
+        }, "Token - ", book.token), _react.default.createElement("span", {
+          className: "hd-book-name"
+        }, book.name), _react.default.createElement("span", {
+          className: "hd-book-name"
+        }, book.age, " years"), _react.default.createElement("span", {
+          className: "hd-book-name"
+        }));
+      });
+      return booking;
+    }, _temp));
+  }
+
+  _createClass(HomeDoctor, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var _this2 = this;
+
+        var user;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                user = JSON.parse(localStorage.getItem('user'));
+
+                if (!user) {
+                  this.setState({
+                    logout: true
+                  });
+                } else {
+                  this.setState({
+                    user: user
+                  });
+                }
+
+                _context2.next = 4;
+                return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/doctor/myClinic', {
+                  email: user.email
+                }).then(function (res) {
+                  console.log(res.data.clinic);
+
+                  if (res.data.clinic) {
+                    _this2.setState({
+                      myClinic: res.data.clinic,
+                      registered: 2
+                    });
+
+                    _this2.getListByDate(res.data.clinic);
+                  } else {
+                    _this2.setState({
+                      registered: 1
+                    });
+                  }
+                }).catch(function (error) {
+                  console.log(error);
+                });
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var slotArray, slots;
+
+      if (this.state.myClinic.timeSlot) {
+        slotArray = JSON.parse(this.state.myClinic.timeSlot);
+        console.log(slotArray);
+        slots = slotArray.map(function (timeItem) {
+          return _react.default.createElement("div", {
+            className: "hd-time-slot"
+          }, _react.default.createElement("p", {
+            className: "hd-time-slot-p"
+          }, timeItem), _this3.bookingByTimeSlot(timeItem));
+        });
+      }
+
+      return _react.default.createElement("div", {
+        className: "App"
+      }, _react.default.createElement(_Navigation.default, null), this.state.registered == 0 && _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Please Wait !!"), this.state.registered == 1 && _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Register your Clinic from Clinic Details Tab !!"), this.state.registered == 2 && _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Appointment Details !!"), this.state.registered == 2 && _react.default.createElement("div", null, _react.default.createElement(_OfflineBooking.default, null), _react.default.createElement("br", null), _react.default.createElement("span", {
+        className: "text-16-300 margin-left-5"
+      }, "Choose Date -  "), _react.default.createElement(_reactDatePicker.default, {
+        onChange: function onChange(date) {
+          _this3.setState({
+            date: date
+          });
+
+          _this3.getListByDate();
+        },
+        value: this.state.date,
+        clearIcon: null
+      })), this.state.registered == 2 && this.state.listLoaded && _react.default.createElement("div", null, _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "hd-time-list"
+      }, slots)), this.state.registered == 2 && !this.state.listLoaded && _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Please Wait, we are Loading ..."), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/"
+      }) : '');
+    }
+  }]);
+
+  return HomeDoctor;
+}(_react.Component);
+
+var _default = HomeDoctor;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","./OfflineBooking":"components/OfflineBooking.js","react-date-picker":"../../node_modules/react-date-picker/dist/entry.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -62383,6 +64440,8 @@ var _updatePassword = _interopRequireDefault(require("./components/updatePasswor
 var _ClinicDetails = _interopRequireDefault(require("./components/ClinicDetails"));
 
 var _Booking = _interopRequireDefault(require("./components/Booking"));
+
+var _HomeDoctor = _interopRequireDefault(require("./components/HomeDoctor"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62423,8 +64482,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 }), _react.default.createElement(_reactRouterDom.Route, {
   path: "/Booking",
   component: _Booking.default
+}), _react.default.createElement(_reactRouterDom.Route, {
+  path: "/HomeDoctor",
+  component: _HomeDoctor.default
 }))), document.getElementById('root'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./index.css":"index.css","./components/App":"components/App.js","./components/Login":"components/Login.js","./components/SignIn":"components/SignIn.js","./components/AddTask":"components/AddTask.js","./components/ViewTask":"components/ViewTask.js","./components/Home":"components/Home.js","./components/updateName":"components/updateName.js","./components/updatePassword":"components/updatePassword.js","./components/ClinicDetails":"components/ClinicDetails.js","./components/Booking":"components/Booking.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./index.css":"index.css","./components/App":"components/App.js","./components/Login":"components/Login.js","./components/SignIn":"components/SignIn.js","./components/AddTask":"components/AddTask.js","./components/ViewTask":"components/ViewTask.js","./components/Home":"components/Home.js","./components/updateName":"components/updateName.js","./components/updatePassword":"components/updatePassword.js","./components/ClinicDetails":"components/ClinicDetails.js","./components/Booking":"components/Booking.js","./components/HomeDoctor":"components/HomeDoctor.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -62452,11 +64514,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-<<<<<<< HEAD
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60281" + '/');
-=======
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62331" + '/');
->>>>>>> ae95160e240320cd4071d67db9f4064e19613051
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57096" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

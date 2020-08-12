@@ -1,11 +1,39 @@
 const router = require('express').Router();
 const Task = require('../models/Task');
+
 const Clinic = require('../models/Clinic');
 const User = require('../models/User');
+const Booking = require('../models/Booking');
+const Admin = require('../models/Admin');
+
 const jwt = require('jsonwebtoken');
 // const verify = require('./verifyToken');
 
 router.post('/clinicDetails', async (req,res) => {
+
+    let admin
+    try{
+        admin = await Admin.findOne({ auth : "admin" });
+    }catch(error){
+        res.status(400).send(err);
+    }
+
+    let currDoctorId = admin.doctorCount;
+
+    let doctorId;
+    if(admin.doctorCount[1] == 'Z'){
+        doctorId = String.fromCharCode(admin.doctorCount.charCodeAt(0) + 1) + 'A';
+    }else{
+        doctorId = admin.doctorCount[0] + String.fromCharCode(admin.doctorCount.charCodeAt(1) + 1);
+    }
+
+    try{
+        await admin.updateOne({ doctorCount : doctorId });
+    }catch(err){
+        res.status(400).send(err);
+    }
+
+    console.log(req.body.validity);
 
     const data = new Clinic({
         address : req.body.address,
@@ -15,84 +43,34 @@ router.post('/clinicDetails', async (req,res) => {
         openTime : req.body.openTime,
         closeTime : req.body.closeTime,
         category : 'Clinic',
-        name : req.body.name
+        name : req.body.name,
+        doctorType : req.body.doctorType,
+        doctorId : currDoctorId,
+        validity : req.body.validity,
+        email : req.body.email
     })
 
     console.log(data);
 
     try{
         const savedClinic = await data.save();
-        res.send({ data : data });
+        res.send({ data : savedClinic });
     }catch(err){
         res.status(400).send(err);
     }
 })
 
-router.post('/addTask', async (req,res) => {
+router.post('/myClinic', async (req,res) => {
+    console.log(req.body.email);
+    const clinic = await Clinic.findOne({ category : 'Clinic', email : req.body.email });
+    res.send({ clinic : clinic });
+})
 
-    // Set userId to _id of user
-    let userId;
-    try{
-        userId = jwt.verify(req.body.userId , process.env.TOKEN_SECRET)._id;
-    }catch(err){
-        res.status(400).send("Invalid Token");
-    }
-
-    // Create a new task object
-    const task = new Task({
-        description : req.body.description,
-        comments : req.body.comments,
-        startTime : req.body.startTime,
-        endTime : req.body.endTime,
-        typeTask : req.body.typeTask,
-        userId : userId,
-        status : req.body.status
-    });
-
-    console.log(task);
-
-    // Save the task object to DB
-    try{
-        const savedTask = await task.save();
-        res.send({ task : savedTask});
-    }catch(err){
-        res.status(400).send(err);
-    }
-});
-
-router.post('/viewTask', async (req,res) => {
-
-    console.log(req.body);
-
-    // Derive _id of user from token
-    let userId;
-    try{
-        userId = jwt.verify(req.body.userId , process.env.TOKEN_SECRET)._id;
-    }catch(err){
-        res.status(400).send("Invalid Token");
-    }
-
-    console.log(userId);
-
-    let task = [];
-    if(!req.body.typeTask && !req.body.status){
-        task = await Task.find({ userId : userId });
-        console.log(task);
-        res.send({ tasks : task});
-    }else if(req.body.typeTask && !req.body.status){
-        task = await Task.find({ userId : userId , typeTask : req.body.typeTask });
-        console.log(task);
-        res.send({ tasks : task});
-    }else if(!req.body.typeTask && req.body.status){
-        task = await Task.find({ userId : userId , status : req.body.status });
-        console.log(task);
-        res.send({ tasks : task});
-    }else{
-        task = await Task.find({ userId : userId , typeTask : req.body.typeTask , status : req.body.status });
-        console.log(task);
-        res.send({ tasks : task});
-    }
-});
+router.post('/bookingByDate', async (req,res) => {
+    console.log(req.body.date);
+    const booking = await Booking.find({ doctorId : req.body.doctorId, appointmentDate : req.body.date });
+    res.send({ booking : booking });
+})
 
 router.post('/update', async (req,res) => {
 

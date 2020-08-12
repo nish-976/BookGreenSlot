@@ -13,14 +13,14 @@ class Navigation1 extends Component {
         //     this.setState({ redirect : true });
         // }
     }
-    
+
     render() {
         return (
 
 <nav className="navbar navbar-inverse">
   <div className="container-fluid">
     <div className="navbar-header">
-      <span className="navbar-brand">Book Green Slot</span>
+      <span className="navbar-brand"><Link to="/">Book Green Slot</Link></span>
     </div>
     <ul className="nav navbar-nav navbar-right">
     <li><a href="/SignIn"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
