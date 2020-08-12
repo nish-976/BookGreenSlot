@@ -90,7 +90,7 @@ class SignIn extends Component {
                 <img className="leftImage" src={girlphone} />
             </div>
             <div className="signInRootRight">
-            
+
                 <div className='AddTask'>
                     <br />
                     <img className="aboveLogin" src={user} />
@@ -99,37 +99,37 @@ class SignIn extends Component {
                     <FormGroup>
                         <FormControl
                             placeholder='Name'
-                            value={this.state.name} 
+                            value={this.state.name}
                             onChange={this.updateName}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
                     <FormGroup>
-                        <FormControl 
+                        <FormControl
                             type="email"
                             placeholder='Email Address'
-                            value={this.state.email} 
+                            value={this.state.email}
                             onChange={this.updateEmail}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
                     <FormGroup>
-                        <FormControl 
+                        <FormControl
                             type="password"
                             placeholder='Password'
-                            value={this.state.password} 
+                            value={this.state.password}
                             onChange={this.updatePassword}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
                     <FormGroup className="lastInputBox">
-                        <FormControl 
+                        <FormControl
                             type="password"
                             placeholder='Confirm Password'
-                            value={this.state.cpassword} 
+                            value={this.state.cpassword}
                             onChange={this.updateCPassword}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
 
                     <label className="label">You are a :  </label>
@@ -151,7 +151,7 @@ class SignIn extends Component {
                 <Footer />
 
             </div>
-        
+
         );
     }
 };
