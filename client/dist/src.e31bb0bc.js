@@ -33432,9 +33432,21 @@ var Footer = /*#__PURE__*/function (_Component) {
       return _react.default.createElement("div", {
         className: "footer"
       }, _react.default.createElement("div", {
-        className: "floatRight"
-      }, _react.default.createElement("div", {
         className: "footercontentSocial"
+      }, _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("img", {
+        src: _facebook.default
+      })), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("img", {
+        src: _instagram.default
+      })), _react.default.createElement("span", {
+        className: "letsSee"
+      }, _react.default.createElement("img", {
+        src: _twitter.default
+      }))), _react.default.createElement("div", {
+        className: "footercontent"
       }, _react.default.createElement("span", {
         className: "letsSee"
       }, _react.default.createElement("p", {
@@ -33455,7 +33467,7 @@ var Footer = /*#__PURE__*/function (_Component) {
         className: "letsSee"
       }, _react.default.createElement("p", {
         className: "footerLinks"
-      }, "FAQ")))));
+      }, "FAQ"))));
     }
   }]);
 
@@ -50856,7 +50868,7 @@ var Login = /*#__PURE__*/function (_Component) {
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
       email: '',
       password: '',
-      redirect: false,
+      redirect: 0,
       loading: false,
       error: false
     }, _this.updateEmail = function (event) {
@@ -50885,10 +50897,17 @@ var Login = /*#__PURE__*/function (_Component) {
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('user', JSON.stringify(res.data.user));
 
-                _this.setState({
-                  loading: false,
-                  redirect: true
-                });
+                if (res.data.user.category == 'Patient') {
+                  _this.setState({
+                    loading: false,
+                    redirect: 1
+                  });
+                } else {
+                  _this.setState({
+                    loading: false,
+                    redirect: 2
+                  });
+                }
               }).catch(function (error) {
                 _this.setState({
                   loading: false,
@@ -50911,9 +50930,15 @@ var Login = /*#__PURE__*/function (_Component) {
       var user = JSON.parse(localStorage.getItem('user'));
 
       if (user) {
-        this.setState({
-          redirect: true
-        });
+        if (user.category == 'Patient') {
+          this.setState({
+            redirect: 1
+          });
+        } else {
+          this.setState({
+            redirect: 2
+          });
+        }
       }
     }
   }, {
@@ -50957,8 +50982,10 @@ var Login = /*#__PURE__*/function (_Component) {
         className: "flashMessage"
       }, "Wait .... We are processing ..") : '', this.state.error ? _react.default.createElement("div", {
         className: "flashMessage"
-      }, "Error !! Email or Password is not correct !!") : '', this.state.redirect ? _react.default.createElement(_reactRouterDom.Redirect, {
+      }, "Error !! Email or Password is not correct !!") : '', this.state.redirect == 1 ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/home"
+      }) : '', this.state.redirect == 2 ? _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/HomeDoctor"
       }) : ''))), _react.default.createElement(_Footer.default, null));
     }
   }]);
@@ -51520,6 +51547,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var localStorage = require('localStorage');
 
+var category;
+
 var Navigation = /*#__PURE__*/function (_Component) {
   _inherits(Navigation, _Component);
 
@@ -51559,6 +51588,7 @@ var Navigation = /*#__PURE__*/function (_Component) {
           logout: true
         });
       } else {
+        category = user.category;
         this.setState({
           user: user
         });
@@ -51577,15 +51607,15 @@ var Navigation = /*#__PURE__*/function (_Component) {
         className: "navbar-brand"
       }, "Book Green Slot")), _react.default.createElement("ul", {
         className: "nav navbar-nav navbar-right"
-      }, _react.default.createElement("li", null, _react.default.createElement("a", {
-        href: "/Home"
-      }, _react.default.createElement("span", {
-        className: "glyphicon glyphicon-home"
-      }), " Home")), _react.default.createElement("li", null, _react.default.createElement("a", {
+      }, category == 'Doctor' ? _react.default.createElement("li", null, _react.default.createElement("a", {
         href: "/HomeDoctor"
       }, _react.default.createElement("span", {
         className: "glyphicon glyphicon-home"
-      }), " HomeD")), _react.default.createElement("li", null, _react.default.createElement("a", {
+      }), "Home")) : _react.default.createElement("li", null, _react.default.createElement("a", {
+        href: "/Home"
+      }, _react.default.createElement("span", {
+        className: "glyphicon glyphicon-home"
+      }), " Home")), category == 'Doctor' && _react.default.createElement("li", null, _react.default.createElement("a", {
         href: "/ClinicDetails"
       }, _react.default.createElement("span", {
         className: "glyphicon glyphicon-tasks"
@@ -61788,7 +61818,8 @@ var Home = /*#__PURE__*/function (_Component) {
 
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
       user: null,
-      logout: false
+      logout: false,
+      isLoaded: false
     }, _temp));
   }
 
@@ -61820,7 +61851,8 @@ var Home = /*#__PURE__*/function (_Component) {
                   console.log(res.data.Doctors);
 
                   _this2.setState({
-                    doctors: res.data.Doctors
+                    doctors: res.data.Doctors,
+                    isLoaded: true
                   });
                 }).catch(function (error) {
                   console.log(error);
@@ -61886,9 +61918,11 @@ var Home = /*#__PURE__*/function (_Component) {
         className: "App"
       }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("p", {
         className: "home-header-text"
-      }, "Make an Appointment !"), _react.default.createElement("div", {
+      }, "Make an Appointment !"), this.state.isLoaded ? _react.default.createElement("div", {
         className: "grid-doctorList"
-      }, doctors), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+      }, doctors) : _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Loading .... "), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/"
       }) : '');
     }
@@ -64732,6 +64766,8 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _OfflineBooking = _interopRequireDefault(require("./OfflineBooking"));
 
+var _Footer = _interopRequireDefault(require("./Footer"));
+
 var _reactDatePicker = _interopRequireDefault(require("react-date-picker"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -65019,7 +65055,7 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
 
 var _default = HomeDoctor;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","./OfflineBooking":"components/OfflineBooking.js","react-date-picker":"../../node_modules/react-date-picker/dist/entry.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","./OfflineBooking":"components/OfflineBooking.js","./Footer":"components/Footer.js","react-date-picker":"../../node_modules/react-date-picker/dist/entry.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

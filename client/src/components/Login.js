@@ -14,7 +14,7 @@ class Login extends Component {
     state = {
         email : '',
         password : '',
-        redirect : false,
+        redirect : 0,
         loading : false,
         error : false
     };
@@ -42,7 +42,11 @@ class Login extends Component {
             .then(res => {
                 localStorage.setItem('token',res.data.token);
                 localStorage.setItem('user',JSON.stringify(res.data.user));
-                this.setState({ loading : false , redirect : true });
+                if(res.data.user.category == 'Patient'){
+                    this.setState({ loading : false , redirect : 1 });
+                }else{
+                    this.setState({ loading : false , redirect : 2 });
+                }
             })
             .catch(error => {
                 this.setState({ loading : false , error : true });
@@ -52,7 +56,11 @@ class Login extends Component {
     componentDidMount() {
         let user = JSON.parse(localStorage.getItem('user'))
         if(user){
-            this.setState({ redirect : true });
+            if(user.category == 'Patient'){
+                this.setState({ redirect : 1 });
+            }else{
+                this.setState({ redirect : 2 });
+            }
         }
     }
 
@@ -60,7 +68,7 @@ class Login extends Component {
         // console.log('this.state', this.state);
         return(
             <div>
-                
+
                 <Navigation1 />
                 <div className="login">
                 <div className="signInRootLeft" >
@@ -71,37 +79,38 @@ class Login extends Component {
                     <br />
                     <img className="aboveLogin" src={user} />
                     <p className="createAccountText">Login Form </p>
-                    
+
                     <FormGroup>
-                        <FormControl 
+                        <FormControl
                             type="email"
                             placeholder='Email Address'
-                            value={this.state.email} 
+                            value={this.state.email}
                             onChange={this.updateEmail}
                             className="inputBox"
-                        /> 
-                        
+                        />
+
                     </FormGroup>
                     <FormGroup>
-                        <FormControl 
+                        <FormControl
                             type="password"
                             placeholder='Password'
-                            value={this.state.password} 
+                            value={this.state.password}
                             onChange={this.updatePassword}
                             className="inputBox"
-                        /> 
+                        />
                     </FormGroup>
-                
+
                     <div align='center'>
                         <Button className = 'button' onClick={this.loginRequest}>Login</Button>
                     </div>
 
                     {this.state.loading ? <div className="flashMessage">Wait .... We are processing ..</div> : ''}
                     {this.state.error ? <div className="flashMessage">Error !! Email or Password is not correct !!</div> : ''}
-                    {this.state.redirect ? <Redirect to='/home'></Redirect> : '' }
+                    {this.state.redirect == 1 ? <Redirect to='/home'></Redirect> : '' }
+                    {this.state.redirect == 2 ? <Redirect to='/HomeDoctor'></Redirect> : '' }
                 </div>
 
-               
+
                 </div>
             </div>
                 <Footer />

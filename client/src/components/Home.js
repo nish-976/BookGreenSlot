@@ -11,7 +11,8 @@ import doctorImage from '../assets/doctor.png'
 class Home extends Component {
     state = {
         user : null,
-        logout : false
+        logout : false,
+        isLoaded : false
     };
 
     async componentDidMount() {
@@ -32,7 +33,7 @@ class Home extends Component {
             )
         .then(res => {
             console.log(res.data.Doctors);
-            this.setState({ doctors : res.data.Doctors });
+            this.setState({ doctors : res.data.Doctors, isLoaded : true });
         })
         .catch(error => {
             console.log(error);
@@ -103,9 +104,12 @@ class Home extends Component {
 
                 <p className="home-header-text">Make an Appointment !</p>
 
+                {this.state.isLoaded ?
                 <div className="grid-doctorList">
                     {doctors}
                 </div>
+                :
+                <p className="home-header-text">Loading .... </p>}
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
             </div>

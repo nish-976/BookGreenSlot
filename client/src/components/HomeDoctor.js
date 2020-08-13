@@ -8,6 +8,7 @@ const localStorage = require('localStorage');
 const axios = require('axios');
 
 import OfflineBooking from './OfflineBooking';
+import Footer from './Footer';
 
 import DatePicker from 'react-date-picker';
 
@@ -183,6 +184,8 @@ class HomeDoctor extends Component {
                 {this.state.registered == 2 && !this.state.listLoaded &&
                     <p className="home-header-text">Please Wait, we are Loading ...</p>
                 }
+
+                {/* <Footer /> */}
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
             </div>
