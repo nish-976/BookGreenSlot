@@ -33157,7 +33157,7 @@ var Navigation1 = /*#__PURE__*/function (_Component) {
       }, _react.default.createElement("span", {
         className: "glyphicon glyphicon-user"
       }), " Sign Up")), _react.default.createElement("li", null, _react.default.createElement("a", {
-        href: "/AboutUs"
+        href: "/Login"
       }, _react.default.createElement("span", {
         className: "glyphicon glyphicon-log-in"
       }), " Login")))))
@@ -33321,7 +33321,7 @@ module.exports = "/doc.07045551.png";
 },{}],"assets/login.png":[function(require,module,exports) {
 module.exports = "/login.748995fe.png";
 },{}],"assets/pay.png":[function(require,module,exports) {
-module.exports = "/2c9c25a17a9c47ede4f3f5d27c98b1a3.png";
+module.exports = "/pay.7c98b1a3.png";
 },{}],"assets/time.png":[function(require,module,exports) {
 module.exports = "/time.498c72c6.png";
 },{}],"assets/appointment.png":[function(require,module,exports) {
@@ -64150,37 +64150,86 @@ var Booking = /*#__PURE__*/function (_Component) {
       } else {
         _this.newBooking();
       }
-    }, _this.newBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    }, _this.oldBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
       var dd, mm, y, token;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (_this.state.name) {
-                _context.next = 3;
-                break;
-              }
-
-              alert("Please enter a Name !");
-              return _context.abrupt("return");
-
-            case 3:
-              if (_this.state.age) {
-                _context.next = 6;
-                break;
-              }
-
-              alert("Please enter an Age !");
-              return _context.abrupt("return");
-
-            case 6:
               if (_this.state.timeSlot) {
-                _context.next = 9;
+                _context.next = 3;
                 break;
               }
 
               alert("Please select a time slot !");
               return _context.abrupt("return");
+
+            case 3:
+              dd = Math.floor(_this.state.date.getDate() / 10) == 0 ? '0' + _this.state.date.getDate() : _this.state.date.getDate();
+              mm = Math.floor(parseInt(_this.state.date.getMonth() + 1) / 10) == 0 ? '0' + parseInt(_this.state.date.getMonth() + 1) : parseInt(_this.state.date.getMonth() + 1);
+              y = _this.state.date.getFullYear() % 10;
+              token = "L" + dd + mm + y + _this.state.doctorId;
+              console.log("Token Number " + token);
+              _context.prev = 8;
+              _context.next = 11;
+              return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/old-book', {
+                timeSlot: _this.state.timeSlot,
+                oldToken: _this.state.token,
+                doctorId: _this.state.doctorId,
+                token: token,
+                date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear(),
+                email: _this.state.user.email
+              }).then(function (res) {
+                alert("Success !");
+              });
+
+            case 11:
+              _context.next = 17;
+              break;
+
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context["catch"](8);
+              console.log(_context.t0);
+              alert('Please enter valid token number');
+
+            case 17:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[8, 13]]);
+    })), _this.newBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+      var dd, mm, y, token;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (_this.state.name) {
+                _context2.next = 3;
+                break;
+              }
+
+              alert("Please enter a Name !");
+              return _context2.abrupt("return");
+
+            case 3:
+              if (_this.state.age) {
+                _context2.next = 6;
+                break;
+              }
+
+              alert("Please enter an Age !");
+              return _context2.abrupt("return");
+
+            case 6:
+              if (_this.state.timeSlot) {
+                _context2.next = 9;
+                break;
+              }
+
+              alert("Please select a time slot !");
+              return _context2.abrupt("return");
 
             case 9:
               dd = Math.floor(_this.state.date.getDate() / 10) == 0 ? '0' + _this.state.date.getDate() : _this.state.date.getDate();
@@ -64188,8 +64237,8 @@ var Booking = /*#__PURE__*/function (_Component) {
               y = _this.state.date.getFullYear() % 10;
               token = "O" + dd + mm + y + _this.state.doctorId;
               console.log("Token Number " + token);
-              _context.prev = 14;
-              _context.next = 17;
+              _context2.prev = 14;
+              _context2.next = 17;
               return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/book', {
                 name: _this.state.name,
                 age: _this.state.age,
@@ -64199,24 +64248,24 @@ var Booking = /*#__PURE__*/function (_Component) {
                 date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear(),
                 email: _this.state.user.email
               }).then(function (res) {
-                alert("Sucess !");
+                alert("Success !");
               });
 
             case 17:
-              _context.next = 22;
+              _context2.next = 22;
               break;
 
             case 19:
-              _context.prev = 19;
-              _context.t0 = _context["catch"](14);
-              alert(_context.t0);
+              _context2.prev = 19;
+              _context2.t0 = _context2["catch"](14);
+              alert(_context2.t0);
 
             case 22:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee, null, [[14, 19]]);
+      }, _callee2, null, [[14, 19]]);
     })), _temp));
   }
 
@@ -64400,6 +64449,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -64439,85 +64492,163 @@ var Booking = /*#__PURE__*/function (_Component) {
     }
 
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
-      user: null,
-      logout: false,
-      details: {},
       token: '',
       name: '',
       age: '',
       date: new Date(),
-      timeSlot: '',
-      doctorId: ''
-    }, _temp));
-  }
+      timeSlot: JSON.parse(_this.props.timeSlot)[0],
+      doctorId: _this.props.doctorId
+    }, _this.Submit = function () {
+      if (_this.state.token) {
+        _this.oldBooking();
+      } else {
+        _this.newBooking();
+      }
+    }, _this.newBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var dd, mm, y, token;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (_this.state.name) {
+                _context.next = 3;
+                break;
+              }
+
+              alert("Please enter a Name !");
+              return _context.abrupt("return");
+
+            case 3:
+              if (_this.state.age) {
+                _context.next = 6;
+                break;
+              }
+
+              alert("Please enter an Age !");
+              return _context.abrupt("return");
+
+            case 6:
+              if (_this.state.timeSlot) {
+                _context.next = 9;
+                break;
+              }
+
+              alert("Please select a time slot !");
+              return _context.abrupt("return");
+
+            case 9:
+              dd = Math.floor(_this.state.date.getDate() / 10) == 0 ? '0' + _this.state.date.getDate() : _this.state.date.getDate();
+              mm = Math.floor(parseInt(_this.state.date.getMonth() + 1) / 10) == 0 ? '0' + parseInt(_this.state.date.getMonth() + 1) : parseInt(_this.state.date.getMonth() + 1);
+              y = _this.state.date.getFullYear() % 10;
+              token = "F" + dd + mm + y + _this.state.doctorId;
+              console.log("Token Number " + token);
+              _context.prev = 14;
+              _context.next = 17;
+              return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/book', {
+                name: _this.state.name,
+                age: _this.state.age,
+                doctorId: _this.state.doctorId,
+                timeSlot: _this.state.timeSlot,
+                token: token,
+                date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear(),
+                email: _this.props.email
+              }).then(function (res) {
+                alert("Sucess !");
+              });
+
+            case 17:
+              _context.next = 22;
+              break;
+
+            case 19:
+              _context.prev = 19;
+              _context.t0 = _context["catch"](14);
+              alert(_context.t0);
+
+            case 22:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[14, 19]]);
+    })), _this.oldBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+      var dd, mm, y, token;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (_this.state.timeSlot) {
+                _context2.next = 3;
+                break;
+              }
+
+              alert("Please select a time slot !");
+              return _context2.abrupt("return");
+
+            case 3:
+              dd = Math.floor(_this.state.date.getDate() / 10) == 0 ? '0' + _this.state.date.getDate() : _this.state.date.getDate();
+              mm = Math.floor(parseInt(_this.state.date.getMonth() + 1) / 10) == 0 ? '0' + parseInt(_this.state.date.getMonth() + 1) : parseInt(_this.state.date.getMonth() + 1);
+              y = _this.state.date.getFullYear() % 10;
+              token = "L" + dd + mm + y + _this.state.doctorId;
+              console.log("Token Number " + token);
+              _context2.prev = 8;
+              _context2.next = 11;
+              return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/old-book', {
+                timeSlot: _this.state.timeSlot,
+                oldToken: _this.state.token,
+                doctorId: _this.state.doctorId,
+                token: token,
+                date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear(),
+                email: _this.props.email
+              }).then(function (res) {
+                alert("Success !");
+              });
+
+            case 11:
+              _context2.next = 17;
+              break;
+
+            case 13:
+              _context2.prev = 13;
+              _context2.t0 = _context2["catch"](8);
+              console.log(_context2.t0);
+              alert('Please enter valid token number');
+
+            case 17:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[8, 13]]);
+    })), _temp));
+  } // componentDidMount() {
+  //     let user = JSON.parse(localStorage.getItem('user'))
+  //     if(!user){
+  //         this.setState({ logout : true });
+  //     }else{
+  //         this.setState({ user : user });
+  //     }
+  //     let details = this.props.location.details;
+  //     if(!details){
+  //         this.setState({ logout : true });
+  //     }else{
+  //         this.setState({ details : details , doctorId : details.doctorId });
+  //     }
+  //     console.log(this.state.date.setDate(this.state.date.getDate() + 30));
+  // }
+
 
   _createClass(Booking, [{
     key: "render",
-    // componentDidMount() {
-    //     let user = JSON.parse(localStorage.getItem('user'))
-    //     if(!user){
-    //         this.setState({ logout : true });
-    //     }else{
-    //         this.setState({ user : user });
-    //     }
-    //     let details = this.props.location.details;
-    //     if(!details){
-    //         this.setState({ logout : true });
-    //     }else{
-    //         this.setState({ details : details , doctorId : details.doctorId });
-    //     }
-    //     console.log(this.state.date.setDate(this.state.date.getDate() + 30));
-    // }
-    // Submit = () => {
-    //     if(this.state.token){
-    //         this.oldBooking();
-    //     }else{
-    //         this.newBooking();
-    //     }
-    // }
-    // newBooking = async () => {
-    //     if(!this.state.name){
-    //         alert("Please enter a Name !");
-    //         return;
-    //     }
-    //     if(!this.state.age) {
-    //         alert("Please enter an Age !");
-    //         return;
-    //     }
-    //     if(!this.state.timeSlot) {
-    //         alert("Please select a time slot !");
-    //         return;
-    //     }
-    //     let dd = ( Math.floor(this.state.date.getDate()/10) == 0 ? ('0' + this.state.date.getDate()) : this.state.date.getDate());
-    //     let mm = (Math.floor(parseInt(this.state.date.getMonth()+1)/10) == 0 ? ('0' + parseInt(this.state.date.getMonth()+1)) : parseInt(this.state.date.getMonth()+1));
-    //     let y = this.state.date.getFullYear()%10;
-    //     let token = "O" + dd + mm + y + this.state.doctorId;
-    //     console.log("Token Number " + token);
-    //     try {
-    //         await axios.post(window.location.protocol
-    //         + '//'
-    //         + window.location.hostname
-    //         + ":"
-    //         + window.location.port
-    //         + '/api/patient/book' , {
-    //             name : this.state.name,
-    //             age : this.state.age,
-    //             doctorId : this.state.doctorId,
-    //             timeSlot : this.state.timeSlot,
-    //             token : token,
-    //             date : this.state.date.getDate() + "-"+ parseInt(this.state.date.getMonth()+1) +"-"+this.state.date.getFullYear(),
-    //             email : this.state.user.email
-    //         })
-    //         .then(res => {
-    //             alert("Sucess !")
-    //         })
-    //     }catch(error){
-    //         alert(error);
-    //     }
-    // }
     value: function render() {
       var _this2 = this;
 
+      var slotArray = JSON.parse(this.props.timeSlot);
+      var slots = slotArray.map(function (timeItem) {
+        return _react.default.createElement("option", {
+          value: timeItem
+        }, timeItem);
+      });
       return _react.default.createElement("div", {
         className: "border-box-booking"
       }, _react.default.createElement("p", {
@@ -64558,7 +64689,22 @@ var Booking = /*#__PURE__*/function (_Component) {
           });
         },
         className: "clinicDetails booking-input"
-      })));
+      })), _react.default.createElement("span", {
+        className: "text-16-300 margin-left-5"
+      }, "Choose time slot :  "), _react.default.createElement("select", {
+        onChange: function onChange() {
+          return _this2.setState({
+            timeSlot: event.target.value
+          });
+        },
+        value: this.state.timeSlot,
+        className: "dropdown-time"
+      }, slots), _react.default.createElement("div", {
+        align: "center"
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        className: "button-submit",
+        onClick: this.Submit
+      }, "Book")), _react.default.createElement("br", null));
     }
   }]);
 
@@ -64649,15 +64795,19 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
       listLoaded: false,
       booking: []
     }, _this.getListByDate = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(myClinic) {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(myClinic, date) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.setState({
+                  listLoaded: false
+                });
+
+                _context.next = 3;
                 return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/doctor/bookingByDate', {
                   doctorId: myClinic.doctorId,
-                  date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear()
+                  date: date.getDate() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getFullYear()
                 }).then(function (res) {
                   console.log(res.data.booking);
 
@@ -64669,7 +64819,7 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
                   console.log(error);
                 });
 
-              case 2:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -64677,8 +64827,45 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
         }, _callee);
       }));
 
-      return function (_x) {
+      return function (_x, _x2) {
         return _ref.apply(this, arguments);
+      };
+    }(), _this.bookVisited = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(book) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log(book);
+                _context2.next = 3;
+                return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/doctor/bookingVisited', {
+                  token: book.token
+                }).then(function (res) {
+                  var booking = _this.state.booking;
+
+                  for (var i in booking) {
+                    if (booking[i].token == book.token) {
+                      booking[i].visited = "true";
+                    }
+                  }
+
+                  _this.setState({
+                    booking: booking
+                  });
+                }).catch(function (error) {
+                  console.log(error);
+                });
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x3) {
+        return _ref2.apply(this, arguments);
       };
     }(), _this.bookingByTimeSlot = function (timeSlot) {
       var list = _this.state.booking.filter(function (slot) {
@@ -64687,9 +64874,10 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
 
       var booking = list.map(function (book) {
         console.log(book.name + " " + book.timeSlot);
+        console.log(book.visited == false);
         return _react.default.createElement("div", {
           className: "hd-book-list"
-        }, book.visited ? _react.default.createElement("span", {
+        }, book.visited[0] == 't' ? _react.default.createElement("span", {
           className: "hd-book-token hd-book-visited"
         }, "Token - ", book.token) : _react.default.createElement("span", {
           className: "hd-book-token hd-book-not-visited"
@@ -64697,9 +64885,18 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
           className: "hd-book-name"
         }, book.name), _react.default.createElement("span", {
           className: "hd-book-name"
-        }, book.age, " years"), _react.default.createElement("span", {
+        }, book.age, " years"), book.visited[0] == 'f' ? _react.default.createElement("span", {
           className: "hd-book-name"
-        }));
+        }, _react.default.createElement(_reactBootstrap.Button, {
+          className: "visited-button",
+          onClick: function onClick() {
+            return _this.bookVisited(book);
+          }
+        }, "Visited ?")) : _react.default.createElement("span", {
+          className: "hd-book-name"
+        }, _react.default.createElement("span", {
+          className: "glyphicon glyphicon-ok"
+        })));
       });
       return booking;
     }, _temp));
@@ -64708,13 +64905,13 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
   _createClass(HomeDoctor, [{
     key: "componentDidMount",
     value: function () {
-      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
         var _this2 = this;
 
         var user;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 user = JSON.parse(localStorage.getItem('user'));
 
@@ -64728,7 +64925,7 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
                   });
                 }
 
-                _context2.next = 4;
+                _context3.next = 4;
                 return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/doctor/myClinic', {
                   email: user.email
                 }).then(function (res) {
@@ -64740,7 +64937,7 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
                       registered: 2
                     });
 
-                    _this2.getListByDate(res.data.clinic);
+                    _this2.getListByDate(res.data.clinic, _this2.state.date);
                   } else {
                     _this2.setState({
                       registered: 1
@@ -64752,10 +64949,10 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
 
       function componentDidMount() {
@@ -64791,7 +64988,11 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
         className: "home-header-text"
       }, "Register your Clinic from Clinic Details Tab !!"), this.state.registered == 2 && _react.default.createElement("p", {
         className: "home-header-text"
-      }, "Appointment Details !!"), this.state.registered == 2 && _react.default.createElement("div", null, _react.default.createElement(_OfflineBooking.default, null), _react.default.createElement("br", null), _react.default.createElement("span", {
+      }, "Appointment Details !!"), this.state.registered == 2 && _react.default.createElement("div", null, _react.default.createElement(_OfflineBooking.default, {
+        doctorId: this.state.myClinic.doctorId,
+        timeSlot: this.state.myClinic.timeSlot,
+        email: this.state.user.email
+      }), _react.default.createElement("br", null), _react.default.createElement("span", {
         className: "text-16-300 margin-left-5"
       }, "Choose Date -  "), _react.default.createElement(_reactDatePicker.default, {
         onChange: function onChange(date) {
@@ -64799,7 +65000,7 @@ var HomeDoctor = /*#__PURE__*/function (_Component) {
             date: date
           });
 
-          _this3.getListByDate();
+          _this3.getListByDate(_this3.state.myClinic, date);
         },
         value: this.state.date,
         clearIcon: null
@@ -64948,7 +65149,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57096" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60489" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

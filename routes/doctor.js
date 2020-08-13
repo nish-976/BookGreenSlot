@@ -72,6 +72,17 @@ router.post('/bookingByDate', async (req,res) => {
     res.send({ booking : booking });
 })
 
+router.post('/bookingVisited', async (req,res) => {
+    const booking = await Booking.findOne({ token : req.body.token });
+
+    try{
+        await booking.updateOne({ visited: true });
+        res.send({ booking : booking });
+    }catch(err){
+        res.status(400).send(err);
+    }
+})
+
 router.post('/update', async (req,res) => {
 
     console.log(req.body);

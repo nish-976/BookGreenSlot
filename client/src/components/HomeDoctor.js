@@ -42,7 +42,7 @@ class HomeDoctor extends Component {
             console.log(res.data.clinic);
             if(res.data.clinic){
                 this.setState({ myClinic : res.data.clinic, registered: 2 });
-                this.getListByDate(res.data.clinic);
+                this.getListByDate(res.data.clinic, this.state.date);
             }else{
                 this.setState({ registered: 1 });
             }
@@ -52,7 +52,9 @@ class HomeDoctor extends Component {
         });
     }
 
-    getListByDate = async (myClinic) => {
+    getListByDate = async (myClinic, date) => {
+
+        this.setState({ listLoaded : false });
         await axios.post(window.location.protocol
             + '//'
             + window.location.hostname
@@ -60,11 +62,35 @@ class HomeDoctor extends Component {
             + window.location.port
             + '/api/doctor/bookingByDate', {
                 doctorId : myClinic.doctorId,
-                date : this.state.date.getDate() + "-"+ parseInt(this.state.date.getMonth()+1) +"-"+this.state.date.getFullYear()
+                date : date.getDate() + "-"+ parseInt(date.getMonth()+1) +"-"+date.getFullYear()
             })
         .then(res => {
             console.log(res.data.booking);
             this.setState({ listLoaded : true, booking : res.data.booking })
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    bookVisited = async (book) => {
+        console.log(book);
+        await axios.post(window.location.protocol
+            + '//'
+            + window.location.hostname
+            + ":"
+            + window.location.port
+            + '/api/doctor/bookingVisited', {
+                token : book.token
+            })
+        .then(res => {
+            let booking = this.state.booking;
+            for(let i in booking){
+                if(booking[i].token == book.token){
+                    booking[i].visited = "true";
+                }
+            }
+            this.setState({ booking : booking });
         })
         .catch(error => {
             console.log(error);
@@ -76,14 +102,16 @@ class HomeDoctor extends Component {
 
         let booking = list.map((book) => {
             console.log(book.name + " " + book.timeSlot);
+            console.log(book.visited == false);
             return(
                 <div className="hd-book-list">
-                    {book.visited ?
+                    {book.visited[0] == 't' ?
                     <span className="hd-book-token hd-book-visited">Token - {book.token}</span> :
                     <span className="hd-book-token hd-book-not-visited">Token - {book.token}</span> }
                     <span className="hd-book-name">{book.name}</span>
                     <span className="hd-book-name">{book.age} years</span>
-                    <span className="hd-book-name"></span>
+                    {book.visited[0] == 'f' ? <span className="hd-book-name"><Button className = 'visited-button' onClick={() => this.bookVisited(book)}>Visited ?</Button></span> :
+                    <span className="hd-book-name"><span className="glyphicon glyphicon-ok" /></span>}
                 </div>
             );
         })
@@ -127,11 +155,16 @@ class HomeDoctor extends Component {
 
                 {this.state.registered == 2 &&
                 <div>
-                    <OfflineBooking />
+                    <OfflineBooking
+                        doctorId={this.state.myClinic.doctorId}
+                        timeSlot={this.state.myClinic.timeSlot}
+                        email={this.state.user.email}
+                    />
+
                     <br />
                     <span className="text-16-300 margin-left-5">Choose Date -  </span>
                     <DatePicker
-                        onChange={(date) => { this.setState({date : date}); this.getListByDate() }}
+                        onChange={(date) => { this.setState({date : date}); this.getListByDate(this.state.myClinic, date) }}
                         value={this.state.date}
                         clearIcon={null}
                     />

@@ -92,9 +92,10 @@
 }
 
 .yellowicon {
-  position: relative;
-  left: 50%;
-  right: 50%;
+ position: relative;
+ left: 47%;
+ height: 8%;
+ width: 8%;
   margin-top: 3%;
 }
 
@@ -733,7 +734,7 @@ body {
   background-color: #FF5252;
 }
 
-.hf-book-not-visited {
+.hd-book-not-visited {
   background-color: #FFFD8D;
 }
 
@@ -758,6 +759,19 @@ body {
   width: 25%;
   margin-top: 3%;
   background-color: black;
+  padding: 1.5%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 15px;
+}
+
+.visited-button {
+  width: 50%;
+  margin: 5%;
+  color: black;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: #99EE99;
   padding: 1.5%;
   padding-left: 3%;
   padding-right: 3%;
@@ -816,8 +830,8 @@ body {
 }
 
 .aboutUsImg {
-  position: relative;
-  left: 50%;
+justify-content: center;
+align-items: center;
   height: 8%;
   width: 8%;
 }

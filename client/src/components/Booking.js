@@ -51,6 +51,43 @@ class Booking extends Component {
         }
     }
 
+    oldBooking = async () => {
+        if(!this.state.timeSlot) {
+            alert("Please select a time slot !");
+            return;
+        }
+
+        let dd = ( Math.floor(this.state.date.getDate()/10) == 0 ? ('0' + this.state.date.getDate()) : this.state.date.getDate());
+        let mm = (Math.floor(parseInt(this.state.date.getMonth()+1)/10) == 0 ? ('0' + parseInt(this.state.date.getMonth()+1)) : parseInt(this.state.date.getMonth()+1));
+        let y = this.state.date.getFullYear()%10;
+
+        let token = "L" + dd + mm + y + this.state.doctorId;
+
+        console.log("Token Number " + token);
+
+        try {
+            await axios.post(window.location.protocol
+            + '//'
+            + window.location.hostname
+            + ":"
+            + window.location.port
+            + '/api/patient/old-book' , {
+                timeSlot : this.state.timeSlot,
+                oldToken : this.state.token,
+                doctorId : this.state.doctorId,
+                token : token,
+                date : this.state.date.getDate() + "-"+ parseInt(this.state.date.getMonth()+1) +"-"+this.state.date.getFullYear(),
+                email : this.state.user.email
+            })
+            .then(res => {
+                alert("Success !")
+            })
+        }catch(error){
+            console.log(error);
+            alert('Please enter valid token number');
+        }
+    }
+
     newBooking = async () => {
         if(!this.state.name){
             alert("Please enter a Name !");
@@ -91,7 +128,7 @@ class Booking extends Component {
                 email : this.state.user.email
             })
             .then(res => {
-                alert("Sucess !")
+                alert("Success !")
             })
         }catch(error){
             alert(error);

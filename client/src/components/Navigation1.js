@@ -24,7 +24,7 @@ class Navigation1 extends Component {
     </div>
     <ul className="nav navbar-nav navbar-right">
     <li><a href="/SignIn"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="/AboutUs"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="/Login"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
