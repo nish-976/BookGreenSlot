@@ -8,6 +8,7 @@ const axios = require('axios');
 import DatePicker from 'react-date-picker';
 
 class Booking extends Component {
+
     state = {
         user : null,
         logout : false,
@@ -21,6 +22,7 @@ class Booking extends Component {
     };
 
     componentDidMount() {
+
         let user = JSON.parse(localStorage.getItem('user'))
         if(!user){
             this.setState({ logout : true });
@@ -104,6 +106,10 @@ class Booking extends Component {
             return;
         }
 
+        this.loadRazorPay();
+    }
+
+    afterPayment = async () => {
         let dd = ( Math.floor(this.state.date.getDate()/10) == 0 ? ('0' + this.state.date.getDate()) : this.state.date.getDate());
         let mm = (Math.floor(parseInt(this.state.date.getMonth()+1)/10) == 0 ? ('0' + parseInt(this.state.date.getMonth()+1)) : parseInt(this.state.date.getMonth()+1));
         let y = this.state.date.getFullYear()%10;
@@ -135,6 +141,40 @@ class Booking extends Component {
         }
     }
 
+    loadRazorPay = () => {
+        console.log("Hello");
+        let amount = this.state.details.cash * 100;
+        let that = this;
+        var options = {
+            "key": "rzp_test_TnJ182QS0ttyUz", // Enter the Key ID generated from the Dashboard
+            "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Book-Green-Slot",
+            "description": "Book appointment",
+            // "image": "https://example.com/your_logo",
+            // "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response){
+                that.afterPayment();
+                // alert(response.razorpay_payment_id);
+                // alert(response.razorpay_order_id);
+                // alert(response.razorpay_signature);
+            },
+            "prefill": {
+                "name": that.state.name,
+                "email": that.state.user.email,
+            },
+            "theme": {
+                "color": "#0d0d0d"
+            }
+        };
+
+        var rzp1 = new window.Razorpay(options);
+        try {
+            rzp1.open();
+        }catch(error){
+            alert(error);
+        }
+    }
 
     render() {
 

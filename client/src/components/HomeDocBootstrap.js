@@ -105,14 +105,45 @@ class HomeDoctor extends Component {
             console.log(book.name + " " + book.timeSlot);
             console.log(book.visited == false);
             return(
-                <div className="hd-book-list">
-                    {book.visited[0] == 't' ?
-                    <span className="hd-book-token hd-book-visited">Token - {book.token}</span> :
-                    <span className="hd-book-token hd-book-not-visited">Token - {book.token}</span> }
-                    <span className="hd-book-name">{book.name}</span>
-                    <span className="hd-book-name">{book.age} years</span>
-                    {book.visited[0] == 'f' ? <span className="hd-book-name"><Button className = 'visited-button' onClick={() => this.bookVisited(book)}>Visited ?</Button></span> :
-                    <span className="hd-book-name"><span className="glyphicon glyphicon-ok" /></span>}
+                // <div className="hd-book-list">
+                //     {book.visited[0] == 't' ?
+                //     <span className="hd-book-token hd-book-visited">Token - {book.token}</span> :
+                //     <span className="hd-book-token hd-book-not-visited">Token - {book.token}</span> }
+                //     <span className="hd-book-name">{book.name}</span>
+                //     <span className="hd-book-name">{book.age} years</span>
+                //     {book.visited[0] == 'f' ? <span className="hd-book-name"><Button className = 'visited-button' onClick={() => this.bookVisited(book)}>Visited ?</Button></span> :
+                //     <span className="hd-book-name"><span className="glyphicon glyphicon-ok" /></span>}
+                // </div>
+
+                book.visited[0] == 'f' ?
+                <div className="row jumbotron border-solid-1px-black margin-5-10 bg-yellow">
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            <span className="font-20-bold">Token: {book.token}</span>
+                    </div>
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            Name: {book.name}
+                    </div>
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            Age: {book.age} years
+                    </div>
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            <button type="button" className="btn btn-success" onClick={() => this.bookVisited(book)}>Visited ?</button>
+                    </div>
+                </div>
+                :
+                <div className="row jumbotron border-solid-1px-black margin-5-10 bg-red">
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            <span className="font-20-bold">Token: {book.token}</span>
+                    </div>
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            Name: {book.name}
+                    </div>
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            Age: {book.age} years
+                    </div>
+                    <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center margin-2-5">
+                            <p className="font-20-bold">Visited</p>
+                    </div>
                 </div>
             );
         })
@@ -130,28 +161,37 @@ class HomeDoctor extends Component {
             slots = slotArray.map((timeItem) => {
 
                 return (
-                    <div className="hd-time-slot">
-                        <p className="hd-time-slot-p">{timeItem}</p>
-                        {this.bookingByTimeSlot(timeItem)}
+                    // <div className="hd-time-slot">
+                    //     <p className="hd-time-slot-p">{timeItem}</p>
+                    //     {this.bookingByTimeSlot(timeItem)}
+                    // </div>
+
+                    <div className="row jumbotron border-solid-1px-black margin-5-5">
+                        <div className="col-12">
+                            <p className="font-20-bold">{timeItem}</p>
+                        </div>
+                        <div className="col-12">
+                            {this.bookingByTimeSlot(timeItem)}
+                        </div>
                     </div>
                 );
             })
         }
 
         return (
-            <div className='App'>
+            <div className='HD'>
                 <Navigation />
 
                 {this.state.registered == 0 &&
-                    <p className="home-header-text">Please Wait !!</p>
+                    <div className="row text-center font-20-bold">Loading ...</div>
                 }
 
                 {this.state.registered == 1 &&
-                    <p className="home-header-text">Register your Clinic from Clinic Details Tab !!</p>
+                    <div className="row text-center font-20-bold">Register your Clinic from Clinic Details Tab !!</div>
                 }
 
                 {this.state.registered == 2 &&
-                    <p className="home-header-text">Appointment Details !!</p>
+                    <div className="row text-center font-20-bold"><u>{this.state.myClinic.name}</u></div>
                 }
 
                 {this.state.registered == 2 &&
@@ -163,19 +203,26 @@ class HomeDoctor extends Component {
                     />
 
                     <br />
-                    <span className="text-16-300 margin-left-5">Choose Date -  </span>
+
+                    <div className="row text-center margin-2-5">
+                    Choose Date: {"  "}
                     <DatePicker
                         onChange={(date) => { this.setState({date : date}); this.getListByDate(this.state.myClinic, date) }}
                         value={this.state.date}
                         clearIcon={null}
                     />
+                    </div>
                 </div> }
 
                 {this.state.registered == 2 && this.state.listLoaded &&
                 <div>
                     <br />
 
-                    <div className="hd-time-list">
+                    {/* <div className="hd-time-list">
+                        {slots}
+                    </div> */}
+
+                    <div className="container-fluid">
                         {slots}
                     </div>
 
@@ -185,6 +232,7 @@ class HomeDoctor extends Component {
                     <p className="home-header-text">Please Wait, we are Loading ...</p>
                 }
 
+                {/* <Footer /> */}
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
             </div>

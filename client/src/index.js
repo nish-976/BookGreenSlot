@@ -8,6 +8,7 @@ import history from './history';
 import 'regenerator-runtime/runtime'
 
 // Bootstrap-css and local index.css
+// import './hd.css';
 import './index.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 

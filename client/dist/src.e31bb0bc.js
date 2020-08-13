@@ -64234,7 +64234,6 @@ var Booking = /*#__PURE__*/function (_Component) {
         }
       }, _callee, null, [[8, 13]]);
     })), _this.newBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-      var dd, mm, y, token;
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -64266,13 +64265,27 @@ var Booking = /*#__PURE__*/function (_Component) {
               return _context2.abrupt("return");
 
             case 9:
+              _this.loadRazorPay();
+
+            case 10:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    })), _this.afterPayment = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+      var dd, mm, y, token;
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
               dd = Math.floor(_this.state.date.getDate() / 10) == 0 ? '0' + _this.state.date.getDate() : _this.state.date.getDate();
               mm = Math.floor(parseInt(_this.state.date.getMonth() + 1) / 10) == 0 ? '0' + parseInt(_this.state.date.getMonth() + 1) : parseInt(_this.state.date.getMonth() + 1);
               y = _this.state.date.getFullYear() % 10;
               token = "O" + dd + mm + y + _this.state.doctorId;
               console.log("Token Number " + token);
-              _context2.prev = 14;
-              _context2.next = 17;
+              _context3.prev = 5;
+              _context3.next = 8;
               return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/book', {
                 name: _this.state.name,
                 age: _this.state.age,
@@ -64285,22 +64298,58 @@ var Booking = /*#__PURE__*/function (_Component) {
                 alert("Success !");
               });
 
-            case 17:
-              _context2.next = 22;
+            case 8:
+              _context3.next = 13;
               break;
 
-            case 19:
-              _context2.prev = 19;
-              _context2.t0 = _context2["catch"](14);
-              alert(_context2.t0);
+            case 10:
+              _context3.prev = 10;
+              _context3.t0 = _context3["catch"](5);
+              alert(_context3.t0);
 
-            case 22:
+            case 13:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2, null, [[14, 19]]);
-    })), _temp));
+      }, _callee3, null, [[5, 10]]);
+    })), _this.loadRazorPay = function () {
+      console.log("Hello");
+      var amount = _this.state.details.cash * 100;
+
+      var that = _assertThisInitialized(_this);
+
+      var options = {
+        "key": "rzp_test_TnJ182QS0ttyUz",
+        // Enter the Key ID generated from the Dashboard
+        "amount": amount,
+        // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Book-Green-Slot",
+        "description": "Book appointment",
+        // "image": "https://example.com/your_logo",
+        // "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function handler(response) {
+          that.afterPayment(); // alert(response.razorpay_payment_id);
+          // alert(response.razorpay_order_id);
+          // alert(response.razorpay_signature);
+        },
+        "prefill": {
+          "name": that.state.name,
+          "email": that.state.user.email
+        },
+        "theme": {
+          "color": "#0d0d0d"
+        }
+      };
+      var rzp1 = new window.Razorpay(options);
+
+      try {
+        rzp1.open();
+      } catch (error) {
+        alert(error);
+      }
+    }, _temp));
   }
 
   _createClass(Booking, [{
@@ -65104,6 +65153,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Ascyn Await get or post requests
 // Bootstrap-css and local index.css
+// import './hd.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // COMPONENTS
 (0, _reactDom.render)(_react.default.createElement(_reactRouterDom.Router, {
@@ -65185,7 +65235,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60489" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50203" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
