@@ -16,7 +16,8 @@ router.get('/initialise', async (req,res) => {
         userCount : 0,
         paymentCount : 0,
         totalBookingCount : 0,
-        auth : "admin"
+        auth : "admin",
+        fee : 5
     })
 
     console.log(data);
@@ -24,6 +25,16 @@ router.get('/initialise', async (req,res) => {
     try{
         const savedAdmin = await data.save();
         res.send({ data : data });
+    }catch(err){
+        res.status(400).send(err);
+    }
+})
+
+router.get('/getFee', async(req, res) => {
+    try{
+        const admin = await Admin.findOne({ auth : 'admin' });
+        console.log(admin);
+        res.send({ fee : admin.fee })
     }catch(err){
         res.status(400).send(err);
     }

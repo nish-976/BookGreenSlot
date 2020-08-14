@@ -19,7 +19,8 @@ class ClinicDetails extends Component {
         cash : '',
         address : '',
         validity : '',
-        typeDoctor: 'General physician'
+        typeDoctor: 'General physician',
+        home: false
     };
 
     async componentDidMount() {
@@ -29,6 +30,10 @@ class ClinicDetails extends Component {
             this.setState({ logout : true });
         }else{
             this.setState({ user : user });
+        }
+
+        if(user.category == 'Patient'){
+            this.setState({ home : true });
         }
     }
 
@@ -267,6 +272,7 @@ class ClinicDetails extends Component {
 
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
+                {this.state.home ? <Redirect to='/home'></Redirect> : ''}
             </div>
         );
     }

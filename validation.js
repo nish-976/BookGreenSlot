@@ -14,6 +14,9 @@ const registerValidation = (data) => {
             .required(),
         category : Joi
             .string()
+            .required(),
+        phone : Joi
+            .string()
             .required()
     });
 

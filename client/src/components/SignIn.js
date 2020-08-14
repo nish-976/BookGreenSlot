@@ -18,7 +18,8 @@ class SignIn extends Component {
         category : 'Patient',
         redirect : false,
         loading : false,
-        error : false
+        error : false,
+        phone: ''
     };
 
     updateName = event => {
@@ -37,6 +38,10 @@ class SignIn extends Component {
         this.setState({cpassword : event.target.value });
     }
 
+    updatePhone = event => {
+        this.setState({phone : event.target.value });
+    }
+
     updateCategory = event => {
         // console.log(event.target.value);
         this.setState({ category : event.target.value });
@@ -46,10 +51,24 @@ class SignIn extends Component {
 
         console.log(this.state.category)
 
+        if(this.state.phone.length != 10){
+            alert("Phone Number is more than 10 digits")
+            return;
+        }
+
+        for(let i=0;i<10;i++){
+            if(!(this.state.phone[i]-'0' >=0 && this.state.phone[i]-'0' <= 9 )){
+                alert("Phone Number is not valid");
+              return;
+            }
+        }
+
         if(this.state.password !== this.state.cpassword){
             this.setState({ loading : false , error : true });
             return;
         }
+
+        console.log(this.state.phone);
 
         this.setState({ error : false, loading : true });
 
@@ -62,7 +81,8 @@ class SignIn extends Component {
                 name : this.state.name,
                 email : this.state.email,
                 password : this.state.password,
-                category : this.state.category
+                category : this.state.category,
+                phone : this.state.phone
             })
             .then(res => {
                 localStorage.setItem('token',res.data.token);
@@ -128,6 +148,14 @@ class SignIn extends Component {
                             placeholder='Confirm Password'
                             value={this.state.cpassword}
                             onChange={this.updateCPassword}
+                            className="inputBox"
+                        />
+                    </FormGroup>
+                    <FormGroup className="lastInputBox">
+                        <FormControl
+                            placeholder='10 digit Phone Number'
+                            value={this.state.phone}
+                            onChange={this.updatePhone}
                             className="inputBox"
                         />
                     </FormGroup>

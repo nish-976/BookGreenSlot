@@ -12,7 +12,8 @@ class Home extends Component {
     state = {
         user : null,
         logout : false,
-        isLoaded : false
+        isLoaded : false,
+        home: false
     };
 
     async componentDidMount() {
@@ -22,6 +23,10 @@ class Home extends Component {
             this.setState({ logout : true });
         }else{
             this.setState({ user : user });
+        }
+
+        if(user.category == 'Doctor'){
+            this.setState({ home : true });
         }
 
         await axios.get(window.location.protocol
@@ -112,6 +117,7 @@ class Home extends Component {
                 <p className="home-header-text">Loading .... </p>}
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
+                {this.state.home ? <Redirect to='/HomeDoctor'></Redirect> : ''}
             </div>
         );
     }

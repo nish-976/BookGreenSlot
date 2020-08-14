@@ -104,6 +104,9 @@
   color: #4f8a8b;
   align-items: center;
   justify-content: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 .navbar {
@@ -297,7 +300,7 @@ body {
 
 .signin {
   background-color: #4f8a8b;
-  min-height: calc(100vh - 150px);
+  min-height: 100vh;
 }
 
 .login {
@@ -451,7 +454,7 @@ body {
   /* background-color: antiquewhite; */
   background-image: linear-gradient(to bottom right, #4f8a8b, white);
 
-  height: calc(100vh - 150px);
+  min-height: 100vh;
 }
 
 .signInRootLeft {
@@ -616,14 +619,44 @@ body {
   margin-right: 5%;
 }
 
-.green-slot {
-  color: #0d0d0d;
-  background-color: #A1E777;
+.black-slot {
+  color: #fff;
+  background-color: #0d0d0d;
+}
+
+.white-slot {
+  color: #000;
+  background-color: #eee;
+}
+
+.yellow-slot {
+  color: #000;
+  background-color: #FFFD8D;
+}
+
+.light-red-slot {
+  color: #000;
+  background-color: #F85151;
 }
 
 .red-slot {
   color: #eee;
   background-color: #530000;
+}
+
+.myAppointments {
+  width:80%;
+  margin-left:10%;
+  margin-right: 10%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0d0d0d;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .day-slot {
@@ -792,7 +825,7 @@ body {
 }
 
 .leftImage {
-  height: calc(100vh - 150px);
+  min-height: 100vh;
   /* width: calc(100vh + 200px); */
   width: 100%;
 }

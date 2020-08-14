@@ -17,6 +17,10 @@ const mongoose = require('mongoose');
         type : String,
         required: true,
     },
+    fee: {
+        type : String,
+        required: true,
+    },
     auth : {
         type : String,
         required: true,

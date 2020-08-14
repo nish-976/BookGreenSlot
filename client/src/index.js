@@ -28,6 +28,7 @@ import updatePassword from './components/updatePassword';
 import ClinicDetails from './components/ClinicDetails';
 import Booking from './components/Booking';
 import HomeDoctor from './components/HomeDoctor';
+import PreviousBooking from './components/PreviousBooking';
 
 render(
     <Router history={history}>
@@ -47,6 +48,7 @@ render(
             <Route path='/ClinicDetails' component={ClinicDetails} />
             <Route path='/Booking' component={Booking} />
             <Route path='/HomeDoctor' component={HomeDoctor} />
+            <Route path='/PreviousBooking' component={PreviousBooking} />
         </Switch>
     </Router>,
     document.getElementById('root')

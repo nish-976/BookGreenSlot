@@ -20,7 +20,8 @@ class HomeDoctor extends Component {
         myClinic : {},
         registered : 0,
         listLoaded : false,
-        booking : []
+        booking : [],
+        home: false
     };
 
     async componentDidMount() {
@@ -29,6 +30,10 @@ class HomeDoctor extends Component {
             this.setState({ logout : true });
         }else{
             this.setState({ user : user });
+        }
+
+        if(user.category == 'Patient'){
+            this.setState({ home : true });
         }
 
         await axios.post(window.location.protocol
@@ -187,6 +192,7 @@ class HomeDoctor extends Component {
 
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
+                {this.state.home ? <Redirect to='/home'></Redirect> : ''}
             </div>
         );
     }

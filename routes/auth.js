@@ -19,12 +19,15 @@ router.post('/register', async (req,res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
+    console.log(req.body.phone);
+
     // Create a new user object
     const user = new User({
         name : req.body.name,
         email : req.body.email,
         password : hashedPassword,
-        category : req.body.category
+        category : req.body.category,
+        phone : req.body.phone
     });
 
     console.log(user);
@@ -32,7 +35,7 @@ router.post('/register', async (req,res) => {
     // Save the user object to DB
     try{
         const savedUser = await user.save();
-        res.send({ user : savedUser , token : jwt.sign({_id : user._id}, process.env.TOKEN_SECRET) });
+        res.send({ user : savedUser });
     }catch(err){
         res.status(400).send(err);
     }

@@ -12,6 +12,12 @@ router.get('/getAllDoctors', async (req,res) => {
     res.send({ Doctors : doctors });
 })
 
+router.post('/myAppointments', async (req,res) => {
+
+    const appointments = await Booking.find({ email : req.body.email });
+    res.send({ appointments : appointments });
+})
+
 router.post('/book', async (req,res) => {
 
     const bookingOfDay = await Booking.find({ appointmentDate : req.body.date , doctorId : req.body.doctorId });
@@ -41,7 +47,7 @@ router.post('/book', async (req,res) => {
 
     try{
         const saveReceipt = await receipt.save();
-        res.send({ receipt : receipt });
+        res.send({ receipt : saveReceipt });
     }catch(err){
         res.status(400).send(err);
     }
@@ -97,7 +103,7 @@ router.post('/old-book', async (req,res) => {
 
     try{
         const saveReceipt = await receipt.save();
-        res.send({ receipt : receipt });
+        res.send({ receipt : saveReceipt });
     }catch(err){
         res.status(400).send(err);
     }
