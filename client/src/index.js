@@ -29,6 +29,7 @@ import ClinicDetails from './components/ClinicDetails';
 import Booking from './components/Booking';
 import HomeDoctor from './components/HomeDoctor';
 import PreviousBooking from './components/PreviousBooking';
+import AdminPanel from './components/AdminPanel';
 
 render(
     <Router history={history}>
@@ -49,6 +50,7 @@ render(
             <Route path='/Booking' component={Booking} />
             <Route path='/HomeDoctor' component={HomeDoctor} />
             <Route path='/PreviousBooking' component={PreviousBooking} />
+            <Route path='/AdminPanel' component={AdminPanel} />
         </Switch>
     </Router>,
     document.getElementById('root')

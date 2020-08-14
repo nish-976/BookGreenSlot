@@ -28,6 +28,7 @@ class Booking extends Component {
         let user = JSON.parse(localStorage.getItem('user'))
         if(!user){
             this.setState({ logout : true });
+            return(<Redirect to='/'></Redirect>);
         }else{
             this.setState({ user : user });
         }

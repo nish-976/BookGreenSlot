@@ -42,6 +42,7 @@ class Navigation extends Component {
                         <li><a href="/HomeDoctor"><span className="glyphicon glyphicon-home"></span>Home</a></li> :
                         <li><a href="/Home"><span className="glyphicon glyphicon-home"></span> Home</a></li>}
                         {category == 'Patient' && <li><a href="/PreviousBooking"><span className="glyphicon glyphicon-tasks"></span> My Appointments</a></li>}
+                        {this.state.user && this.state.user.email=='admin@admin.com' && <li><a href="/AdminPanel"><span className="	glyphicon glyphicon-user"></span> Admin Panel</a></li>}
                         {category == 'Doctor' && <li><a href="/ClinicDetails"><span className="glyphicon glyphicon-tasks"></span> Clinic Details</a></li>}
                         <li><a onClick={this.logout} ><span className="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>

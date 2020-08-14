@@ -40,4 +40,24 @@ router.get('/getFee', async(req, res) => {
     }
 })
 
+router.get('/getDetails', async(req, res) => {
+    try{
+        const admin = await Admin.findOne({ auth : 'admin' });
+        console.log(admin);
+        res.send({ admin : admin })
+    }catch(err){
+        res.status(400).send(err);
+    }
+})
+
+router.post('/updateFee', async(req, res) => {
+    try{
+        const admin = await Admin.findOne({ auth : 'admin' });
+        await admin.updateOne({ fee : req.body.fee });
+        res.send({ admin : admin });
+    }catch(err){
+        res.status(400).send(err);
+    }
+})
+
 module.exports = router;

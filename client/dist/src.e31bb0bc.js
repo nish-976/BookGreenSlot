@@ -51666,7 +51666,11 @@ var Navigation = /*#__PURE__*/function (_Component) {
         href: "/PreviousBooking"
       }, _react.default.createElement("span", {
         className: "glyphicon glyphicon-tasks"
-      }), " My Appointments")), category == 'Doctor' && _react.default.createElement("li", null, _react.default.createElement("a", {
+      }), " My Appointments")), this.state.user && this.state.user.email == 'admin@admin.com' && _react.default.createElement("li", null, _react.default.createElement("a", {
+        href: "/AdminPanel"
+      }, _react.default.createElement("span", {
+        className: "\tglyphicon glyphicon-user"
+      }), " Admin Panel")), category == 'Doctor' && _react.default.createElement("li", null, _react.default.createElement("a", {
         href: "/ClinicDetails"
       }, _react.default.createElement("span", {
         className: "glyphicon glyphicon-tasks"
@@ -64513,6 +64517,9 @@ var Booking = /*#__PURE__*/function (_Component) {
         this.setState({
           logout: true
         });
+        return _react.default.createElement(_reactRouterDom.Redirect, {
+          to: "/"
+        });
       } else {
         this.setState({
           user: user
@@ -65514,6 +65521,217 @@ var PreviousBooking = /*#__PURE__*/function (_Component) {
 
 var _default = PreviousBooking;
 exports.default = _default;
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../assets/doctor.png":"assets/doctor.png"}],"components/AdminPanel.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Navigation = _interopRequireDefault(require("./Navigation"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _doctor = _interopRequireDefault(require("../assets/doctor.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var localStorage = require('localStorage');
+
+var axios = require('axios');
+
+var PreviousBooking = /*#__PURE__*/function (_Component) {
+  _inherits(PreviousBooking, _Component);
+
+  var _super = _createSuper(PreviousBooking);
+
+  function PreviousBooking() {
+    var _this;
+
+    var _temp;
+
+    _classCallCheck(this, PreviousBooking);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      user: null,
+      logout: false,
+      isLoaded: false,
+      home: false,
+      admin: {},
+      fee: ''
+    }, _this.submit = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (_this.state.fee) {
+                _context.next = 3;
+                break;
+              }
+
+              alert("Please enter updated fee !");
+              return _context.abrupt("return");
+
+            case 3:
+              _context.next = 5;
+              return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/admin/updateFee', {
+                fee: _this.state.fee
+              }).then(function (res) {
+                alert("Fees updates !!");
+              }).catch(function (error) {
+                console.log(error);
+              });
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })), _temp));
+  }
+
+  _createClass(PreviousBooking, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var _this2 = this;
+
+        var user;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                user = JSON.parse(localStorage.getItem('user'));
+
+                if (user) {
+                  _context2.next = 6;
+                  break;
+                }
+
+                this.setState({
+                  logout: true
+                });
+                return _context2.abrupt("return", _react.default.createElement(_reactRouterDom.Redirect, {
+                  to: "/"
+                }));
+
+              case 6:
+                this.setState({
+                  user: user
+                });
+
+              case 7:
+                if (user.email != 'admin@admin.com') {
+                  this.setState({
+                    home: true
+                  });
+                }
+
+                _context2.next = 10;
+                return axios.get(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/admin/getDetails').then(function (res) {
+                  _this2.setState({
+                    admin: res.data.admin,
+                    isLoaded: true
+                  });
+                }).catch(function (error) {
+                  console.log(error);
+                });
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return _react.default.createElement("div", {
+        className: "App"
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Admin Panel !"), this.state.isLoaded ? _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "myAppointments"
+      }, _react.default.createElement("p", null, "Accounts registered: ", this.state.admin.userCount), _react.default.createElement("p", null, "Online Booking Count: ", this.state.admin.paymentCount), _react.default.createElement("p", null, "Total Booking: ", this.state.admin.totalBookingCount), _react.default.createElement("p", null, "Doctos's Id Count: ", this.state.admin.doctorCount), _react.default.createElement("p", null, "Book-Green-Slot Fees: Rs. ", this.state.admin.fee)), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Update Book-Green-Slot Fees (in rupees)",
+        value: this.state.fee,
+        onChange: function onChange(event) {
+          return _this3.setState({
+            fee: event.target.value
+          });
+        },
+        className: "clinicDetails booking-input"
+      })), _react.default.createElement("div", {
+        align: "center"
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        className: "button-submit",
+        onClick: this.submit
+      }, "Update"))) : _react.default.createElement("p", {
+        className: "home-header-text"
+      }, "Loading .... "), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/"
+      }) : '', this.state.home ? _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/HomeDoctor"
+      }) : '');
+    }
+  }]);
+
+  return PreviousBooking;
+}(_react.Component);
+
+var _default = PreviousBooking;
+exports.default = _default;
 },{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../assets/doctor.png":"assets/doctor.png"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -65560,6 +65778,8 @@ var _Booking = _interopRequireDefault(require("./components/Booking"));
 var _HomeDoctor = _interopRequireDefault(require("./components/HomeDoctor"));
 
 var _PreviousBooking = _interopRequireDefault(require("./components/PreviousBooking"));
+
+var _AdminPanel = _interopRequireDefault(require("./components/AdminPanel"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65621,8 +65841,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 }), _react.default.createElement(_reactRouterDom.Route, {
   path: "/PreviousBooking",
   component: _PreviousBooking.default
+}), _react.default.createElement(_reactRouterDom.Route, {
+  path: "/AdminPanel",
+  component: _AdminPanel.default
 }))), document.getElementById('root'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./index.css":"index.css","./components/App":"components/App.js","./components/Login":"components/Login.js","./components/ContactUs":"components/ContactUs.js","./components/Terms":"components/Terms.js","./components/AboutUs":"components/AboutUs.js","./components/PrivacyPolicy":"components/PrivacyPolicy.js","./components/SignIn":"components/SignIn.js","./components/AddTask":"components/AddTask.js","./components/ViewTask":"components/ViewTask.js","./components/Home":"components/Home.js","./components/updateName":"components/updateName.js","./components/updatePassword":"components/updatePassword.js","./components/ClinicDetails":"components/ClinicDetails.js","./components/Booking":"components/Booking.js","./components/HomeDoctor":"components/HomeDoctor.js","./components/PreviousBooking":"components/PreviousBooking.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./index.css":"index.css","./components/App":"components/App.js","./components/Login":"components/Login.js","./components/ContactUs":"components/ContactUs.js","./components/Terms":"components/Terms.js","./components/AboutUs":"components/AboutUs.js","./components/PrivacyPolicy":"components/PrivacyPolicy.js","./components/SignIn":"components/SignIn.js","./components/AddTask":"components/AddTask.js","./components/ViewTask":"components/ViewTask.js","./components/Home":"components/Home.js","./components/updateName":"components/updateName.js","./components/updatePassword":"components/updatePassword.js","./components/ClinicDetails":"components/ClinicDetails.js","./components/Booking":"components/Booking.js","./components/HomeDoctor":"components/HomeDoctor.js","./components/PreviousBooking":"components/PreviousBooking.js","./components/AdminPanel":"components/AdminPanel.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
