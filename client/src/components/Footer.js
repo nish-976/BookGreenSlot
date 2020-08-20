@@ -37,11 +37,11 @@ class Footer extends Component {
 
             <div className="footercontent">
 
-                <span className="letsSee"><p className="footerLinks">Home</p></span>
-                <span className="letsSee"><p className="footerLinks">Contact Us</p></span>
-                <span className="letsSee"><p className="footerLinks">About Us</p></span>
-                <span className="letsSee"><p className="footerLinks">Developer Info</p></span>
-                <span className="letsSee"><p className="footerLinks">FAQ</p></span>
+                <a href='/home'><span className="letsSee"><p className="footerLinks">Home</p></span></a>
+                <a href='/ContactUs'><span className="letsSee"><p className="footerLinks">Contact Us</p></span></a>
+                {/* <span className="letsSee"><p className="footerLinks">About Us</p></span> */}
+                <a href='/DeveloperInfo'><span className="letsSee"><p className="footerLinks">Developer Info</p></span></a>
+                <a href='/Faq'><span className="letsSee"><p className="footerLinks">FAQ</p></span></a>
                 {/* <span className="letsSee"><img src={contact} /></span>
                 <span className="letsSee"><img src={about} /></span>
                 <span className="letsSee"><img src={developer} /></span>

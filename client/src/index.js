@@ -15,7 +15,6 @@ import './index.css';
 // COMPONENTS
 import App from './components/App';
 import Login from './components/Login';
-import ContactUs from './components/ContactUs';
 import Terms from './components/Terms';
 import AboutUs from './components/AboutUs';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -30,6 +29,9 @@ import Booking from './components/Booking';
 import HomeDoctor from './components/HomeDoctor';
 import PreviousBooking from './components/PreviousBooking';
 import AdminPanel from './components/AdminPanel';
+import DeveloperInfo from './components/DeveloperInfo';
+import Faq from './components/Faq';
+import ContactUs from './components/ContactUs';
 
 render(
     <Router history={history}>
@@ -51,6 +53,9 @@ render(
             <Route path='/HomeDoctor' component={HomeDoctor} />
             <Route path='/PreviousBooking' component={PreviousBooking} />
             <Route path='/AdminPanel' component={AdminPanel} />
+            <Route path='/DeveloperInfo' component={DeveloperInfo} />
+            <Route path='/Faq' component={Faq} />
+            <Route path='/ContactUs' component={ContactUs} />
         </Switch>
     </Router>,
     document.getElementById('root')
