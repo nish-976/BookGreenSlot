@@ -4,6 +4,9 @@ import { Redirect } from 'react-router-dom';
 import Navigation from './Navigation';
 import {FormGroup, FormControl , Button} from 'react-bootstrap';
 const axios = require('axios');
+import ddmmyy from '../util/ddmmyyyy';
+import Footer from './Footer'
+
 
 import DatePicker from 'react-date-picker';
 
@@ -20,7 +23,8 @@ class Booking extends Component {
         timeSlot : '',
         doctorId : '',
         home: false,
-        bookingList: []
+        bookingList: [],
+        weekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri" ,"Sat"]
     };
 
     componentDidMount() {
@@ -100,6 +104,14 @@ class Booking extends Component {
             return;
         }
 
+        var dayValidity = JSON.parse(this.state.details.days).filter((day) => day == this.state.weekDays[this.state.date.getDay()])
+        console.log(this.state.weekDays[this.state.date.getDay()]);
+        console.log(dayValidity);
+        if(!dayValidity.length){
+            alert("Clinic is closed on this day of week.\nPlease select another date.")
+            return;
+        }
+
         // const date1 = new Date(this.state.date.getDate() + '/' + parseInt(this.state.date.getMonth()+1) + '/' + this.state.date.getFullYear());
         // const date2 = new Date(this.state.token[1]+this.state.token[2]+'/'+this.state.token[3]+this.state.token[4]+'/202'+this.state.token[5]);
         // const diffTime = Math.abs(date2 - date1);
@@ -158,7 +170,7 @@ class Booking extends Component {
                 doctorId : this.state.doctorId,
                 timeSlot : this.state.timeSlot,
                 token : token,
-                date : this.state.date.getDate() + "-"+ parseInt(this.state.date.getMonth()+1) +"-"+this.state.date.getFullYear(),
+                date : ddmmyy(this.state.date),
                 email : this.state.user.email
             })
             .then(res => {
@@ -315,8 +327,8 @@ class Booking extends Component {
         }
 
         // console.log(this.state.date.getDayName());
-        let date=this.state.date.getDate() + "-"+ parseInt(this.state.date.getMonth()+1) +"-"+this.state.date.getFullYear();
-        console.log(date);
+        // let date=ddmmyy(this.state.date);
+        // console.log(date);
         return (
             <div className='App'>
                 <Navigation />
@@ -373,6 +385,7 @@ class Booking extends Component {
                         }}
                         value={this.state.date}
                         clearIcon={null}
+                        minDate={new Date()}
                     />
                 </div>
 
@@ -389,6 +402,8 @@ class Booking extends Component {
                 </div>
 
                 <br /><br /><br />
+
+                <Footer />
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
                 {this.state.home ? <Redirect to='/HomeDoctor'></Redirect> : ''}

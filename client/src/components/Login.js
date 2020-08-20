@@ -72,8 +72,8 @@ class Login extends Component {
                 <Navigation1 />
                 <div className="login">
                 <div className="signInRootLeft" >
-                <img className="leftImage" src={doc2} />
-            </div>
+                    <img className="leftImage" src={doc2} />
+                </div>
             <div className="signInRootRight">
                 <div className='AddTask'>
                     <br />

@@ -64,14 +64,6 @@ router.post('/old-book', async (req,res) => {
         res.status(400).send(err);
     }
 
-    console.log(oldBooking);
-
-    if(oldBooking){
-        console.log("YES");
-    }else{
-        console.log("NO");
-    }
-
     if(!oldBooking){
         res.status(400).send("Not a valid token");
         return;

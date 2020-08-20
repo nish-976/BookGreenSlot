@@ -61819,6 +61819,8 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _doctor = _interopRequireDefault(require("../assets/doctor.png"));
 
+var _Footer = _interopRequireDefault(require("./Footer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -61982,9 +61984,9 @@ var Home = /*#__PURE__*/function (_Component) {
         className: "home-header-text"
       }, "Make an Appointment !"), this.state.isLoaded ? _react.default.createElement("div", {
         className: "grid-doctorList"
-      }, doctors) : _react.default.createElement("p", {
-        className: "home-header-text"
-      }, "Loading .... "), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+      }, doctors) : _react.default.createElement("div", {
+        className: "home-header-text height-100vh"
+      }, "Loading .... "), _react.default.createElement(_Footer.default, null), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/"
       }) : '', this.state.home ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/HomeDoctor"
@@ -61997,7 +61999,7 @@ var Home = /*#__PURE__*/function (_Component) {
 
 var _default = Home;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../assets/doctor.png":"assets/doctor.png"}],"components/updateName.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../assets/doctor.png":"assets/doctor.png","./Footer":"components/Footer.js"}],"components/updateName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -62808,7 +62810,21 @@ var ClinicDetails = /*#__PURE__*/function (_Component) {
 
 var _default = ClinicDetails;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../util/timeSlot":"util/timeSlot.js"}],"../../node_modules/react-date-picker/dist/Divider.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../util/timeSlot":"util/timeSlot.js"}],"util/ddmmyyyy.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var getDate = function getDate(date) {
+  return date.getDate() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getFullYear();
+};
+
+var _default = getDate;
+exports.default = _default;
+},{}],"../../node_modules/react-date-picker/dist/Divider.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -64183,6 +64199,10 @@ var _Navigation = _interopRequireDefault(require("./Navigation"));
 
 var _reactBootstrap = require("react-bootstrap");
 
+var _ddmmyyyy = _interopRequireDefault(require("../util/ddmmyyyy"));
+
+var _Footer = _interopRequireDefault(require("./Footer"));
+
 var _reactDatePicker = _interopRequireDefault(require("react-date-picker"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -64246,7 +64266,8 @@ var Booking = /*#__PURE__*/function (_Component) {
       timeSlot: '',
       doctorId: '',
       home: false,
-      bookingList: []
+      bookingList: [],
+      weekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     }, _this.getListByDate = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(doctorId, date) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -64293,7 +64314,7 @@ var Booking = /*#__PURE__*/function (_Component) {
       result.setDate(result.getDate() + days);
       return result;
     }, _this.oldBooking = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-      var dd, mm, y, token;
+      var dayValidity, dd, mm, y, token;
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -64325,6 +64346,21 @@ var Booking = /*#__PURE__*/function (_Component) {
               return _context2.abrupt("return");
 
             case 9:
+              dayValidity = JSON.parse(_this.state.details.days).filter(function (day) {
+                return day == _this.state.weekDays[_this.state.date.getDay()];
+              });
+              console.log(_this.state.weekDays[_this.state.date.getDay()]);
+              console.log(dayValidity);
+
+              if (dayValidity.length) {
+                _context2.next = 15;
+                break;
+              }
+
+              alert("Clinic is closed on this day of week.\nPlease select another date.");
+              return _context2.abrupt("return");
+
+            case 15:
               // const date1 = new Date(this.state.date.getDate() + '/' + parseInt(this.state.date.getMonth()+1) + '/' + this.state.date.getFullYear());
               // const date2 = new Date(this.state.token[1]+this.state.token[2]+'/'+this.state.token[3]+this.state.token[4]+'/202'+this.state.token[5]);
               // const diffTime = Math.abs(date2 - date1);
@@ -64335,8 +64371,8 @@ var Booking = /*#__PURE__*/function (_Component) {
               y = _this.state.date.getFullYear() % 10;
               token = "L" + dd + mm + y + _this.state.doctorId;
               console.log("Token Number " + token);
-              _context2.prev = 14;
-              _context2.next = 17;
+              _context2.prev = 20;
+              _context2.next = 23;
               return axios.post(window.location.protocol + '//' + window.location.hostname + ":" + window.location.port + '/api/patient/old-book', {
                 timeSlot: _this.state.timeSlot,
                 oldToken: _this.state.token,
@@ -64348,22 +64384,22 @@ var Booking = /*#__PURE__*/function (_Component) {
                 alert("Successfully booked an appointment !\nToken Id - " + res.data.receipt.token + " for appointment with " + _this.state.details.name + " at " + _this.state.timeSlot);
               });
 
-            case 17:
-              _context2.next = 23;
+            case 23:
+              _context2.next = 29;
               break;
 
-            case 19:
-              _context2.prev = 19;
-              _context2.t0 = _context2["catch"](14);
+            case 25:
+              _context2.prev = 25;
+              _context2.t0 = _context2["catch"](20);
               console.log(_context2.t0);
               alert('Please enter valid token number');
 
-            case 23:
+            case 29:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[14, 19]]);
+      }, _callee2, null, [[20, 25]]);
     })), _this.afterPayment = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
       var dd, mm, y, token;
       return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -64383,7 +64419,7 @@ var Booking = /*#__PURE__*/function (_Component) {
                 doctorId: _this.state.doctorId,
                 timeSlot: _this.state.timeSlot,
                 token: token,
-                date: _this.state.date.getDate() + "-" + parseInt(_this.state.date.getMonth() + 1) + "-" + _this.state.date.getFullYear(),
+                date: (0, _ddmmyyyy.default)(_this.state.date),
                 email: _this.state.user.email
               }).then(function (res) {
                 alert("Successfully booked an appointment !\nToken Id - " + res.data.receipt.token + " for appointment with " + _this.state.details.name + " at " + _this.state.timeSlot);
@@ -64653,10 +64689,10 @@ var Booking = /*#__PURE__*/function (_Component) {
           }, day, " |");
         });
       } // console.log(this.state.date.getDayName());
+      // let date=ddmmyy(this.state.date);
+      // console.log(date);
 
 
-      var date = this.state.date.getDate() + "-" + parseInt(this.state.date.getMonth() + 1) + "-" + this.state.date.getFullYear();
-      console.log(date);
       return _react.default.createElement("div", {
         className: "App"
       }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("br", null), _react.default.createElement("p", {
@@ -64720,7 +64756,8 @@ var Booking = /*#__PURE__*/function (_Component) {
           });
         },
         value: this.state.date,
-        clearIcon: null
+        clearIcon: null,
+        minDate: new Date()
       })), _react.default.createElement("p", {
         className: "text-16-300 text-center"
       }, "Select your time slot !"), _react.default.createElement("div", {
@@ -64732,7 +64769,7 @@ var Booking = /*#__PURE__*/function (_Component) {
       }, _react.default.createElement(_reactBootstrap.Button, {
         className: "button-submit",
         onClick: this.getExtra
-      }, "Book")), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("br", null), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+      }, "Book")), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_Footer.default, null), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/"
       }) : '', this.state.home ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/HomeDoctor"
@@ -64746,7 +64783,7 @@ var Booking = /*#__PURE__*/function (_Component) {
 ;
 var _default = Booking;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","react-date-picker":"../../node_modules/react-date-picker/dist/entry.js"}],"components/OfflineBooking.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","axios":"../../node_modules/axios/index.js","../util/ddmmyyyy":"util/ddmmyyyy.js","./Footer":"components/Footer.js","react-date-picker":"../../node_modules/react-date-picker/dist/entry.js"}],"components/OfflineBooking.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65371,6 +65408,8 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _doctor = _interopRequireDefault(require("../assets/doctor.png"));
 
+var _Footer = _interopRequireDefault(require("./Footer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -65507,8 +65546,8 @@ var PreviousBooking = /*#__PURE__*/function (_Component) {
       }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("p", {
         className: "home-header-text"
       }, "Past Appointments !"), this.state.isLoaded ? _react.default.createElement("div", null, appointments) : _react.default.createElement("p", {
-        className: "home-header-text"
-      }, "Loading .... "), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
+        className: "home-header-text height-100vh"
+      }, "Loading .... "), _react.default.createElement(_Footer.default, null), this.state.logout ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/"
       }) : '', this.state.home ? _react.default.createElement(_reactRouterDom.Redirect, {
         to: "/HomeDoctor"
@@ -65521,7 +65560,7 @@ var PreviousBooking = /*#__PURE__*/function (_Component) {
 
 var _default = PreviousBooking;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../assets/doctor.png":"assets/doctor.png"}],"components/AdminPanel.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Navigation":"components/Navigation.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","localStorage":"../../node_modules/localStorage/lib/localStorage.js","axios":"../../node_modules/axios/index.js","../assets/doctor.png":"assets/doctor.png","./Footer":"components/Footer.js"}],"components/AdminPanel.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65873,7 +65912,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50203" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49859" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

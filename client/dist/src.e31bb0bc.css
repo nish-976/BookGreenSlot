@@ -516,6 +516,7 @@ body {
 }
 
 .grid-doctorList {
+  height: 100vh;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   margin-left: 5%;
@@ -595,6 +596,10 @@ body {
   color: #122418;
   text-align: center;
   padding: 20px;
+}
+
+.height-100vh {
+  height: 100vh;
 }
 
 .App {

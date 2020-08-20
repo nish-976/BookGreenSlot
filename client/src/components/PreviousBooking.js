@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 const localStorage = require('localStorage');
 const axios = require('axios');
 import doctorImage from '../assets/doctor.png'
+import Footer from './Footer'
 
 class PreviousBooking extends Component {
     state = {
@@ -79,7 +80,9 @@ class PreviousBooking extends Component {
                     {appointments}
                 </div>
                 :
-                <p className="home-header-text">Loading .... </p>}
+                <p className="home-header-text height-100vh">Loading .... </p>}
+
+                <Footer />
 
                 {this.state.logout ? <Redirect to='/'></Redirect> : ''}
                 {this.state.home ? <Redirect to='/HomeDoctor'></Redirect> : ''}
