@@ -14,7 +14,7 @@ const adminRoute = require("./routes/admin");
 dotenv.config();
 
 mongoose.connect(
-  "mongodb+srv://BookGreenSlot:MasoomRaj@cluster0.tqzxh.mongodb.net/Cluster0?retryWrites=true&w=majority",
+  process.env.MONGO_DB,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => console.log("Connected to DB")
 );
